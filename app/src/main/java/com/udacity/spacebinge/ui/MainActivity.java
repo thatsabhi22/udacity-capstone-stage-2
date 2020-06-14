@@ -1,14 +1,13 @@
 package com.udacity.spacebinge.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 
-import com.udacity.spacebinge.ApiClient;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Result;
-import com.udacity.spacebinge.tasks.ApiInterface;
+import com.udacity.spacebinge.tasks.SpaceWebService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,28 +15,27 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    ApiInterface apiInterface;
     public static final String TAG = MainActivity.class.getSimpleName();
-
     Result aliens;
     Result space;
     Result mars;
+    private SpaceWebService spaceWebService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        spaceWebService = SpaceWebService.retrofit.create(SpaceWebService.class);
 
-        getCollection("alien",aliens);
+        getCollection("alien", aliens);
         getCollection("space", space);
         getCollection("mars", mars);
     }
 
-    public void getCollection(String query, Result result){
+    public void getCollection(String query, Result result) {
 
-        Call<Result> call = apiInterface.getSpaceQuery(query,"video");
+        Call<Result> call = spaceWebService.getSpaceQuery(query, "video");
 
         call.enqueue(new Callback<Result>() {
             @Override
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "onResponse: " + response.body());
 
                 Result result1 = response.body();
-                setData(result1,result);
+                setData(result1, result);
 //                Log.e(TAG, "onResponse: " + queryResult.getCollection());
             }
 
@@ -56,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void setData(Result result1,Result result){
+    void setData(Result result1, Result result) {
         result = result1;
     }
 }

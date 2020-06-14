@@ -16,10 +16,10 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    private SpaceWebService spaceWebService;
     Result aliens;
     Result space;
     Result mars;
-    private SpaceWebService spaceWebService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

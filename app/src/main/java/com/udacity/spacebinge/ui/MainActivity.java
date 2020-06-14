@@ -1,11 +1,14 @@
-package com.udacity.spacebinge;
+package com.udacity.spacebinge.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 
+import com.udacity.spacebinge.ApiClient;
+import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Result;
+import com.udacity.spacebinge.tasks.ApiInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;

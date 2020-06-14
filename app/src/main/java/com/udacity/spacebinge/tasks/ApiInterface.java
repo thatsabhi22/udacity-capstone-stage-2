@@ -1,4 +1,4 @@
-package com.udacity.spacebinge;
+package com.udacity.spacebinge.tasks;
 
 import com.udacity.spacebinge.models.Collection;
 import com.udacity.spacebinge.models.Result;

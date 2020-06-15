@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SubscriptionLoginActivity"></activity>
+        <activity android:name=".ui.NewsActivity"></activity>
+        <activity android:name=".ui.SearchActivity" />
+        <activity android:name=".ui.WatchListActivity" />
+        <activity android:name=".ui.PlayerActivity" />
+        <activity android:name=".ui.SubscriptionLoginActivity" />
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

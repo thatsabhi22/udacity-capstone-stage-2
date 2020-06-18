@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Result;
+import com.udacity.spacebinge.repositories.VideoItemRepository;
 import com.udacity.spacebinge.tasks.SpaceWebService;
 
 import retrofit2.Call;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Result aliens;
     Result space;
     Result mars;
+    VideoItemRepository videoItemRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         spaceWebService = SpaceWebService.retrofit.create(SpaceWebService.class);
 
-        getCollection("alien", aliens);
-        getCollection("space", space);
-        getCollection("mars", mars);
+        videoItemRepository = VideoItemRepository.getInstance(this);
+        videoItemRepository.getVideoCollection("latest","video");
+
+//        getCollection("alien", aliens,getString(R.string.api_key));
+//        getCollection("space", space,getString(R.string.api_key));
+//        getCollection("mars", mars,getString(R.string.api_key));
     }
 
     public void getCollection(String query, Result result) {

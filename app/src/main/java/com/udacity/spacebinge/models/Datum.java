@@ -4,24 +4,24 @@ import java.util.List;
 
 public class Datum {
 
-    private String nasaId;
+    private String nasa_id;
     private String center;
-    private String mediaType;
+    private String media_type;
     private List<String> album = null;
-    private String dateCreated;
+    private String date_created;
     private String description;
     private String title;
     private List<String> keywords = null;
-    private String secondaryCreator;
+    private String secondary_creator;
     private String location;
     private String photographer;
 
     public String getNasaId() {
-        return nasaId;
+        return nasa_id;
     }
 
     public void setNasaId(String nasaId) {
-        this.nasaId = nasaId;
+        this.nasa_id = nasaId;
     }
 
     public String getCenter() {
@@ -33,11 +33,11 @@ public class Datum {
     }
 
     public String getMediaType() {
-        return mediaType;
+        return media_type;
     }
 
     public void setMediaType(String mediaType) {
-        this.mediaType = mediaType;
+        this.media_type = mediaType;
     }
 
     public List<String> getAlbum() {
@@ -49,11 +49,11 @@ public class Datum {
     }
 
     public String getDateCreated() {
-        return dateCreated;
+        return date_created;
     }
 
     public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
+        this.date_created = dateCreated;
     }
 
     public String getDescription() {
@@ -81,11 +81,11 @@ public class Datum {
     }
 
     public String getSecondaryCreator() {
-        return secondaryCreator;
+        return secondary_creator;
     }
 
     public void setSecondaryCreator(String secondaryCreator) {
-        this.secondaryCreator = secondaryCreator;
+        this.secondary_creator = secondaryCreator;
     }
 
     public String getLocation() {

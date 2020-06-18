@@ -20,18 +20,6 @@ public class Collection {
         return href;
     }
 
-    public void setHref(String href) {
-        this.href = href;
-    }
-
-    public Metadata getMetadata() {
-        return metadata;
-    }
-
-    public void setMetadata(Metadata metadata) {
-        this.metadata = metadata;
-    }
-
     public List<Item> getItems() {
         return items;
     }

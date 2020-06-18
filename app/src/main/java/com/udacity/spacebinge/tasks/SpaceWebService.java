@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
@@ -23,7 +23,7 @@ public interface SpaceWebService {
     HttpLoggingInterceptor httplogger = new HttpLoggingInterceptor();
 
     Retrofit retrofit = new Retrofit.Builder()
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_REQUEST_URL)
             .client(okhttpclientbuilder
                     .addInterceptor(httplogger.setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -36,5 +36,6 @@ public interface SpaceWebService {
     Call<Result> getSpaceQuery(
             @Query("q") String query,
             @Query("media_type") String mediatype
+//            ,@Query("api_key") String apikey
     );
 }

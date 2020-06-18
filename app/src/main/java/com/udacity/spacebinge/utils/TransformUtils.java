@@ -9,7 +9,6 @@ import com.udacity.spacebinge.models.Result;
 import com.udacity.spacebinge.models.VideoItem;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +19,7 @@ public class TransformUtils {
     /**
      * Return an {@link VideoItem} object by parsing out information
      * about the first movie from the input moviesJSON string.
+     *
      * @return
      */
     public static List<VideoItem> extractVideoItemFromResult(Result result) {
@@ -37,7 +37,7 @@ public class TransformUtils {
             videoItem.setTitle(data.getTitle());
             videoItem.setDescription(data.getDescription());
             videoItem.setThumbnail_url(link.getHref());
-            videoItem.setVideo_url(buildVideoUrl(currentItem.getHref(),data.getNasaId()));
+            videoItem.setVideo_url(buildVideoUrl(currentItem.getHref(), data.getNasaId()));
             videoItem.setNasa_id(data.getNasaId());
             videoItem.setHref(currentItem.getHref());
             videoItem.setMedia_type(data.getMediaType());
@@ -72,8 +72,6 @@ public class TransformUtils {
 
         return sb.toString();
 
-
-//        String limit = uri.getQueryParameter("limit");
 //        "http://images-assets.nasa.gov/video/NHQ_2014_0825_TWAN/collection.json"
 //        "http://images-assets.nasa.gov/video/NHQ_2014_0825_TWAN/NHQ_2014_0825_TWAN~mobile.mp4"
 //

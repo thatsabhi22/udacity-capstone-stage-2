@@ -12,7 +12,6 @@ import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.tasks.SpaceWebService;
 import com.udacity.spacebinge.utils.TransformUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

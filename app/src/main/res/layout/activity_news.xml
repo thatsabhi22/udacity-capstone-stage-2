@@ -27,9 +27,13 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
+            style="@style/BottomNavTheme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:itemHorizontalTranslationEnabled="true"
             app:itemTextColor="@android:color/white"
+            app:labelVisibilityMode="selected"
             app:menu="@menu/bottom_navigation_menu" />
 
     </RelativeLayout>

@@ -11,17 +11,17 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 
-public class SearchActivity extends AppCompatActivity {
+public class DownloadActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_download);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(2);
+        MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,28 +29,28 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.profile:
-                        Intent intent0 = new Intent(SearchActivity.this, SubscriptionLoginActivity.class);
+                        Intent intent0 = new Intent(DownloadActivity.this, SubscriptionLoginActivity.class);
                         //intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent0);
                         break;
 
                     case R.id.watchlist:
-                        Intent intent1 = new Intent(SearchActivity.this, WatchListActivity.class);
+                        Intent intent1 = new Intent(DownloadActivity.this, WatchListActivity.class);
                         //intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
                         break;
 
                     case R.id.search:
+                        Intent intent2 = new Intent(DownloadActivity.this, SearchActivity.class);
+                        //intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent2);
                         break;
 
                     case R.id.downloaded:
-                        Intent intent3 = new Intent(SearchActivity.this, DownloadActivity.class);
-                        //intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent3);
                         break;
 
                     case R.id.news:
-                        Intent intent4 = new Intent(SearchActivity.this, NewsActivity.class);
+                        Intent intent4 = new Intent(DownloadActivity.this, NewsActivity.class);
                         //intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent4);
                         break;

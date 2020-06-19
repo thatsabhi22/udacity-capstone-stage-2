@@ -11,16 +11,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.NewsActivity"></activity>
-        <activity android:name=".ui.SearchActivity" />
-        <activity android:name=".ui.WatchListActivity" />
+        <activity android:name=".ui.DownloadActivity"
+            android:noHistory="true" />
+        <activity android:name=".ui.NewsActivity"
+            android:noHistory="true"/>
+        <activity android:name=".ui.SearchActivity"
+            android:noHistory="true"/>
+        <activity android:name=".ui.WatchListActivity"
+            android:noHistory="true"/>
         <activity android:name=".ui.PlayerActivity" />
-        <activity android:name=".ui.SubscriptionLoginActivity" />
+        <activity android:name=".ui.SubscriptionLoginActivity"
+            android:noHistory="true"/>
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

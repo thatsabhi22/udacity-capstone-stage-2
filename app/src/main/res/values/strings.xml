@@ -5,4 +5,12 @@
     <string name="search">Search</string>
     <string name="downloaded">Downloaded</string>
     <string name="news">News</string>
+
+    <string-array name="topics">
+        <string>Latest</string>
+        <string>Aliens</string>
+        <string>Earth</string>
+        <string>Black Holes</string>
+        <string>Outer Space</string>
+    </string-array>
 </resources>

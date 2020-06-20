@@ -10,6 +10,7 @@ import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.repositories.VideoItemRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public class HomePageViewModel extends AndroidViewModel {
 
@@ -20,7 +21,7 @@ public class HomePageViewModel extends AndroidViewModel {
         videoItemRepository = VideoItemRepository.getInstance(application.getApplicationContext());
     }
 
-    public LiveData<List<VideoItem>> getLatest(String query, String media_type) {
+    public LiveData<Map<String,List<VideoItem>>> getLatest(String query, String media_type) {
         return videoItemRepository.getVideoCollection(query, media_type);
     }
 }

@@ -12,7 +12,9 @@ import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.tasks.SpaceWebService;
 import com.udacity.spacebinge.utils.TransformUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -35,8 +37,8 @@ public class VideoItemRepository {
         return new VideoItemRepository(context);
     }
 
-    public LiveData<List<VideoItem>> getVideoCollection(String query, String media_type) {
-        final MutableLiveData<List<VideoItem>> data = new MutableLiveData<>();
+    public LiveData<Map<String, List<VideoItem>>> getVideoCollection(String query, String media_type) {
+        final MutableLiveData<Map<String, List<VideoItem>>> data = new MutableLiveData<>();
 
         Call<Result> call = spaceWebService.getSpaceQuery(query, media_type);
         call.enqueue(new Callback<Result>() {
@@ -45,12 +47,13 @@ public class VideoItemRepository {
                 if (response.isSuccessful()) {
                     Result movieTrailerResponse = response.body();
                     if (movieTrailerResponse != null) {
-                        movieTrailerResponse.getCollection();
-                        data.setValue(TransformUtils.extractVideoItemFromResult(movieTrailerResponse));
+                        List<VideoItem> list = TransformUtils.extractVideoItemFromResult(movieTrailerResponse);
+                        Map<String, List<VideoItem>> as = new HashMap<>();
+                        as.put(query, list);
+                        data.setValue(as);
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
                 Log.d("Tangho", "Failure happened fetching movies");
@@ -59,3 +62,4 @@ public class VideoItemRepository {
         return data;
     }
 }
+

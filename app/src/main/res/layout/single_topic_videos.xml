@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/videoTypeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        android:layout_toStartOf="@+id/seeAllTextView"
+        android:textColor="@android:color/red"
+        android:textSize="20sp"
+        tools:text="Collection" />
+
+    <TextView
+        android:id="@+id/seeAllTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/videoTypeTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:textColor="@android:color/red"
+        tools:text="See All" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activityMainRecyclerViewHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/videoTypeTextView"
+        android:layout_marginBottom="18dp"
+        android:orientation="horizontal" />
+
+</RelativeLayout>

@@ -7,10 +7,10 @@
     <string name="news">News</string>
 
     <string-array name="topics">
-        <string>Latest</string>
-        <string>Aliens</string>
-        <string>Earth</string>
-        <string>Black Holes</string>
-        <string>Outer Space</string>
+        <item>Latest</item>
+        <item>Aliens</item>
+        <item>Earth</item>
+        <item>Black Holes</item>
+        <item>Outer Space</item>
     </string-array>
 </resources>

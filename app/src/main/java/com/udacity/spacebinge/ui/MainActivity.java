@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
-import com.udacity.spacebinge.adapters.VideoItemsAdapter;
-import com.udacity.spacebinge.models.Topic;
+import com.udacity.spacebinge.adapters.HomePageAdapter;
 import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.repositories.VideoItemRepository;
 import com.udacity.spacebinge.tasks.SpaceWebService;
@@ -22,8 +21,6 @@ import com.udacity.spacebinge.viewmodels.HomePageViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,13 +29,12 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     VideoItemRepository videoItemRepository;
     HomePageViewModel homePageViewModel;
-    Observer<Map<String,List<VideoItem>>> videoItemObserver;
     RecyclerView topicRV;
+    HomePageAdapter homePageAdapter;
+    Observer<List<Map<String, List<VideoItem>>>> videoItemObserver;
     private SpaceWebService spaceWebService;
-    private List<VideoItem> videoItemList;
     private List<Map<String, List<VideoItem>>> videoCollection;
-    private ArrayList<Topic> topics;
-    VideoItemsAdapter videoItemsAdapter;
+    private List<String> topics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +44,12 @@ public class MainActivity extends AppCompatActivity {
         // Initializing all view elements in this method call
         initViewElements();
 
-        // Preparing topics data
-//        topics = prepareData(this);
-//
-//        topicsAdapter = new TopicsAdapter(topics, this);
-
+        videoCollection = new ArrayList<Map<String, List<VideoItem>>>();
+        topics = Arrays.asList(getResources().getStringArray(R.array.topics));
         initHomepageViewModel();
 
-        videoItemList = new ArrayList<>();
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView
+                = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
@@ -104,35 +96,18 @@ public class MainActivity extends AppCompatActivity {
         videoItemObserver =
                 videos -> {
                     videoCollection.clear();
-                    videoCollection.addAll((Collection<? extends Map<String, List<VideoItem>>>) videos);
+                    videoCollection.addAll(videos);
 
-                    if (videoItemsAdapter == null) {
-                        videoItemsAdapter = new
-                                VideoItemsAdapter(MainActivity.this, videoCollection);
+                    if (homePageAdapter == null) {
+                        homePageAdapter = new
+                                HomePageAdapter(MainActivity.this, videoCollection);
                     } else {
-                        videoItemsAdapter.notifyDataSetChanged();
+                        homePageAdapter.notifyDataSetChanged();
                     }
                 };
         homePageViewModel = ViewModelProviders.of(this)
                 .get(HomePageViewModel.class);
-        homePageViewModel.getLatest("latest", "video")
+        homePageViewModel.getLatest(topics, "video")
                 .observe(MainActivity.this, videoItemObserver);
-    }
-
-    public ArrayList<Topic> prepareData() {
-        ArrayList<Topic> topicList = new ArrayList<>();
-        Map<String, List<VideoItem>> videosData = new HashMap<String, List<VideoItem>>();
-
-        List<String> topics
-                = Arrays.asList(getResources().getStringArray(R.array.topics));
-
-        for (String topicStr : topics) {
-            spaceWebService = SpaceWebService.retrofit.create(SpaceWebService.class);
-
-            videoItemRepository = VideoItemRepository.getInstance(this);
-            videoItemRepository.getVideoCollection(topicStr, "video");
-
-        }
-        return topicList;
     }
 }

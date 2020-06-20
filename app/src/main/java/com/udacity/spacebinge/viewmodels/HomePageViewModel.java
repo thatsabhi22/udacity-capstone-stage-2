@@ -21,7 +21,7 @@ public class HomePageViewModel extends AndroidViewModel {
         videoItemRepository = VideoItemRepository.getInstance(application.getApplicationContext());
     }
 
-    public LiveData<Map<String,List<VideoItem>>> getLatest(String query, String media_type) {
+    public LiveData<List<Map<String,List<VideoItem>>>> getLatest(List<String> query, String media_type) {
         return videoItemRepository.getVideoCollection(query, media_type);
     }
 }

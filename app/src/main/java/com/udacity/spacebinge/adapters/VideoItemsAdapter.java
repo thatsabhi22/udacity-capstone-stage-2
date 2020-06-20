@@ -6,15 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.udacity.spacebinge.models.VideoItem;
-import com.udacity.spacebinge.ui.MainActivity;
-
-import java.util.List;
-import java.util.Map;
-
 public class VideoItemsAdapter extends RecyclerView.Adapter<VideoItemsAdapter.VideoItemsViewHolder> {
-
-
 
     @NonNull
     @Override

@@ -12,6 +12,7 @@ import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.tasks.SpaceWebService;
 import com.udacity.spacebinge.utils.TransformUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,28 +38,32 @@ public class VideoItemRepository {
         return new VideoItemRepository(context);
     }
 
-    public LiveData<Map<String, List<VideoItem>>> getVideoCollection(String query, String media_type) {
-        final MutableLiveData<Map<String, List<VideoItem>>> data = new MutableLiveData<>();
-
-        Call<Result> call = spaceWebService.getSpaceQuery(query, media_type);
-        call.enqueue(new Callback<Result>() {
-            @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
-                if (response.isSuccessful()) {
-                    Result movieTrailerResponse = response.body();
-                    if (movieTrailerResponse != null) {
-                        List<VideoItem> list = TransformUtils.extractVideoItemFromResult(movieTrailerResponse);
-                        Map<String, List<VideoItem>> as = new HashMap<>();
-                        as.put(query, list);
-                        data.setValue(as);
+    public LiveData<List<Map<String, List<VideoItem>>>> getVideoCollection(List<String> queries, String media_type) {
+        final MutableLiveData<List<Map<String, List<VideoItem>>>> data = new MutableLiveData<>();
+        List<Map<String, List<VideoItem>>> videoCollection = new ArrayList<>();
+        for (String query : queries) {
+            Call<Result> call = spaceWebService.getSpaceQuery(query, media_type);
+            call.enqueue(new Callback<Result>() {
+                @Override
+                public void onResponse(Call<Result> call, Response<Result> response) {
+                    if (response.isSuccessful()) {
+                        Result movieTrailerResponse = response.body();
+                        if (movieTrailerResponse != null) {
+                            List<VideoItem> list = TransformUtils.extractVideoItemFromResult(movieTrailerResponse);
+                            Map<String, List<VideoItem>> as = new HashMap<>();
+                            as.put(query, list);
+                            videoCollection.add(as);
+                            data.setValue(videoCollection);
+                        }
                     }
                 }
-            }
-            @Override
-            public void onFailure(Call<Result> call, Throwable t) {
-                Log.d("Tangho", "Failure happened fetching movies");
-            }
-        });
+
+                @Override
+                public void onFailure(Call<Result> call, Throwable t) {
+                    Log.d("Tangho", "Failure happened fetching space videos");
+                }
+            });
+        }
         return data;
     }
 }

@@ -5,6 +5,7 @@
     <string name="search">Search</string>
     <string name="downloaded">Downloaded</string>
     <string name="news">News</string>
+    <string name="see_all_text">See All</string>
 
     <string-array name="topics">
         <item>Latest</item>

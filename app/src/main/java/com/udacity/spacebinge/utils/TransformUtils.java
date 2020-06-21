@@ -9,7 +9,9 @@ import com.udacity.spacebinge.models.Result;
 import com.udacity.spacebinge.models.VideoItem;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TransformUtils {
@@ -46,6 +48,12 @@ public class TransformUtils {
             videoItemsList.add(videoItem);
         }
         return videoItemsList;
+    }
+
+    public static Map.Entry<String, List<VideoItem>>
+    getMapValueAt(LinkedHashMap<String, List<VideoItem>> hashMap, int index)
+    {
+        return (Map.Entry<String, List<VideoItem>>) hashMap.entrySet().toArray()[index];
     }
 
     public static String buildVideoUrl(String collectionUrl, String nasaId) {

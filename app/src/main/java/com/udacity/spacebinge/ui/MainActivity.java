@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,10 +20,9 @@ import com.udacity.spacebinge.repositories.VideoItemRepository;
 import com.udacity.spacebinge.tasks.SpaceWebService;
 import com.udacity.spacebinge.viewmodels.HomePageViewModel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     HomePageViewModel homePageViewModel;
     RecyclerView topicRV;
     HomePageAdapter homePageAdapter;
-    Observer<List<Map<String, List<VideoItem>>>> videoItemObserver;
+    Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     private SpaceWebService spaceWebService;
-    private List<Map<String, List<VideoItem>>> videoCollection;
+    private LinkedHashMap<String, List<VideoItem>> videoCollection;
     private List<String> topics;
 
     @Override
@@ -44,9 +44,13 @@ public class MainActivity extends AppCompatActivity {
         // Initializing all view elements in this method call
         initViewElements();
 
-        videoCollection = new ArrayList<Map<String, List<VideoItem>>>();
+        videoCollection = new LinkedHashMap<String, List<VideoItem>>();
         topics = Arrays.asList(getResources().getStringArray(R.array.topics));
         initHomepageViewModel();
+
+        homePageAdapter = new HomePageAdapter(this, videoCollection);
+        topicRV.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        topicRV.setAdapter(homePageAdapter);
 
         BottomNavigationView bottomNavigationView
                 = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
@@ -94,17 +98,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void initHomepageViewModel() {
         videoItemObserver =
-                videos -> {
-                    videoCollection.clear();
-                    videoCollection.addAll(videos);
+                new Observer<LinkedHashMap<String, List<VideoItem>>>() {
+                    @Override
+                    public void onChanged(LinkedHashMap<String, List<VideoItem>> stringListMap) {
+                        videoCollection.clear();
+                        videoCollection.putAll(stringListMap);
 
-                    if (homePageAdapter == null) {
-                        homePageAdapter = new
-                                HomePageAdapter(MainActivity.this, videoCollection);
-                    } else {
-                        homePageAdapter.notifyDataSetChanged();
+                        if (homePageAdapter == null) {
+                            homePageAdapter = new
+                                    HomePageAdapter(MainActivity.this, videoCollection);
+                        } else {
+                            homePageAdapter.notifyDataSetChanged();
+                        }
                     }
                 };
+
         homePageViewModel = ViewModelProviders.of(this)
                 .get(HomePageViewModel.class);
         homePageViewModel.getLatest(topics, "video")

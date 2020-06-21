@@ -7,13 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Topic;
 import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.utils.AppUtil;
+import com.udacity.spacebinge.utils.HorizontalItemDecoration;
+import com.udacity.spacebinge.utils.TransformUtils;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,11 +27,12 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Topics
     public ArrayList<Topic> topics;
     private Context context;
     private LayoutInflater layoutInflater;
-    private List<Map<String, List<VideoItem>>> videoCollection;
+    private LinkedHashMap<String, List<VideoItem>> videoCollection;
+    private VideoItemsAdapter videoItemsAdapter;
 
-    public HomePageAdapter(Context context, List<Map<String, List<VideoItem>>> videoCollection) {
+    public HomePageAdapter(Context context, Map<String, List<VideoItem>> videoCollection) {
         this.context = context;
-        this.videoCollection = videoCollection;
+        this.videoCollection = (LinkedHashMap<String, List<VideoItem>>) videoCollection;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
@@ -39,12 +45,19 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Topics
 
     @Override
     public void onBindViewHolder(@NonNull TopicsViewHolder holder, int position) {
-
+        Map.Entry<String,List<VideoItem>> current = TransformUtils.getMapValueAt(videoCollection,position);
+        holder.videoType.setText(current.getKey());
+        holder.seeAlltextView.setText(context.getString(R.string.see_all_text));
+        videoItemsAdapter = new VideoItemsAdapter(context,current.getValue());
+        LinearLayoutManager horizontalManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
+        holder.horizontalRecyclerView.addItemDecoration(new HorizontalItemDecoration(AppUtil.dpToPx(context, 2), AppUtil.dpToPx(context, 2), AppUtil.dpToPx(context, 2)));
+        holder.horizontalRecyclerView.setLayoutManager(horizontalManager);
+        holder.horizontalRecyclerView.setAdapter(videoItemsAdapter);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return videoCollection == null ? 0 : videoCollection.size();
     }
 
     public static class TopicsViewHolder extends RecyclerView.ViewHolder {

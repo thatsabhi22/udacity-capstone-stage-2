@@ -10,12 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_toStartOf="@+id/seeAllTextView"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
         tools:text="Collection" />
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
         android:padding="8dp"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
         tools:text="See All" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -34,7 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/videoTypeTextView"
-        android:layout_marginBottom="18dp"
         android:orientation="horizontal" />
 
 </RelativeLayout>

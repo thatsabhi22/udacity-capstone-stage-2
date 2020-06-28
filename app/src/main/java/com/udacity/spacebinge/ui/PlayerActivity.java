@@ -7,9 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
+import com.udacity.spacebinge.models.VideoItem;
+
+import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 
 public class PlayerActivity extends AppCompatActivity {
 
@@ -18,6 +22,15 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_player);
+
+        Intent intent = getIntent();
+        if (intent == null) {
+            closeOnError();
+        }
+
+        VideoItem item = intent.getParcelableExtra(VIDEO_ITEM_OBJECT);
+        String url = item.getThumbnail_url();
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
@@ -56,5 +69,11 @@ public class PlayerActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void closeOnError() {
+        finish();
+        Toast.makeText(this,
+                "Something went wrong.", Toast.LENGTH_SHORT).show();
     }
 }

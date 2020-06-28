@@ -8,9 +8,9 @@
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
-    <style name="ActionBar" parent="AppTheme">
-        <item name="android:background">@color/colorAccent</item>
-        <item name="background">@color/colorAccent </item>
+    <style name="NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="BottomNavTheme" parent="Widget.Design.BottomNavigationView">

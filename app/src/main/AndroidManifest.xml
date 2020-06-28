@@ -19,7 +19,8 @@
             android:noHistory="true"/>
         <activity android:name=".ui.WatchListActivity"
             android:noHistory="true"/>
-        <activity android:name=".ui.PlayerActivity" />
+        <activity android:name=".ui.PlayerActivity"
+            android:theme="@style/NoActionBar"/>
         <activity android:name=".ui.SubscriptionLoginActivity"
             android:noHistory="true"/>
         <activity android:name=".ui.SplashActivity" />

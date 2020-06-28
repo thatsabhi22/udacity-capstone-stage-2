@@ -2,6 +2,7 @@ package com.udacity.spacebinge.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -93,7 +94,7 @@ public class VideoItem implements Parcelable {
         href = in.readString();
         media_type = in.readString();
         date_created = in.readString();
-        is_downloaded = in.readBoolean();
+        is_downloaded = TextUtils.equals(in.readString(), "true");
         storage_path = in.readString();
     }
 

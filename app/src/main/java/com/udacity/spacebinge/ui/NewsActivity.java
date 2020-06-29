@@ -28,8 +28,8 @@ public class NewsActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.profile:
-                        Intent intent0 = new Intent(NewsActivity.this, SubscriptionLoginActivity.class);
+                    case R.id.home:
+                        Intent intent0 = new Intent(NewsActivity.this, HomeActivity.class);
                         //intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent0);
                         break;

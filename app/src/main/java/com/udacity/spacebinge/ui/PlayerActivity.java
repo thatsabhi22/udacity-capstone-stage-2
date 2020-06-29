@@ -1,21 +1,28 @@
 package com.udacity.spacebinge.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.VideoItem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 
 public class PlayerActivity extends AppCompatActivity {
+
+    TextView videoTitleTV, videoDateTV, videoDescriptionTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +35,39 @@ public class PlayerActivity extends AppCompatActivity {
             closeOnError();
         }
 
-        VideoItem item = intent.getParcelableExtra(VIDEO_ITEM_OBJECT);
-        String url = item.getThumbnail_url();
+        VideoItem current = intent.getParcelableExtra(VIDEO_ITEM_OBJECT);
+
+        videoTitleTV = findViewById(R.id.video_title_tv);
+        videoDateTV = findViewById(R.id.video_date_tv);
+        videoDescriptionTV = findViewById(R.id.video_description_tv);
+
+        videoTitleTV.setText(current.getTitle());
+
+        String date = current.getDate_created();
+        Date date1 = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            date1 = sdf.parse(date);
+            sdf = new SimpleDateFormat("MMMM dd, yyyy");
+            date = sdf.format(date1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        videoDateTV.setText(date);
+        videoDescriptionTV.setText(current.getDescription());
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(true);
+        menuItem.setChecked(false);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.profile:
-                        Intent intent0 = new Intent(PlayerActivity.this, SubscriptionLoginActivity.class);
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        Intent intent0 = new Intent(PlayerActivity.this, HomeActivity.class);
                         startActivity(intent0);
                         break;
 

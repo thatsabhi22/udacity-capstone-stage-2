@@ -24,9 +24,9 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String TAG = HomeActivity.class.getSimpleName();
     VideoItemRepository videoItemRepository;
     HomePageViewModel homePageViewModel;
     RecyclerView topicRV;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         // Initializing all view elements in this method call
         initViewElements();
@@ -55,35 +55,33 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView
                 = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(2);
+        MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.profile:
-                        Intent intent0 = new Intent(MainActivity.this, SubscriptionLoginActivity.class);
-                        startActivity(intent0);
+                    case R.id.home:
                         break;
 
                     case R.id.watchlist:
-                        Intent intent1 = new Intent(MainActivity.this, WatchListActivity.class);
+                        Intent intent1 = new Intent(HomeActivity.this, WatchListActivity.class);
                         startActivity(intent1);
                         break;
 
                     case R.id.search:
-                        Intent intent2 = new Intent(MainActivity.this, SearchActivity.class);
+                        Intent intent2 = new Intent(HomeActivity.this, SearchActivity.class);
                         startActivity(intent2);
                         break;
 
                     case R.id.downloaded:
-                        Intent intent3 = new Intent(MainActivity.this, DownloadActivity.class);
+                        Intent intent3 = new Intent(HomeActivity.this, DownloadActivity.class);
                         startActivity(intent3);
                         break;
 
                     case R.id.news:
-                        Intent intent4 = new Intent(MainActivity.this, NewsActivity.class);
+                        Intent intent4 = new Intent(HomeActivity.this, NewsActivity.class);
                         startActivity(intent4);
                         break;
                 }
@@ -106,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (homePageAdapter == null) {
                             homePageAdapter = new
-                                    HomePageAdapter(MainActivity.this, videoCollection);
+                                    HomePageAdapter(HomeActivity.this, videoCollection);
                         } else {
                             homePageAdapter.notifyDataSetChanged();
                         }
@@ -116,6 +114,6 @@ public class MainActivity extends AppCompatActivity {
         homePageViewModel = ViewModelProviders.of(this)
                 .get(HomePageViewModel.class);
         homePageViewModel.getLatest(topics, "video")
-                .observe(MainActivity.this, videoItemObserver);
+                .observe(HomeActivity.this, videoItemObserver);
     }
 }

@@ -28,7 +28,7 @@ public class SubscriptionLoginActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.profile:
+                    case R.id.home:
                         break;
 
                     case R.id.watchlist:

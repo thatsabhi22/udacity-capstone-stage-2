@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">SpaceBinge</string>
-    <string name="profile">You</string>
+    <string name="home">Home</string>
     <string name="watchlist">Watchlist</string>
     <string name="search">Search</string>
     <string name="downloaded">Downloaded</string>
     <string name="news">News</string>
     <string name="see_all_text">See All</string>
+    <string name="video_dwn_cont_desc">Video Download Button</string>
+    <string name="video_watchlist_cont_desc">Video Watchlist Button</string>
 
     <string-array name="topics">
         <item>Latest</item>

@@ -66,6 +66,4 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.10.5'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.5'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.5'
-
-    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

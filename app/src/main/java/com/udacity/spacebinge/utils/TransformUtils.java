@@ -8,6 +8,8 @@ import com.udacity.spacebinge.models.Link;
 import com.udacity.spacebinge.models.Result;
 import com.udacity.spacebinge.models.VideoItem;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -51,8 +53,7 @@ public class TransformUtils {
     }
 
     public static Map.Entry<String, List<VideoItem>>
-    getMapValueAt(LinkedHashMap<String, List<VideoItem>> hashMap, int index)
-    {
+    getMapValueAt(LinkedHashMap<String, List<VideoItem>> hashMap, int index) {
         return (Map.Entry<String, List<VideoItem>>) hashMap.entrySet().toArray()[index];
     }
 
@@ -65,19 +66,22 @@ public class TransformUtils {
         String server = uri.getAuthority();
         String path = uri.getPath();   //  /video/ARC-20180830-AAV3127-NiSVLive-Ep01-NASAWeb/collection.json
         Set<String> args = uri.getQueryParameterNames();
-
         StringBuilder sb = new StringBuilder();
-        sb.append("http://");
-        sb.append(server);
-        sb.append("/");
-        sb.append("video");
-        sb.append("/");
-        sb.append(nasaId);
-        sb.append("/");
-        sb.append(nasaId);
-        sb.append("~");
-        sb.append("mobile.mp4");
 
+        try {
+            sb.append("https://");
+            sb.append(server);
+            sb.append("/");
+            sb.append("video");
+            sb.append("/");
+            sb.append(URLEncoder.encode(nasaId, "utf-8"));
+            sb.append("/");
+            sb.append(URLEncoder.encode(nasaId, "utf-8"));
+            sb.append("~");
+            sb.append("mobile.mp4");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return sb.toString();
 
 //        "http://images-assets.nasa.gov/video/NHQ_2014_0825_TWAN/collection.json"

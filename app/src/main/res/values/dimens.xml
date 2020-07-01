@@ -2,4 +2,5 @@
 <resources>
     <dimen name="zero_dim">0dp</dimen>
     <dimen name="short_margin">4dp</dimen>
+    <dimen name="very_short_margin">2dp</dimen>
 </resources>

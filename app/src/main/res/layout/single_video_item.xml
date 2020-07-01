@@ -18,6 +18,7 @@
             android:id="@+id/thumbnail_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/thumbnail_imageview"
             android:scaleType="fitXY"
             android:transitionName="posterImageTransition" />
 
@@ -29,8 +30,8 @@
             android:layout_alignParentBottom="true"
             android:background="#66616161"
             android:ellipsize="end"
-            android:padding="8dp"
             android:maxLines="2"
+            android:padding="8dp"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             tools:text="title_tv" />

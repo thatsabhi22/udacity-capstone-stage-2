@@ -11,6 +11,7 @@
     <string name="search_box_hint">Search here</string>
     <string name="search_result_image_view">Search Result Image View</string>
     <string name="search_result_title">{search_result_title}</string>
+    <string name="thumbnail_imageview">thumbnail imageview</string>
 
     <string-array name="topics">
         <item>Latest</item>

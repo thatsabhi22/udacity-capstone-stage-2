@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,10 +27,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     SearchView video_search_view;
-    ListView suggestive_list_view;
-    ArrayAdapter list_adapter;
     SearchResultAdapter searchResultAdapter;
-    List<String> suggestive_topics_list;
     RecyclerView search_result_recycler_view;
     Observer<List<VideoItem>> videoItemListObserver;
     SearchViewModel searchViewModel;
@@ -45,14 +40,9 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         video_search_view = findViewById(R.id.video_search_view);
-//        suggestive_list_view = findViewById(R.id.search_list_view);
         search_result_recycler_view = findViewById(R.id.search_result_recycler_view);
 
-//        suggestive_topics_list = Arrays.asList(getResources().getStringArray(R.array.topics));
         videoCollection = new ArrayList<>();
-
-//        list_adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestive_topics_list);
-//        suggestive_list_view.setAdapter(list_adapter);
 
         query = "";
         initHomepageViewModel();
@@ -65,7 +55,6 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Toast.makeText(SearchActivity.this, query, Toast.LENGTH_SHORT).show();
-//                suggestive_list_view.setVisibility(View.GONE);
                 search_result_recycler_view.setVisibility(View.VISIBLE);
                 searchViewModel.getSearchResult(query, "video")
                         .observe(SearchActivity.this, videoItemListObserver);
@@ -74,11 +63,6 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-//                list_adapter.getFilter().filter(newText);
-//
-//                if (TextUtils.isEmpty(newText)) {
-//                    suggestive_list_view.setVisibility(View.VISIBLE);
-//                }
                 return true;
             }
         });

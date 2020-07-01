@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".ui.SearchActivity">
 
@@ -11,20 +12,13 @@
         android:id="@+id/video_search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="8dp"
+        app:defaultQueryHint="Search Here"
+        app:queryHint="Search Here"
+        android:background="@color/colorAccent"
         android:backgroundTint="@color/colorPrimary"
         app:queryBackground="@color/colorPrimary"
         app:submitBackground="@color/colorPrimary" />
-
-    <!--    <ListView-->
-    <!--        android:id="@+id/search_list_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/video_search_view"-->
-    <!--        android:layout_marginStart="16dp"-->
-    <!--        android:layout_marginTop="8dp"-->
-    <!--        android:layout_marginEnd="16dp"-->
-    <!--        android:layout_marginBottom="16dp"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_result_recycler_view"
@@ -32,9 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottomBar"
         android:layout_below="@id/video_search_view"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
 
     <RelativeLayout
         android:id="@+id/bottomBar"
@@ -52,5 +45,4 @@
             app:menu="@menu/bottom_navigation_menu" />
 
     </RelativeLayout>
-
 </RelativeLayout>

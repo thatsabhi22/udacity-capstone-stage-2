@@ -9,6 +9,8 @@
     <string name="video_dwn_cont_desc">Video Download Button</string>
     <string name="video_watchlist_cont_desc">Video Watchlist Button</string>
     <string name="search_box_hint">Search here</string>
+    <string name="search_result_image_view">Search Result Image View</string>
+    <string name="search_result_title">{search_result_title}</string>
 
     <string-array name="topics">
         <item>Latest</item>

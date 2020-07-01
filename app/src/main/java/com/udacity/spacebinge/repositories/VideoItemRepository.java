@@ -36,6 +36,29 @@ public class VideoItemRepository {
         return new VideoItemRepository(context);
     }
 
+    public LiveData<List<VideoItem>> getSearchResults(String query, String media_type) {
+        final MutableLiveData<List<VideoItem>> data = new MutableLiveData<>();
+        Call<Result> call = spaceWebService.getSpaceQuery(query, media_type);
+        call.enqueue(new Callback<Result>() {
+            @Override
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                if (response.isSuccessful()) {
+                    Result movieTrailerResponse = response.body();
+                    if (movieTrailerResponse != null) {
+                        List<VideoItem> list = TransformUtils.extractVideoItemFromResult(movieTrailerResponse);
+                        data.setValue(list);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result> call, Throwable t) {
+                Log.d("Tangho", "Failure happened fetching space videos");
+            }
+        });
+        return data;
+    }
+
     public LiveData<LinkedHashMap<String, List<VideoItem>>> getVideoCollection(List<String> queries, String media_type) {
         final MutableLiveData<LinkedHashMap<String, List<VideoItem>>> data = new MutableLiveData<>();
         LinkedHashMap<String, List<VideoItem>> as = new LinkedHashMap<>();

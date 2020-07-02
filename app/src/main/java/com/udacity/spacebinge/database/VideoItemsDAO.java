@@ -15,14 +15,14 @@ import java.util.List;
 @Dao
 public interface VideoItemsDAO {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertVideoItem(VideoItem videoItem);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateVideoItem(VideoItem videoItem);
 
-    @Delete
-    void deleteVideoItem(VideoItem videoItem);
+    @Query("DELETE FROM VideoItems where nasa_id = :nasa_id")
+    void deleteVideoItem(String nasa_id);
 
     @Query("SELECT * FROM VideoItems ORDER BY id DESC")
     LiveData<List<VideoItem>> loadAllVideoItems();

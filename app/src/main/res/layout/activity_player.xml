@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/video_title_tv"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:textColor="@android:color/white"
@@ -80,32 +80,39 @@
 
                 <ImageView
                     android:id="@+id/do_watchlist_icon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_below="@id/video_title_tv"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="8dp"
                     android:contentDescription="@string/video_watchlist_cont_desc"
+                    android:padding="4dp"
                     android:src="@drawable/ic_watchlist" />
 
                 <ImageView
                     android:id="@+id/do_download_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_below="@id/video_title_tv"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
                     android:layout_toStartOf="@id/do_watchlist_icon"
                     android:contentDescription="@string/video_dwn_cont_desc"
                     android:src="@drawable/ic_downloaded" />
 
+                <View
+                    android:id="@+id/divider1"
+                    style="@style/Divider"
+                    android:background="@color/colorPrimary"
+                    android:layout_below="@+id/do_download_icon"
+                    android:layout_marginTop="8dp" />
 
                 <TextView
                     android:id="@+id/video_description_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/video_date_tv"
+                    android:layout_below="@id/divider1"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"

@@ -85,5 +85,23 @@ public class VideoItemRepository {
         }
         return data;
     }
+
+    public void addVideoToWatchlist(VideoItem videoItem) {
+        mExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDatabase.videoItemsDAO().insertVideoItem(videoItem);
+            }
+        });
+    }
+
+    public void deleteVideoToWatchlist(String videoItem) {
+        mExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mDatabase.videoItemsDAO().deleteVideoItem(videoItem);
+            }
+        });
+    }
 }
 

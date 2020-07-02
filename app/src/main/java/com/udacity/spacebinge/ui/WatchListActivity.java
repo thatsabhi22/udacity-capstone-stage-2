@@ -24,6 +24,8 @@ public class WatchListActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -25,12 +28,10 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.viewmodels.PlayerViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,6 +46,8 @@ public class PlayerActivity extends AppCompatActivity {
     public static final String VIDEO_PLAY_WINDOW_INDEX = "video_play_window_index";
     public static final String VIDEO_SINGLE = "video_single";
     TextView videoTitleTV, videoDateTV, videoDescriptionTV;
+    ImageView do_watchlist_icon_iv, do_download_icon_iv;
+    PlayerViewModel playerViewModel;
     boolean mShouldPlayWhenReady = true;
     long mPlayerPosition;
     int mWindowIndex;
@@ -52,6 +55,7 @@ public class PlayerActivity extends AppCompatActivity {
     Uri mVideoUri;
     PlayerView mPlayerView;
     VideoItem current;
+    boolean isInWatchlist = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,10 @@ public class PlayerActivity extends AppCompatActivity {
         videoDateTV = findViewById(R.id.video_date_tv);
         videoDescriptionTV = findViewById(R.id.video_description_tv);
         mPlayerView = findViewById(R.id.player_view);
+        do_watchlist_icon_iv = findViewById(R.id.do_watchlist_icon);
+        do_download_icon_iv = findViewById(R.id.do_download_icon);
+
+        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
 
         // Popluating data to views
         videoTitleTV.setText(current.getTitle());
@@ -89,14 +97,33 @@ public class PlayerActivity extends AppCompatActivity {
             mPlayerPosition = savedInstanceState.getLong(VIDEO_POSITION);
             mWindowIndex = savedInstanceState.getInt(VIDEO_PLAY_WINDOW_INDEX);
             mVideoUri = Uri.parse(savedInstanceState.getString(VIDEO_URI));
-        }
-        else if (!TextUtils.isEmpty(current.getVideo_url())) {
+        } else if (!TextUtils.isEmpty(current.getVideo_url())) {
             //mPlayerView.setUseController(false);
             //mVideoUri = Uri.parse("https://images-assets.nasa.gov/video/GSFC_20190130_NICER_m12854_BlkHole/GSFC_20190130_NICER_m12854_BlkHole~mobile.mp4");
             //mVideoUri = Uri.parse("http://images-assets.nasa.gov/video/42_RethinkingAnAlienWorld/42_RethinkingAnAlienWorld~mobile.mp4");
 
             mVideoUri = Uri.parse(current.getVideo_url());
         }
+
+        do_watchlist_icon_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isInWatchlist) {
+                    Toast.makeText(PlayerActivity.this,
+                            "Video Added to your Watchlist", Toast.LENGTH_SHORT).show();
+                    playerViewModel.addVideoToWatchlist(current);
+                    do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist_filled);
+                    isInWatchlist = true;
+                } else {
+                    Toast.makeText(PlayerActivity.this,
+                            "Alright! Not in your Favorite", Toast.LENGTH_SHORT).show();
+                    playerViewModel.deleteVideoToWatchlist(current.getNasa_id());
+                    do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
+                    isInWatchlist = false;
+                }
+            }
+        });
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -216,10 +243,10 @@ public class PlayerActivity extends AppCompatActivity {
 
             mSimpleExoPlayer = ExoPlayerFactory.newSimpleInstance(this);
 
-            mSimpleExoPlayer.addListener(new SimpleExoPlayer.EventListener(){
+            mSimpleExoPlayer.addListener(new SimpleExoPlayer.EventListener() {
                 @Override
                 public void onPlayerError(ExoPlaybackException error) {
-                    Toast.makeText(PlayerActivity.this,"Error playing file",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayerActivity.this, "Error playing file", Toast.LENGTH_SHORT).show();
                 }
             });
 

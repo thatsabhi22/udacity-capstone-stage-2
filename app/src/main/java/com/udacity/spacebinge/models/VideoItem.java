@@ -6,9 +6,11 @@ import android.text.TextUtils;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "VideoItems")
+@Entity(tableName = "VideoItems",indices = {@Index(value = {"nasa_id"},
+        unique = true)})
 public class VideoItem implements Parcelable {
 
     public static final Creator<VideoItem> CREATOR = new Creator<VideoItem>() {
@@ -22,6 +24,7 @@ public class VideoItem implements Parcelable {
             return new VideoItem[size];
         }
     };
+
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;

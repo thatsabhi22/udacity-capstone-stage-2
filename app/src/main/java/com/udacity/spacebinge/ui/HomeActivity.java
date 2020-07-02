@@ -56,6 +56,8 @@ public class HomeActivity extends AppCompatActivity {
         topicRV.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         topicRV.setAdapter(homePageAdapter);
 
+        // Register the AdapterdataObserver to the RecyclerView.Adapter
+        // onChanged would be called when data set of adapter changes
         RecyclerView.AdapterDataObserver observer= new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {

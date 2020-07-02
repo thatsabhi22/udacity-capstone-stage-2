@@ -68,7 +68,6 @@ public class SearchActivity extends AppCompatActivity {
         };
         searchResultAdapter.registerAdapterDataObserver(observer);
 
-
         video_search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

@@ -12,6 +12,8 @@
     <string name="search_result_image_view">Search Result Image View</string>
     <string name="search_result_title">{search_result_title}</string>
     <string name="thumbnail_imageview">thumbnail imageview</string>
+    <string name="loading_indicator_cd">Loading Indicator ImageView</string>
+    <string name="video_item_card_content_description">video_item_card_cd</string>
 
     <string-array name="topics">
         <item>Latest</item>

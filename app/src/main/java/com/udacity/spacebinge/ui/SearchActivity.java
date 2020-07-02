@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.SearchResultAdapter;
@@ -29,6 +31,7 @@ public class SearchActivity extends AppCompatActivity {
     SearchView video_search_view;
     SearchResultAdapter searchResultAdapter;
     RecyclerView search_result_recycler_view;
+    ImageView loading_indicator_search_iv;
     Observer<List<VideoItem>> videoItemListObserver;
     SearchViewModel searchViewModel;
     List<VideoItem> videoCollection;
@@ -41,6 +44,12 @@ public class SearchActivity extends AppCompatActivity {
 
         video_search_view = findViewById(R.id.video_search_view);
         search_result_recycler_view = findViewById(R.id.search_result_recycler_view);
+        loading_indicator_search_iv = findViewById(R.id.loading_indicator_search_iv);
+
+        Glide
+                .with(this)
+                .asGif().load(R.drawable.globe_loading)
+                .into(loading_indicator_search_iv);
 
         videoCollection = new ArrayList<>();
 
@@ -50,6 +59,15 @@ public class SearchActivity extends AppCompatActivity {
         searchResultAdapter = new SearchResultAdapter(this, videoCollection);
         search_result_recycler_view.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         search_result_recycler_view.setAdapter(searchResultAdapter);
+
+        RecyclerView.AdapterDataObserver observer= new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                loading_indicator_search_iv.setVisibility(View.GONE);
+            }
+        };
+        searchResultAdapter.registerAdapterDataObserver(observer);
+
 
         video_search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

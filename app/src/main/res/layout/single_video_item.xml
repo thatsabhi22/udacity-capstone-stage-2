@@ -22,6 +22,14 @@
             android:scaleType="fitXY"
             android:transitionName="posterImageTransition" />
 
+        <ImageView
+            android:id="@+id/loading_placeholder_iv"
+            android:contentDescription="@string/video_item_card_content_description"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/globe_loading"/>
+
         <TextView
             android:id="@+id/title_tv"
             android:layout_width="match_parent"

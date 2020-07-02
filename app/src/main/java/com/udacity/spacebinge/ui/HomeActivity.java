@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.HomePageAdapter;
@@ -35,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
     private SpaceWebService spaceWebService;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;
     private List<String> topics;
+    ImageView loading_indicator_iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,15 @@ public class HomeActivity extends AppCompatActivity {
         homePageAdapter = new HomePageAdapter(this, videoCollection);
         topicRV.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         topicRV.setAdapter(homePageAdapter);
+
+        RecyclerView.AdapterDataObserver observer= new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                //Toast.makeText(HomeActivity.this,"recyclerview loaded",Toast.LENGTH_SHORT).show();
+                loading_indicator_iv.setVisibility(View.GONE);
+            }
+        };
+        homePageAdapter.registerAdapterDataObserver(observer);
 
         BottomNavigationView bottomNavigationView
                 = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
@@ -92,6 +105,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initViewElements() {
         topicRV = findViewById(R.id.topics_recycler_view);
+        loading_indicator_iv = findViewById(R.id.loading_indicator_home_iv);
+        Glide
+                .with(this)
+                .asGif().load(R.drawable.globe_loading)
+                .into(loading_indicator_iv);
     }
 
     private void initHomepageViewModel() {

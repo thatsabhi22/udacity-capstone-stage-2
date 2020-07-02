@@ -13,12 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:defaultQueryHint="Search Here"
-        app:queryHint="Search Here"
         android:background="@color/colorAccent"
         android:backgroundTint="@color/colorPrimary"
+        app:defaultQueryHint="Search Here"
         app:queryBackground="@color/colorPrimary"
+        app:queryHint="Search Here"
         app:submitBackground="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/loading_indicator_search_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/loading_indicator_cd"
+        android:src="@drawable/globe_loading"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_result_recycler_view"
@@ -27,13 +35,13 @@
         android:layout_above="@+id/bottomBar"
         android:layout_below="@id/video_search_view"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="8dp" />
 
     <RelativeLayout
         android:id="@+id/bottomBar"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_bar_navigation"

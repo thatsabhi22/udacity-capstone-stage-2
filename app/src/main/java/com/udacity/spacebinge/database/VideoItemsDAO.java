@@ -2,7 +2,6 @@ package com.udacity.spacebinge.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -23,6 +22,12 @@ public interface VideoItemsDAO {
 
     @Query("DELETE FROM VideoItems where nasa_id = :nasa_id")
     void deleteVideoItem(String nasa_id);
+
+    @Query("SELECT * FROM VideoItems where nasa_id = :nasa_id")
+    LiveData<VideoItem> getVideoItemByNasaId(String nasa_id);
+
+    @Query("SELECT * FROM VideoItems where nasa_id = :nasa_id")
+    VideoItem isPresentInWatchlist(String nasa_id);
 
     @Query("SELECT * FROM VideoItems ORDER BY id DESC")
     LiveData<List<VideoItem>> loadAllVideoItems();

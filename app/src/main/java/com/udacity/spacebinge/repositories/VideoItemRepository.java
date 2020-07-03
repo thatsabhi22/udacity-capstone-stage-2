@@ -1,6 +1,7 @@
 package com.udacity.spacebinge.repositories;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -14,6 +15,7 @@ import com.udacity.spacebinge.utils.TransformUtils;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -106,6 +108,35 @@ public class VideoItemRepository {
 
     public LiveData<List<VideoItem>> getAllWatchListItems() {
         return mDatabase.videoItemsDAO().loadAllVideoItems();
+    }
+
+    public LiveData<VideoItem> getVideoItemsByNasaId(String nasaId) {
+        return mDatabase.videoItemsDAO().getVideoItemByNasaId(nasaId);
+    }
+
+    public VideoItem isVideoItemPresentInWatchlist(String nasaId) {
+        VideoItem result = new VideoItem();
+        try {
+            isPresentInWatchListTask task = new isPresentInWatchListTask(mDatabase);
+            result = task.execute(nasaId).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private static class isPresentInWatchListTask extends AsyncTask<String, Void, VideoItem> {
+        private VideoItemsDatabase mDatabase;
+        public isPresentInWatchListTask(VideoItemsDatabase mDatabase) {
+            this.mDatabase = mDatabase;
+        }
+
+        @Override
+        protected VideoItem doInBackground(String... nasaId) {
+            return mDatabase.videoItemsDAO().isPresentInWatchlist(nasaId[0]);
+        }
     }
 }
 

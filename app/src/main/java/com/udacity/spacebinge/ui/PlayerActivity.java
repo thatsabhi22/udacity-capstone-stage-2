@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.exoplayer2.C;
@@ -48,13 +49,14 @@ public class PlayerActivity extends AppCompatActivity {
     TextView videoTitleTV, videoDateTV, videoDescriptionTV;
     ImageView do_watchlist_icon_iv, do_download_icon_iv;
     PlayerViewModel playerViewModel;
+    Observer<VideoItem> videoItemObserver;
     boolean mShouldPlayWhenReady = true;
     long mPlayerPosition;
     int mWindowIndex;
     SimpleExoPlayer mSimpleExoPlayer;
     Uri mVideoUri;
     PlayerView mPlayerView;
-    VideoItem current;
+    VideoItem current, videoItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +91,21 @@ public class PlayerActivity extends AppCompatActivity {
         videoDateTV.setText(date);
         videoDescriptionTV.setText(current.getDescription());
 
-        if(current.is_in_watchlist()){
-            do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist_filled);
-        }else{
-            do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
-        }
+        videoItem = new VideoItem();
+
+        playerViewModel.getVideoItemsByNasaId(current.getNasa_id())
+                .observe(PlayerActivity.this, new Observer<VideoItem>() {
+                    @Override
+                    public void onChanged(VideoItem videoItem) {
+                        playerViewModel.getVideoItemsByNasaId(current.getNasa_id()).removeObserver(this);
+                        if (videoItem != null) {
+                            do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist_filled);
+                        } else {
+                            do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
+                        }
+                    }
+                });
+
 
         // Check if there is any state saved
         if (savedInstanceState != null) {
@@ -113,7 +125,8 @@ public class PlayerActivity extends AppCompatActivity {
         do_watchlist_icon_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!current.is_in_watchlist()) {
+                VideoItem present = playerViewModel.isVideoItemPresentInWatchlist(current.getNasa_id());
+                if (present == null) {
                     Toast.makeText(PlayerActivity.this,
                             "Video Added to your Watchlist", Toast.LENGTH_SHORT).show();
                     current.setIs_in_watchlist(true);
@@ -123,6 +136,7 @@ public class PlayerActivity extends AppCompatActivity {
                     Toast.makeText(PlayerActivity.this,
                             "Alright! Not in your Favorite", Toast.LENGTH_SHORT).show();
                     playerViewModel.deleteVideoToWatchlist(current.getNasa_id());
+                    current.setIs_in_watchlist(false);
                     do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
                 }
             }

@@ -7,17 +7,20 @@
     android:background="@drawable/bg"
     tools:context=".ui.WatchListActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/loading_indicator_watchlist_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:text="WATCH LIST"
-        android:textColor="@android:color/white"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:contentDescription="@string/loading_indicator_cd"
+        android:src="@drawable/globe_loading"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/watch_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <RelativeLayout
         android:id="@+id/bottomBar"

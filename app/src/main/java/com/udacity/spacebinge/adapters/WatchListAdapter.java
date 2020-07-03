@@ -22,26 +22,26 @@ import java.util.List;
 import static com.udacity.spacebinge.utils.ConstantUtil.INTENT_KEY_SOURCE_ACTIVITY;
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 
-public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.SearchResultHolder> {
+public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.WatchListHolder> {
 
     Context mContext;
     List<VideoItem> mVideoItemsList;
 
-    public SearchResultAdapter(Context context, List<VideoItem> videoItemsList) {
+    public WatchListAdapter(Context context, List<VideoItem> videoItemsList) {
         this.mVideoItemsList = videoItemsList;
         this.mContext = context;
     }
 
     @NonNull
     @Override
-    public SearchResultHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_search_result, null);
-        SearchResultHolder rcv = new SearchResultHolder(layoutView);
+    public WatchListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_watchlist_item, null);
+        WatchListHolder rcv = new WatchListHolder(layoutView);
         return rcv;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchResultAdapter.SearchResultHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WatchListAdapter.WatchListHolder holder, int position) {
         final VideoItem current = mVideoItemsList.get(position);
 
         String url = mVideoItemsList.get(position).getThumbnail_url();
@@ -49,18 +49,18 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             Picasso
                     .get()
                     .load(mVideoItemsList.get(position).getThumbnail_url())
-                    .into(holder.search_result_thumbnail_iv);
+                    .into(holder.watch_list_thumbnail_iv);
         } else {
-            holder.search_result_thumbnail_iv.setImageDrawable(null);
+            holder.watch_list_thumbnail_iv.setImageDrawable(null);
         }
 
-        holder.search_result_title_tv.setText(mVideoItemsList.get(position).getTitle());
+        holder.watch_list_title_tv.setText(mVideoItemsList.get(position).getTitle());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, PlayerActivity.class);
-                intent.putExtra(INTENT_KEY_SOURCE_ACTIVITY, "search");
+                intent.putExtra(INTENT_KEY_SOURCE_ACTIVITY, "watchlist");
                 intent.putExtra(VIDEO_ITEM_OBJECT, current);
                 mContext.startActivity(intent);
             }
@@ -72,15 +72,14 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         return mVideoItemsList == null ? 0 : mVideoItemsList.size();
     }
 
-    public class SearchResultHolder extends RecyclerView.ViewHolder {
+    public class WatchListHolder extends RecyclerView.ViewHolder {
+        ImageView watch_list_thumbnail_iv;
+        TextView watch_list_title_tv;
 
-        ImageView search_result_thumbnail_iv;
-        TextView search_result_title_tv;
-
-        public SearchResultHolder(@NonNull View itemView) {
+        public WatchListHolder(@NonNull View itemView) {
             super(itemView);
-            search_result_thumbnail_iv = itemView.findViewById(R.id.search_result_thumbnail_image_view);
-            search_result_title_tv = itemView.findViewById(R.id.search_result_title_tv);
+            watch_list_thumbnail_iv = itemView.findViewById(R.id.watch_list_thumbnail_image_view);
+            watch_list_title_tv = itemView.findViewById(R.id.watch_list_title_tv);
         }
     }
 }

@@ -103,5 +103,9 @@ public class VideoItemRepository {
             }
         });
     }
+
+    public LiveData<List<VideoItem>> getAllWatchListItems() {
+        return mDatabase.videoItemsDAO().loadAllVideoItems();
+    }
 }
 

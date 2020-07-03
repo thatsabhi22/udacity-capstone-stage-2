@@ -55,7 +55,6 @@ public class PlayerActivity extends AppCompatActivity {
     Uri mVideoUri;
     PlayerView mPlayerView;
     VideoItem current;
-    boolean isInWatchlist = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +89,12 @@ public class PlayerActivity extends AppCompatActivity {
         videoDateTV.setText(date);
         videoDescriptionTV.setText(current.getDescription());
 
+        if(current.is_in_watchlist()){
+            do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist_filled);
+        }else{
+            do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
+        }
+
         // Check if there is any state saved
         if (savedInstanceState != null) {
             current = savedInstanceState.getParcelable(VIDEO_SINGLE);
@@ -108,18 +113,17 @@ public class PlayerActivity extends AppCompatActivity {
         do_watchlist_icon_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isInWatchlist) {
+                if (!current.is_in_watchlist()) {
                     Toast.makeText(PlayerActivity.this,
                             "Video Added to your Watchlist", Toast.LENGTH_SHORT).show();
+                    current.setIs_in_watchlist(true);
                     playerViewModel.addVideoToWatchlist(current);
                     do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist_filled);
-                    isInWatchlist = true;
                 } else {
                     Toast.makeText(PlayerActivity.this,
                             "Alright! Not in your Favorite", Toast.LENGTH_SHORT).show();
                     playerViewModel.deleteVideoToWatchlist(current.getNasa_id());
                     do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
-                    isInWatchlist = false;
                 }
             }
         });

@@ -37,6 +37,7 @@ public class VideoItem implements Parcelable {
     private String date_created;
     private boolean is_downloaded;
     private String storage_path;
+    private boolean is_in_watchlist;
 
     public VideoItem(){}
 
@@ -61,7 +62,7 @@ public class VideoItem implements Parcelable {
         this.date_created = date_created;
         this.is_downloaded = false;
         this.storage_path = "";
-
+        this.is_in_watchlist = false;
     }
 
     @Ignore
@@ -85,6 +86,7 @@ public class VideoItem implements Parcelable {
         this.date_created = date_created;
         this.is_downloaded = false;
         this.storage_path = "";
+        this.is_in_watchlist = false;
     }
 
     protected VideoItem(Parcel in) {
@@ -99,6 +101,7 @@ public class VideoItem implements Parcelable {
         date_created = in.readString();
         is_downloaded = TextUtils.equals(in.readString(), "true");
         storage_path = in.readString();
+        is_downloaded = TextUtils.equals(in.readString(), "true");
     }
 
     public int getId() {
@@ -189,6 +192,14 @@ public class VideoItem implements Parcelable {
         this.storage_path = storage_path;
     }
 
+    public boolean is_in_watchlist() {
+        return is_in_watchlist;
+    }
+
+    public void setIs_in_watchlist(boolean is_in_watchlist) {
+        this.is_in_watchlist = is_in_watchlist;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
@@ -202,6 +213,7 @@ public class VideoItem implements Parcelable {
         dest.writeString(date_created);
         dest.writeString(String.valueOf(is_downloaded));
         dest.writeString(storage_path);
+        dest.writeString(String.valueOf(is_in_watchlist));
     }
 
     @Override

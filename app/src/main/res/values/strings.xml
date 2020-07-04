@@ -14,6 +14,9 @@
     <string name="thumbnail_imageview">thumbnail imageview</string>
     <string name="loading_indicator_cd">Loading Indicator ImageView</string>
     <string name="video_item_card_content_description">video_item_card_cd</string>
+    <string name="no_data_image_cd">No Data Image</string>
+    <string name="no_data_tv_text">No Videos in your Watchlist</string>
+    <string name="app_icon_cd">all screen app icon</string>
 
     <string-array name="topics">
         <item>Latest</item>

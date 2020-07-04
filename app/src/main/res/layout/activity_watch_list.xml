@@ -8,17 +8,49 @@
     tools:context=".ui.WatchListActivity">
 
     <ImageView
+        android:id="@+id/watchlist_app_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="24dp"
+        android:contentDescription="@string/app_icon_cd"
+        android:src="@drawable/spacebinge_icon" />
+
+    <ImageView
         android:id="@+id/loading_indicator_watchlist_iv"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/loading_indicator_cd"
-        android:src="@drawable/globe_loading"/>
+        android:src="@drawable/globe_loading"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/no_data_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/no_data_image_cd"
+        android:src="@drawable/ic_tv"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/no_data_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_data_icon"
+        android:layout_centerHorizontal="true"
+        android:text="@string/no_data_tv_text"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:text="No Videos in your Watchlist" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/watch_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/watchlist_app_icon"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 

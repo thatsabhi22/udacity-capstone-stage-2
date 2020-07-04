@@ -7,17 +7,14 @@
     android:background="@drawable/bg"
     tools:context=".ui.NewsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="NEWS PAGE"
-        android:textColor="@android:color/white"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/download_app_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="24dp"
+        android:contentDescription="@string/app_icon_cd"
+        android:src="@drawable/spacebinge_icon" />
 
     <RelativeLayout
         android:id="@+id/bottomBar"

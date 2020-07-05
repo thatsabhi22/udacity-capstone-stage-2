@@ -1,6 +1,7 @@
 package com.udacity.spacebinge.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Topic;
 import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.ui.PlayerActivity;
+import com.udacity.spacebinge.ui.SearchActivity;
 import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.utils.HorizontalItemDecoration;
 import com.udacity.spacebinge.utils.TransformUtils;
@@ -21,6 +24,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.udacity.spacebinge.utils.ConstantUtil.INTENT_KEY_SOURCE_ACTIVITY;
+import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
+import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_SEARCH_KEY;
 
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.TopicsViewHolder> {
 
@@ -53,6 +60,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Topics
         holder.horizontalRecyclerView.addItemDecoration(new HorizontalItemDecoration(AppUtil.dpToPx(context, 2), AppUtil.dpToPx(context, 2), AppUtil.dpToPx(context, 2)));
         holder.horizontalRecyclerView.setLayoutManager(horizontalManager);
         holder.horizontalRecyclerView.setAdapter(videoItemsAdapter);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SearchActivity.class);
+                intent.putExtra(INTENT_KEY_SOURCE_ACTIVITY, "homepage");
+                intent.putExtra(VIDEO_ITEM_SEARCH_KEY, current.getKey());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

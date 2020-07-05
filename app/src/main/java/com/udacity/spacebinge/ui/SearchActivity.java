@@ -26,6 +26,9 @@ import com.udacity.spacebinge.viewmodels.SearchViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.udacity.spacebinge.utils.ConstantUtil.INTENT_KEY_SOURCE_ACTIVITY;
+import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_SEARCH_KEY;
+
 public class SearchActivity extends AppCompatActivity {
 
     SearchView video_search_view;
@@ -46,6 +49,16 @@ public class SearchActivity extends AppCompatActivity {
         search_result_recycler_view = findViewById(R.id.search_result_recycler_view);
         loading_indicator_search_iv = findViewById(R.id.loading_indicator_search_iv);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            String sourceActivity = intent.getStringExtra(INTENT_KEY_SOURCE_ACTIVITY);
+            query = intent.getStringExtra(VIDEO_ITEM_SEARCH_KEY);
+            video_search_view.setQuery(query, false);
+            video_search_view.clearFocus();
+        } else {
+            query = "";
+        }
+
         Glide
                 .with(this)
                 .asGif().load(R.drawable.globe_loading)
@@ -53,14 +66,13 @@ public class SearchActivity extends AppCompatActivity {
 
         videoCollection = new ArrayList<>();
 
-        query = "";
         initHomepageViewModel();
 
         searchResultAdapter = new SearchResultAdapter(this, videoCollection);
         search_result_recycler_view.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         search_result_recycler_view.setAdapter(searchResultAdapter);
 
-        RecyclerView.AdapterDataObserver observer= new RecyclerView.AdapterDataObserver() {
+        RecyclerView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
                 loading_indicator_search_iv.setVisibility(View.GONE);
@@ -75,7 +87,7 @@ public class SearchActivity extends AppCompatActivity {
                 search_result_recycler_view.setVisibility(View.VISIBLE);
                 searchViewModel.getSearchResult(query, "video")
                         .observe(SearchActivity.this, videoItemListObserver);
-                return false;
+                return true;
             }
 
             @Override

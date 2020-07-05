@@ -13,16 +13,16 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="24dp"
+        android:layout_margin="8dp"
         android:contentDescription="@string/app_icon_cd"
         android:src="@drawable/spacebinge_icon" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/video_search_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/search_app_icon"
+        android:layout_margin="8dp"
         android:background="@color/colorAccent"
         android:backgroundTint="@color/colorPrimary"
         app:defaultQueryHint="Search Here"
@@ -36,7 +36,7 @@
         android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/loading_indicator_cd"
-        android:src="@drawable/globe_loading"/>
+        android:src="@drawable/globe_loading" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_result_recycler_view"

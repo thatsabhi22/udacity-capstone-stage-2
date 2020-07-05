@@ -26,7 +26,7 @@
         android:visibility="gone" />
 
     <ImageView
-        android:id="@+id/no_data_icon"
+        android:id="@+id/no_data_watch_list_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -35,12 +35,12 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/no_data_tv"
+        android:id="@+id/no_data_watch_list_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/no_data_icon"
+        android:layout_below="@id/no_data_watch_list_iv"
         android:layout_centerHorizontal="true"
-        android:text="@string/no_data_tv_text"
+        android:text="@string/no_data_tv_text_watchlist"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:visibility="gone"
@@ -50,6 +50,7 @@
         android:id="@+id/watch_list_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/bottomBar"
         android:layout_below="@id/watchlist_app_icon"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
@@ -57,7 +58,7 @@
     <RelativeLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

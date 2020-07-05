@@ -1,6 +1,7 @@
 package com.udacity.spacebinge.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.bumptech.glide.Glide;
+import com.downloader.Error;
+import com.downloader.OnDownloadListener;
+import com.downloader.OnProgressListener;
+import com.downloader.OnStartOrResumeListener;
+import com.downloader.PRDownloader;
+import com.downloader.Progress;
+import com.downloader.Status;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -29,6 +39,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.viewmodels.PlayerViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,13 +57,16 @@ public class PlayerActivity extends AppCompatActivity {
     public static final String VIDEO_PLAY_WHEN_READY = "video_play_when_ready";
     public static final String VIDEO_PLAY_WINDOW_INDEX = "video_play_window_index";
     public static final String VIDEO_SINGLE = "video_single";
+    private static String dirPath;
     TextView videoTitleTV, videoDateTV, videoDescriptionTV;
     ImageView do_watchlist_icon_iv, do_download_icon_iv;
     PlayerViewModel playerViewModel;
+    ProgressBar download_progressbar;
     Observer<VideoItem> videoItemObserver;
     boolean mShouldPlayWhenReady = true;
     long mPlayerPosition;
     int mWindowIndex;
+    int downloadIdOne;
     SimpleExoPlayer mSimpleExoPlayer;
     Uri mVideoUri;
     PlayerView mPlayerView;
@@ -79,8 +93,12 @@ public class PlayerActivity extends AppCompatActivity {
         mPlayerView = findViewById(R.id.player_view);
         do_watchlist_icon_iv = findViewById(R.id.do_watchlist_icon);
         do_download_icon_iv = findViewById(R.id.do_download_icon);
+        download_progressbar = findViewById(R.id.download_progressbar);
 
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        dirPath = AppUtil.getRootDirPath(getApplicationContext()) + "/videos/";
+
+        onClickListenerOne();
 
         // Popluating data to views
         videoTitleTV.setText(current.getTitle());
@@ -93,15 +111,29 @@ public class PlayerActivity extends AppCompatActivity {
 
         videoItem = new VideoItem();
 
-        playerViewModel.getVideoItemsByNasaId(current.getNasa_id())
+        playerViewModel.getVideoItemsByNasaIdWatchList(current.getNasa_id())
                 .observe(PlayerActivity.this, new Observer<VideoItem>() {
                     @Override
                     public void onChanged(VideoItem videoItem) {
-                        playerViewModel.getVideoItemsByNasaId(current.getNasa_id()).removeObserver(this);
+                        playerViewModel.getVideoItemsByNasaIdWatchList(current.getNasa_id()).removeObserver(this);
                         if (videoItem != null) {
                             do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist_filled);
                         } else {
                             do_watchlist_icon_iv.setImageResource(R.drawable.ic_watchlist);
+                        }
+                    }
+                });
+
+        playerViewModel.getVideoItemsByNasaIdDownloadList(current.getNasa_id())
+                .observe(PlayerActivity.this, new Observer<VideoItem>() {
+                    @Override
+                    public void onChanged(VideoItem videoItem) {
+                        playerViewModel.getVideoItemsByNasaIdDownloadList(current.getNasa_id()).removeObserver(this);
+                        if (videoItem != null) {
+                            do_download_icon_iv.setImageResource(R.drawable.ic_downloaded);
+                            do_download_icon_iv.setEnabled(false);
+                        } else {
+                            do_download_icon_iv.setImageResource(R.drawable.ic_download);
                         }
                     }
                 });
@@ -115,7 +147,6 @@ public class PlayerActivity extends AppCompatActivity {
             mWindowIndex = savedInstanceState.getInt(VIDEO_PLAY_WINDOW_INDEX);
             mVideoUri = Uri.parse(savedInstanceState.getString(VIDEO_URI));
         } else if (!TextUtils.isEmpty(current.getVideo_url())) {
-            //mPlayerView.setUseController(false);
             //mVideoUri = Uri.parse("https://images-assets.nasa.gov/video/GSFC_20190130_NICER_m12854_BlkHole/GSFC_20190130_NICER_m12854_BlkHole~mobile.mp4");
             //mVideoUri = Uri.parse("http://images-assets.nasa.gov/video/42_RethinkingAnAlienWorld/42_RethinkingAnAlienWorld~mobile.mp4");
 
@@ -125,7 +156,7 @@ public class PlayerActivity extends AppCompatActivity {
         do_watchlist_icon_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                VideoItem present = playerViewModel.isVideoItemPresentInWatchlist(current.getNasa_id());
+                VideoItem present = playerViewModel.isVideoItemPresentInList(current.getNasa_id(), "watchlist");
                 if (present == null) {
                     Toast.makeText(PlayerActivity.this,
                             "Video Added to your Watchlist", Toast.LENGTH_SHORT).show();
@@ -310,5 +341,72 @@ public class PlayerActivity extends AppCompatActivity {
             outState.putLong(VIDEO_POSITION, mPlayerPosition);
             outState.putBoolean(VIDEO_PLAY_WHEN_READY, mShouldPlayWhenReady);
         }
+    }
+
+    public void onClickListenerOne() {
+        do_download_icon_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (Status.RUNNING == PRDownloader.getStatus(downloadIdOne)) {
+                    PRDownloader.pause(downloadIdOne);
+                    return;
+                }
+
+                do_download_icon_iv.setEnabled(false);
+                download_progressbar.setIndeterminate(true);
+                download_progressbar.getIndeterminateDrawable().setColorFilter(
+                        Color.BLUE, android.graphics.PorterDuff.Mode.SRC_IN);
+
+                if (Status.PAUSED == PRDownloader.getStatus(downloadIdOne)) {
+                    PRDownloader.resume(downloadIdOne);
+                    return;
+                }
+
+                downloadIdOne = PRDownloader.download(current.getVideo_url(), dirPath
+                        , current.getNasa_id() + "~mobile.mp4")
+                        .build()
+                        .setOnStartOrResumeListener(new OnStartOrResumeListener() {
+                            @Override
+                            public void onStartOrResume() {
+                                download_progressbar.setIndeterminate(false);
+                                do_download_icon_iv.setEnabled(true);
+                                Glide
+                                        .with(PlayerActivity.this)
+                                        .asGif().load(R.drawable.downloading)
+                                        .into(do_download_icon_iv);
+                            }
+                        })
+                        .setOnProgressListener(new OnProgressListener() {
+                            @Override
+                            public void onProgress(Progress progress) {
+                                long progressPercent = progress.currentBytes * 100 / progress.totalBytes;
+                                download_progressbar.setProgress((int) progressPercent);
+                                download_progressbar.setIndeterminate(false);
+                            }
+                        })
+                        .start(new OnDownloadListener() {
+                            @Override
+                            public void onDownloadComplete() {
+                                do_download_icon_iv.setEnabled(false);
+                                do_download_icon_iv.setImageResource(R.drawable.ic_downloaded);
+                                Toast.makeText(getApplicationContext()
+                                        , "Video in your Download List", Toast.LENGTH_SHORT).show();
+                                VideoItem save = current;
+                                save.setIs_downloaded(true);
+                                save.setStorage_path(dirPath + current.getNasa_id() + "~mobile.mp4");
+                                playerViewModel.addVideoToWatchlist(save);
+                            }
+
+                            @Override
+                            public void onError(Error error) {
+                                Toast.makeText(getApplicationContext(), getString(R.string.some_error_occurred) + " " + "1", Toast.LENGTH_SHORT).show();
+                                download_progressbar.setProgress(0);
+                                downloadIdOne = 0;
+                                download_progressbar.setIndeterminate(false);
+                            }
+                        });
+            }
+        });
     }
 }

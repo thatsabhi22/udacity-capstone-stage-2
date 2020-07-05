@@ -9,8 +9,6 @@ import androidx.lifecycle.LiveData;
 import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.repositories.VideoItemRepository;
 
-import java.util.List;
-
 public class PlayerViewModel extends AndroidViewModel {
 
     private VideoItemRepository videoItemRepository;
@@ -28,11 +26,15 @@ public class PlayerViewModel extends AndroidViewModel {
         videoItemRepository.deleteVideoToWatchlist(videoItem);
     }
 
-    public LiveData<VideoItem> getVideoItemsByNasaId(String nasaId) {
-        return videoItemRepository.getVideoItemsByNasaId(nasaId);
+    public LiveData<VideoItem> getVideoItemsByNasaIdWatchList(String nasaId) {
+        return videoItemRepository.getVideoItemsByNasaIdWatchList(nasaId);
     }
 
-    public VideoItem isVideoItemPresentInWatchlist(String nasaId) {
-        return videoItemRepository.isVideoItemPresentInWatchlist(nasaId);
+    public LiveData<VideoItem> getVideoItemsByNasaIdDownloadList(String nasaId) {
+        return videoItemRepository.getVideoItemsByNasaIdDownloadList(nasaId);
+    }
+
+    public VideoItem isVideoItemPresentInList(String nasaId, String list) {
+        return videoItemRepository.isVideoItemPresentInList(nasaId, list);
     }
 }

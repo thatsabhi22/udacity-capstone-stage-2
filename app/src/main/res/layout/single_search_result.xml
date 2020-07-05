@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:contentDescription="@string/search_result_image_view"
+            android:contentDescription="@string/search_result_image_view_cd"
             android:scaleType="centerCrop"
             android:src="@drawable/globe_loading" />
 

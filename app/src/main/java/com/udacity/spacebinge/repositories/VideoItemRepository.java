@@ -2,6 +2,7 @@ package com.udacity.spacebinge.repositories;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -107,18 +108,26 @@ public class VideoItemRepository {
     }
 
     public LiveData<List<VideoItem>> getAllWatchListItems() {
-        return mDatabase.videoItemsDAO().loadAllVideoItems();
+        return mDatabase.videoItemsDAO().loadAllWatchListVideoItems();
     }
 
-    public LiveData<VideoItem> getVideoItemsByNasaId(String nasaId) {
-        return mDatabase.videoItemsDAO().getVideoItemByNasaId(nasaId);
+    public LiveData<List<VideoItem>> getAllDownloadedListItems() {
+        return mDatabase.videoItemsDAO().loadAllDownloadedListVideoItems();
     }
 
-    public VideoItem isVideoItemPresentInWatchlist(String nasaId) {
+    public LiveData<VideoItem> getVideoItemsByNasaIdWatchList(String nasaId) {
+        return mDatabase.videoItemsDAO().getVideoItemByNasaIdWatchlist(nasaId);
+    }
+
+    public LiveData<VideoItem> getVideoItemsByNasaIdDownloadList(String nasaId) {
+        return mDatabase.videoItemsDAO().getVideoItemByNasaIdDownloadlist(nasaId);
+    }
+
+    public VideoItem isVideoItemPresentInList(String nasaId, String list) {
         VideoItem result = new VideoItem();
         try {
-            isPresentInWatchListTask task = new isPresentInWatchListTask(mDatabase);
-            result = task.execute(nasaId).get();
+            isPresentInListTask task = new isPresentInListTask(mDatabase);
+            result = task.execute(nasaId, list).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -127,15 +136,20 @@ public class VideoItemRepository {
         return result;
     }
 
-    private static class isPresentInWatchListTask extends AsyncTask<String, Void, VideoItem> {
+    private static class isPresentInListTask extends AsyncTask<String, Void, VideoItem> {
         private VideoItemsDatabase mDatabase;
-        public isPresentInWatchListTask(VideoItemsDatabase mDatabase) {
+
+        public isPresentInListTask(VideoItemsDatabase mDatabase) {
             this.mDatabase = mDatabase;
         }
 
         @Override
-        protected VideoItem doInBackground(String... nasaId) {
-            return mDatabase.videoItemsDAO().isPresentInWatchlist(nasaId[0]);
+        protected VideoItem doInBackground(String... params) {
+            if (TextUtils.equals(params[1], "watchlist")) {
+                return mDatabase.videoItemsDAO().isPresentInWatchlist(params[0]);
+            } else {
+                return mDatabase.videoItemsDAO().isPresentInDownloadlist(params[0]);
+            }
         }
     }
 }

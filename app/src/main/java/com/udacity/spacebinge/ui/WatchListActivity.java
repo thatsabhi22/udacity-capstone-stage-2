@@ -29,8 +29,8 @@ public class WatchListActivity extends AppCompatActivity {
 
     WatchListAdapter watchListAdapter;
     RecyclerView watch_list_recycler_view;
-    ImageView loading_indicator_watchlist_iv,no_data_iv;
-    TextView no_data_tv;
+    ImageView loading_indicator_watchlist_iv, no_data_watch_list_iv;
+    TextView no_data_watch_list_tv;
     Observer<List<VideoItem>> videoItemListObserver;
     WatchlistViewModel watchlistViewModel;
     List<VideoItem> videoCollection;
@@ -42,8 +42,8 @@ public class WatchListActivity extends AppCompatActivity {
 
         watch_list_recycler_view = findViewById(R.id.watch_list_recycler_view);
         loading_indicator_watchlist_iv = findViewById(R.id.loading_indicator_watchlist_iv);
-        no_data_iv = findViewById(R.id.no_data_icon);
-        no_data_tv = findViewById(R.id.no_data_tv);
+        no_data_watch_list_iv = findViewById(R.id.no_data_watch_list_iv);
+        no_data_watch_list_tv = findViewById(R.id.no_data_watch_list_tv);
 
         Glide
                 .with(this)
@@ -111,9 +111,9 @@ public class WatchListActivity extends AppCompatActivity {
                 new Observer<List<VideoItem>>() {
                     @Override
                     public void onChanged(List<VideoItem> videoItemList) {
-                        if(videoItemList.size()==0){
-                            no_data_iv.setVisibility(View.VISIBLE);
-                            no_data_tv.setVisibility(View.VISIBLE);
+                        if (videoItemList.size() == 0) {
+                            no_data_watch_list_iv.setVisibility(View.VISIBLE);
+                            no_data_watch_list_tv.setVisibility(View.VISIBLE);
                         }
                         videoCollection.clear();
                         videoCollection.addAll(videoItemList);

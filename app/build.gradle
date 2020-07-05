@@ -68,4 +68,5 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.5'
 
     implementation 'com.github.bumptech.glide:glide:4.10.0'
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
 }

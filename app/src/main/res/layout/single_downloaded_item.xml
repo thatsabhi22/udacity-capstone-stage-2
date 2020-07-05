@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/watch_list_thumbnail_image_view"
+            android:id="@+id/download_list_thumbnail_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
@@ -24,7 +24,7 @@
             android:src="@drawable/globe_loading" />
 
         <TextView
-            android:id="@+id/watch_list_title_tv"
+            android:id="@+id/download_list_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -35,7 +35,7 @@
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
             android:paddingBottom="10dp"
-            android:text="@string/watch_list_title"
+            android:text="@string/search_result_title"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             android:textSize="16sp"

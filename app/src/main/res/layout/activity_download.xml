@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/bg"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
     tools:context=".ui.DownloadActivity">
 
     <ImageView
@@ -15,6 +16,45 @@
         android:layout_margin="24dp"
         android:contentDescription="@string/app_icon_cd"
         android:src="@drawable/spacebinge_icon" />
+
+    <ImageView
+        android:id="@+id/loading_indicator_downloadlist_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/loading_indicator_cd"
+        android:src="@drawable/globe_loading"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/no_data_download_list_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/no_data_image_cd"
+        android:src="@drawable/ic_tv"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/no_data_download_list_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_data_download_list_iv"
+        android:layout_centerHorizontal="true"
+        android:text="@string/no_data_tv_text_downloadlist"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:text="No Videos in your Downloaded list" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/download_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottomBar"
+        android:layout_below="@id/download_app_icon"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <RelativeLayout
         android:id="@+id/bottomBar"

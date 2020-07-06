@@ -15,11 +15,24 @@
         android:contentDescription="@string/news_item_image_cd"
         android:scaleType="centerCrop" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sheet_text_scrim_height"
+        android:background="@drawable/scrim_top"
+        app:layout_collapseMode="pin"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sheet_text_scrim_height"
+        android:layout_gravity="bottom"
+        android:layout_alignBottom="@+id/image"
+        android:background="@drawable/scrim_bottom"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@drawable/gradation_black"
+        android:background="#66616161"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -28,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:text="{News title}" />
 

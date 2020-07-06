@@ -6,7 +6,12 @@ import android.util.DisplayMetrics;
 
 import androidx.core.content.ContextCompat;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class AppUtil {
@@ -17,6 +22,20 @@ public class AppUtil {
         } else {
             return true;
         }
+    }
+
+    @NotNull
+    public static String formatDate(String date) {
+        Date date1 = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            date1 = sdf.parse(date);
+            sdf = new SimpleDateFormat("MMMM dd, yyyy");
+            date = sdf.format(date1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
     public static String getProgressDisplayLine(long currentBytes, long totalBytes) {

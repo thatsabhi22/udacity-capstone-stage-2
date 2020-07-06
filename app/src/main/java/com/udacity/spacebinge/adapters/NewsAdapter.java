@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Article;
+import com.udacity.spacebinge.utils.AppUtil;
 
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         }
         holder.news_title_tv.setText(current.getTitle());
         holder.news_author_tv.setText(current.getAuthor());
-        holder.published_at_tv.setText(current.getPublishedAt());
+        holder.published_at_tv.setText(AppUtil.formatDate(current.getPublishedAt()));
         holder.news_url_tv.setText(current.getUrl());
         holder.news_description_tv.setText(current.getDescription());
     }

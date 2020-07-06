@@ -104,7 +104,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         // Formatting date
         String date = current.getDate_created();
-        date = formatDate(date);
+        date = AppUtil.formatDate(date);
         videoDateTV.setText(date);
         videoDescriptionTV.setText(current.getDescription());
 
@@ -209,20 +209,6 @@ public class PlayerActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    @NotNull
-    private String formatDate(String date) {
-        Date date1 = null;
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            date1 = sdf.parse(date);
-            sdf = new SimpleDateFormat("MMMM dd, yyyy");
-            date = sdf.format(date1);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
     }
 
     // Get the current state of the player

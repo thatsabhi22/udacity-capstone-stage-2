@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Topic;
 import com.udacity.spacebinge.models.VideoItem;
-import com.udacity.spacebinge.ui.PlayerActivity;
 import com.udacity.spacebinge.ui.SearchActivity;
 import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.utils.HorizontalItemDecoration;
@@ -26,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.udacity.spacebinge.utils.ConstantUtil.INTENT_KEY_SOURCE_ACTIVITY;
-import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_SEARCH_KEY;
 
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.TopicsViewHolder> {
@@ -52,10 +50,10 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.Topics
 
     @Override
     public void onBindViewHolder(@NonNull TopicsViewHolder holder, int position) {
-        Map.Entry<String,List<VideoItem>> current = TransformUtils.getMapValueAt(videoCollection,position);
+        Map.Entry<String, List<VideoItem>> current = TransformUtils.getMapValueAt(videoCollection, position);
         holder.videoType.setText(current.getKey());
         holder.seeAlltextView.setText(context.getString(R.string.see_all_text));
-        videoItemsAdapter = new VideoItemsAdapter(context,current.getValue());
+        videoItemsAdapter = new VideoItemsAdapter(context, current.getValue());
         LinearLayoutManager horizontalManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
         holder.horizontalRecyclerView.addItemDecoration(new HorizontalItemDecoration(AppUtil.dpToPx(context, 2), AppUtil.dpToPx(context, 2), AppUtil.dpToPx(context, 2)));
         holder.horizontalRecyclerView.setLayoutManager(horizontalManager);

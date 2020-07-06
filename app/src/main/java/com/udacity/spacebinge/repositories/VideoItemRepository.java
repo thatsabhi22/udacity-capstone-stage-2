@@ -46,9 +46,9 @@ public class VideoItemRepository {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
                 if (response.isSuccessful()) {
-                    Result movieTrailerResponse = response.body();
-                    if (movieTrailerResponse != null) {
-                        List<VideoItem> list = TransformUtils.extractVideoItemFromResult(movieTrailerResponse);
+                    Result spaceVideosResponse = response.body();
+                    if (spaceVideosResponse != null) {
+                        List<VideoItem> list = TransformUtils.extractVideoItemFromResult(spaceVideosResponse);
                         data.setValue(list);
                     }
                 }

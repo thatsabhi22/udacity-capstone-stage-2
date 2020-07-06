@@ -1,7 +1,7 @@
 package com.udacity.spacebinge.tasks;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.udacity.spacebinge.models.Result;
+import com.udacity.spacebinge.models.News;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -12,11 +12,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
-public interface SpaceWebService {
+public interface NewsWebService {
     /**
-     * URL for videos data from the Nasa's Open API
+     * URL for news data from the News API
      */
-    String BASE_REQUEST_URL = "https://images-api.nasa.gov";
+    String BASE_REQUEST_URL = "https://newsapi.org/v2";
 
     OkHttpClient.Builder okhttpclientbuilder = new OkHttpClient.Builder();
 
@@ -32,10 +32,9 @@ public interface SpaceWebService {
             .build();
 
     @Headers("Content-Type: text/html")
-    @GET("/search")
-    Call<Result> getSpaceQuery(
+    @GET("/everything")
+    Call<News> getNewsData(
             @Query("q") String query,
-            @Query("media_type") String mediatype
-//            ,@Query("api_key") String apikey
+            @Query("apiKey") String apiKey
     );
 }

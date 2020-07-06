@@ -20,6 +20,11 @@
     <string name="no_data_tv_text_downloadlist">No Videos in your Download List</string>
     <string name="app_icon_cd">all screen app icon</string>
     <string name="some_error_occurred">Error Occurred during Download</string>
+    <string name="news_api_key">09bfb86a3c3145308ce44763b0677b51</string>
+    <string name="default_news_query">nasa</string>
+    <string name="all_caught_up_text">"All Caught Up"</string>
+    <string name="all_caught_up_cd">All Caught Up</string>
+    <string name="news_item_image_cd">News Item Image</string>
 
     <string-array name="topics">
         <item>Latest</item>

@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.udacity.spacebinge.models.Article;
 import com.udacity.spacebinge.models.News;
 import com.udacity.spacebinge.tasks.NewsWebService;
 
@@ -27,8 +28,8 @@ public class NewsRepository {
         return new NewsRepository(context);
     }
 
-    public LiveData<List<News>> getLatestNews(String query, String api_key) {
-        final MutableLiveData<List<News>> data = new MutableLiveData<>();
+    public LiveData<List<Article>> getLatestNews(String query, String api_key) {
+        final MutableLiveData<List<Article>> data = new MutableLiveData<>();
         Call<News> call = newsWebService.getNewsData(query, api_key);
         call.enqueue(new Callback<News>() {
             @Override
@@ -36,8 +37,8 @@ public class NewsRepository {
                 if (response.isSuccessful()) {
                     News newsDataResponse = response.body();
                     if (newsDataResponse != null) {
-//                        List<News> list = newsDataResponse;
-//                        data.setValue(list);
+                        List<Article> list = newsDataResponse.getArticles();
+                        data.setValue(list);
                     }
                 }
             }

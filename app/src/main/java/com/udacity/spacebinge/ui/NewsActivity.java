@@ -12,26 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.NewsAdapter;
-import com.udacity.spacebinge.adapters.WatchListAdapter;
-import com.udacity.spacebinge.models.News;
-import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.models.Article;
 import com.udacity.spacebinge.viewmodels.NewsViewModel;
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
+import com.yuyakaido.android.cardstackview.CardStackListener;
+import com.yuyakaido.android.cardstackview.CardStackView;
+import com.yuyakaido.android.cardstackview.Direction;
+import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsActivity extends AppCompatActivity {
 
+    CardStackView cardStackView;
+    CardStackLayoutManager cardStackLayoutManager;
     NewsAdapter newsAdapter;
-    Observer<List<News>> newsListObserver;
+    Observer<List<Article>> newsListObserver;
     NewsViewModel newsViewModel;
-    String query, api_key;
+    String query,api_key;
     TextView watch_more_videos_tv, all_caught_up_tv;
-    ImageView all_caught_up_iv;
-    List<News> newsCollection;
+    ImageView all_caught_up_iv,loading_indicator_iv;
+    List<Article> newsCollection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,12 @@ public class NewsActivity extends AppCompatActivity {
         all_caught_up_iv = findViewById(R.id.all_caught_up_iv);
         watch_more_videos_tv = findViewById(R.id.watch_more_videos_tv);
         all_caught_up_tv = findViewById(R.id.all_caught_up_tv);
+        cardStackView = findViewById(R.id.card_stack_view);
+        loading_indicator_iv = findViewById(R.id.loading_indicator_news_iv);
+        Glide
+                .with(this)
+                .asGif().load(R.drawable.globe_loading)
+                .into(loading_indicator_iv);
 
         watch_more_videos_tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +67,67 @@ public class NewsActivity extends AppCompatActivity {
 
         api_key = getString(R.string.news_api_key);
         query = getString(R.string.default_news_query);
-
+        newsCollection = new ArrayList<>();
         initNewsViewModel();
 
+        cardStackLayoutManager = new CardStackLayoutManager(this, new CardStackListener() {
+            @Override
+            public void onCardDragging(Direction direction, float ratio) {
+
+            }
+
+            @Override
+            public void onCardSwiped(Direction direction) {
+                if (cardStackLayoutManager.getTopPosition() == newsAdapter.getItemCount()) {
+                    watch_more_videos_tv.setVisibility(View.VISIBLE);
+                    all_caught_up_tv.setVisibility(View.VISIBLE);
+                    all_caught_up_iv.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCardRewound() {
+
+            }
+
+            @Override
+            public void onCardCanceled() {
+
+            }
+
+            @Override
+            public void onCardAppeared(View view, int position) {
+
+            }
+
+            @Override
+            public void onCardDisappeared(View view, int position) {
+
+            }
+        });
+        cardStackLayoutManager.setVisibleCount(3);
+        cardStackLayoutManager.setTranslationInterval(8.0f);
+        cardStackLayoutManager.setScaleInterval(0.95f);
+        cardStackLayoutManager.setSwipeThreshold(0.3f);
+        cardStackLayoutManager.setMaxDegree(20.0f);
+        cardStackLayoutManager.setDirections(Direction.HORIZONTAL);
+        cardStackLayoutManager.setCanScrollHorizontal(true);
+        cardStackLayoutManager.setSwipeableMethod(SwipeableMethod.Manual);
+        newsAdapter = new NewsAdapter(this,newsCollection);
+        cardStackView.setLayoutManager(cardStackLayoutManager);
+        cardStackView.setAdapter(newsAdapter);
+        cardStackView.setItemAnimator(new DefaultItemAnimator());
+
+        // Register the AdapterdataObserver to the RecyclerView.Adapter
+        // onChanged would be called when data set of adapter changes
+        CardStackView.AdapterDataObserver observer= new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                //Toast.makeText(HomeActivity.this,"recyclerview loaded",Toast.LENGTH_SHORT).show();
+                loading_indicator_iv.setVisibility(View.GONE);
+            }
+        };
+        newsAdapter.registerAdapterDataObserver(observer);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
@@ -99,9 +172,9 @@ public class NewsActivity extends AppCompatActivity {
 
     private void initNewsViewModel() {
         newsListObserver =
-                new Observer<List<News>>() {
+                new Observer<List<Article>>() {
                     @Override
-                    public void onChanged(List<News> newsList) {
+                    public void onChanged(List<Article> newsList) {
                         if (newsList.size() == 0) {
                             all_caught_up_iv.setVisibility(View.VISIBLE);
                             watch_more_videos_tv.setVisibility(View.VISIBLE);
@@ -121,7 +194,7 @@ public class NewsActivity extends AppCompatActivity {
 
         newsViewModel = ViewModelProviders.of(this)
                 .get(NewsViewModel.class);
-        newsViewModel.getAllWatchListItems(query, api_key)
+        newsViewModel.getLatestNews(query, api_key)
                 .observe(NewsActivity.this, newsListObserver);
     }
 }

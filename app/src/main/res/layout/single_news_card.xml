@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardBackgroundColor="@color/colorAccent">
+    android:elevation="8dp"
+    app:cardBackgroundColor="@color/colorAccent"
+    app:cardCornerRadius="32dp">
 
     <ImageView
         android:id="@+id/news_item_iv"
@@ -22,7 +24,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/news_title"
+            android:id="@+id/news_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
@@ -31,7 +33,7 @@
             tools:text="{News title}" />
 
         <TextView
-            android:id="@+id/news_author"
+            android:id="@+id/news_author_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -40,7 +42,7 @@
             tools:text="{News author}" />
 
         <TextView
-            android:id="@+id/published_at"
+            android:id="@+id/published_at_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -49,7 +51,7 @@
             tools:text="{Publish Date}" />
 
         <TextView
-            android:id="@+id/news_url"
+            android:id="@+id/news_url_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone" />
@@ -61,7 +63,7 @@
             android:background="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/news_description"
+            android:id="@+id/news_description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

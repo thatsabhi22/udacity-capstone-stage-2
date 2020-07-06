@@ -17,13 +17,22 @@
         android:src="@drawable/spacebinge_icon" />
 
     <ImageView
+        android:id="@+id/loading_indicator_news_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/loading_indicator_cd"
+        android:src="@drawable/globe_loading" />
+
+    <ImageView
         android:id="@+id/all_caught_up_iv"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:contentDescription="@string/all_caught_up_cd"
-        android:src="@drawable/ic_all_caught_up" />
+        android:src="@drawable/ic_all_caught_up"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/all_caught_up_tv"
@@ -36,7 +45,17 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
+        android:visibility="gone"
         tools:text="All Caught Up" />
+
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/card_stack_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/bottomBar"
+        android:layout_below="@id/download_app_icon"
+        android:clipToPadding="false"
+        android:padding="8dp" />
 
     <TextView
         android:id="@+id/watch_more_videos_tv"
@@ -45,10 +64,11 @@
         android:layout_below="@id/all_caught_up_tv"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="@string/all_caught_up_text"
+        android:text="@string/watch_more_text"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
+        android:visibility="gone"
         tools:text="Watch More Space Videos" />
 
     <RelativeLayout

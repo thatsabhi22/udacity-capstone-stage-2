@@ -16,7 +16,7 @@ public interface NewsWebService {
     /**
      * URL for news data from the News API
      */
-    String BASE_REQUEST_URL = "https://newsapi.org/v2";
+    String BASE_REQUEST_URL = "https://newsapi.org/";
 
     OkHttpClient.Builder okhttpclientbuilder = new OkHttpClient.Builder();
 
@@ -32,7 +32,7 @@ public interface NewsWebService {
             .build();
 
     @Headers("Content-Type: text/html")
-    @GET("/everything")
+    @GET("v2/everything")
     Call<News> getNewsData(
             @Query("q") String query,
             @Query("apiKey") String apiKey

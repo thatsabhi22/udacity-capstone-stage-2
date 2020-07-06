@@ -1,6 +1,8 @@
 package com.udacity.spacebinge.adapters;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,17 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.udacity.spacebinge.R;
-import com.udacity.spacebinge.models.News;
+import com.udacity.spacebinge.models.Article;
 
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     Context mContext;
-    List<News> mNewsList;
+    List<Article> mNewsList;
 
-    public NewsAdapter(Context context, List<News> newsList) {
+    public NewsAdapter(Context context, List<Article> newsList) {
         this.mNewsList = newsList;
         this.mContext = context;
     }
@@ -27,27 +30,48 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     @NonNull
     @Override
     public NewsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_news_card, null);
+        NewsHolder rcv = new NewsHolder(layoutView);
+        return rcv;
     }
 
     @Override
     public void onBindViewHolder(@NonNull NewsHolder holder, int position) {
+        final Article current = mNewsList.get(position);
 
+        String imageUrl = current.getUrlToImage();
+        if (!TextUtils.isEmpty(imageUrl)) {
+            Picasso
+                    .get()
+                    .load(imageUrl)
+                    .into(holder.news_item_iv);
+        } else {
+            holder.news_item_iv.setImageDrawable(null);
+        }
+        holder.news_title_tv.setText(current.getTitle());
+        holder.news_author_tv.setText(current.getAuthor());
+        holder.published_at_tv.setText(current.getPublishedAt());
+        holder.news_url_tv.setText(current.getUrl());
+        holder.news_description_tv.setText(current.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mNewsList == null ? 0 : mNewsList.size();
     }
 
     public class NewsHolder extends RecyclerView.ViewHolder {
-        ImageView watch_list_thumbnail_iv;
-        TextView watch_list_title_tv;
+        ImageView news_item_iv;
+        TextView news_title_tv, news_author_tv, published_at_tv, news_url_tv, news_description_tv;
 
         public NewsHolder(@NonNull View itemView) {
             super(itemView);
-            watch_list_thumbnail_iv = itemView.findViewById(R.id.watch_list_thumbnail_image_view);
-            watch_list_title_tv = itemView.findViewById(R.id.watch_list_title_tv);
+            news_item_iv = itemView.findViewById(R.id.news_item_iv);
+            news_title_tv = itemView.findViewById(R.id.news_title_tv);
+            news_author_tv = itemView.findViewById(R.id.news_author_tv);
+            published_at_tv = itemView.findViewById(R.id.published_at_tv);
+            news_url_tv = itemView.findViewById(R.id.news_url_tv);
+            news_description_tv = itemView.findViewById(R.id.news_description_tv);
         }
     }
 }

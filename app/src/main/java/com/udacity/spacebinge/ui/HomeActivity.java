@@ -33,16 +33,14 @@ import java.util.concurrent.ExecutionException;
 public class HomeActivity extends AppCompatActivity {
 
     public static final String TAG = HomeActivity.class.getSimpleName();
-    VideoItemRepository videoItemRepository;
     HomePageViewModel homePageViewModel;
     RecyclerView topicRV;
     HomePageAdapter homePageAdapter;
-    Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     ImageView loading_indicator_iv;
     TextView offline_mode_tv, go_to_downloads_tv;
     ImageView offline_mode_iv;
     boolean isOffline;
-    private SpaceWebService spaceWebService;
+    private Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;
     private List<String> topics;
 

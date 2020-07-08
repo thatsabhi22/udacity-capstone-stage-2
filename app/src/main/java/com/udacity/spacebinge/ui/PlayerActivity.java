@@ -47,6 +47,7 @@ import org.jetbrains.annotations.NotNull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 
@@ -64,6 +65,7 @@ public class PlayerActivity extends AppCompatActivity {
     ProgressBar download_progressbar;
     Observer<VideoItem> videoItemObserver;
     boolean mShouldPlayWhenReady = true;
+    boolean isOffline;
     long mPlayerPosition;
     int mWindowIndex;
     int downloadIdOne;
@@ -77,6 +79,15 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
+        // Initializing all view elements in this method call
+        initViewElements();
+
+        try {
+            isOffline = new AppUtil.CheckOnlineStatus().execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Intent intent = getIntent();
         if (intent == null) {
             closeOnError();
@@ -85,14 +96,6 @@ public class PlayerActivity extends AppCompatActivity {
         // Get the VideoItem object passed from HomePage from Intent
         current = intent.getParcelableExtra(VIDEO_ITEM_OBJECT);
 
-        // Initializing views
-        videoTitleTV = findViewById(R.id.video_title_tv);
-        videoDateTV = findViewById(R.id.video_date_tv);
-        videoDescriptionTV = findViewById(R.id.video_description_tv);
-        mPlayerView = findViewById(R.id.player_view);
-        do_watchlist_icon_iv = findViewById(R.id.do_watchlist_icon);
-        do_download_icon_iv = findViewById(R.id.do_download_icon);
-        download_progressbar = findViewById(R.id.download_progressbar);
 
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         dirPath = AppUtil.getRootDirPath(getApplicationContext()) + "/videos/";
@@ -149,7 +152,11 @@ public class PlayerActivity extends AppCompatActivity {
             //mVideoUri = Uri.parse("https://images-assets.nasa.gov/video/GSFC_20190130_NICER_m12854_BlkHole/GSFC_20190130_NICER_m12854_BlkHole~mobile.mp4");
             //mVideoUri = Uri.parse("http://images-assets.nasa.gov/video/42_RethinkingAnAlienWorld/42_RethinkingAnAlienWorld~mobile.mp4");
 
-            mVideoUri = Uri.parse(current.getVideo_url());
+            if(isOffline){
+                mVideoUri =  Uri.parse(current.getStorage_path());
+            }else {
+                mVideoUri = Uri.parse(current.getVideo_url());
+            }
         }
 
         do_watchlist_icon_iv.setOnClickListener(new View.OnClickListener() {
@@ -209,6 +216,17 @@ public class PlayerActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void initViewElements() {
+        // Initializing views
+        videoTitleTV = findViewById(R.id.video_title_tv);
+        videoDateTV = findViewById(R.id.video_date_tv);
+        videoDescriptionTV = findViewById(R.id.video_description_tv);
+        mPlayerView = findViewById(R.id.player_view);
+        do_watchlist_icon_iv = findViewById(R.id.do_watchlist_icon);
+        do_download_icon_iv = findViewById(R.id.do_download_icon);
+        download_progressbar = findViewById(R.id.download_progressbar);
     }
 
     // Get the current state of the player

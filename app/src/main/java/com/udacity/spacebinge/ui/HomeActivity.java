@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Initializing all view elements in this method call
         initViewElements();
+
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {

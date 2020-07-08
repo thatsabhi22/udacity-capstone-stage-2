@@ -38,13 +38,10 @@ public class DownloadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_download);
 
-        download_list_recycler_view = findViewById(R.id.download_list_rv);
-        loading_indicator_downloadlist_iv = findViewById(R.id.loading_indicator_downloadlist_iv);
-        no_data_download_list_iv = findViewById(R.id.no_data_download_list_iv);
-        no_data_download_list_tv = findViewById(R.id.no_data_download_list_tv);
+        // Initializing all view elements in this method call
+        initViewElements();
 
         Glide
                 .with(this)
@@ -105,6 +102,13 @@ public class DownloadActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void initViewElements() {
+        download_list_recycler_view = findViewById(R.id.download_list_rv);
+        loading_indicator_downloadlist_iv = findViewById(R.id.loading_indicator_downloadlist_iv);
+        no_data_download_list_iv = findViewById(R.id.no_data_download_list_iv);
+        no_data_download_list_tv = findViewById(R.id.no_data_download_list_tv);
     }
 
     private void initWatchlistViewModel() {

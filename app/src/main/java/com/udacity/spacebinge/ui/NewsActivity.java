@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.NewsAdapter;
 import com.udacity.spacebinge.models.Article;
+import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.viewmodels.NewsViewModel;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
@@ -29,6 +30,7 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class NewsActivity extends AppCompatActivity {
 
@@ -38,97 +40,114 @@ public class NewsActivity extends AppCompatActivity {
     Observer<List<Article>> newsListObserver;
     NewsViewModel newsViewModel;
     String query,api_key;
-    TextView watch_more_videos_tv, all_caught_up_tv;
-    ImageView all_caught_up_iv,loading_indicator_iv;
+    TextView watch_more_videos_tv, all_caught_up_tv,offline_mode_tv,go_to_downloads_tv;
+    ImageView all_caught_up_iv,loading_indicator_iv,offline_mode_iv;
     List<Article> newsCollection;
+    boolean isOffline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        all_caught_up_iv = findViewById(R.id.all_caught_up_iv);
-        watch_more_videos_tv = findViewById(R.id.watch_more_videos_tv);
-        all_caught_up_tv = findViewById(R.id.all_caught_up_tv);
-        cardStackView = findViewById(R.id.card_stack_view);
-        loading_indicator_iv = findViewById(R.id.loading_indicator_news_iv);
-        Glide
-                .with(this)
-                .asGif().load(R.drawable.globe_loading)
-                .into(loading_indicator_iv);
+        initViewElements();
 
-        watch_more_videos_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NewsActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+        try {
+            isOffline = new AppUtil.CheckOnlineStatus().execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        api_key = getString(R.string.news_api_key);
-        query = getString(R.string.default_news_query);
-        newsCollection = new ArrayList<>();
-        initNewsViewModel();
+        if (isOffline) {
+            offline_mode_iv.setVisibility(View.VISIBLE);
+            offline_mode_tv.setVisibility(View.VISIBLE);
+            go_to_downloads_tv.setVisibility(View.VISIBLE);
 
-        cardStackLayoutManager = new CardStackLayoutManager(this, new CardStackListener() {
-            @Override
-            public void onCardDragging(Direction direction, float ratio) {
-
-            }
-
-            @Override
-            public void onCardSwiped(Direction direction) {
-                if (cardStackLayoutManager.getTopPosition() == newsAdapter.getItemCount()) {
-                    watch_more_videos_tv.setVisibility(View.VISIBLE);
-                    all_caught_up_tv.setVisibility(View.VISIBLE);
-                    all_caught_up_iv.setVisibility(View.VISIBLE);
+            go_to_downloads_tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(NewsActivity.this, DownloadActivity.class);
+                    startActivity(intent);
                 }
-            }
+            });
+        }  else {
+            Glide
+                    .with(this)
+                    .asGif().load(R.drawable.globe_loading)
+                    .into(loading_indicator_iv);
 
-            @Override
-            public void onCardRewound() {
+            watch_more_videos_tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(NewsActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-            }
+            api_key = getString(R.string.news_api_key);
+            query = getString(R.string.default_news_query);
+            newsCollection = new ArrayList<>();
+            initNewsViewModel();
 
-            @Override
-            public void onCardCanceled() {
+            cardStackLayoutManager = new CardStackLayoutManager(this, new CardStackListener() {
+                @Override
+                public void onCardDragging(Direction direction, float ratio) {
 
-            }
+                }
 
-            @Override
-            public void onCardAppeared(View view, int position) {
+                @Override
+                public void onCardSwiped(Direction direction) {
+                    if (cardStackLayoutManager.getTopPosition() == newsAdapter.getItemCount()) {
+                        watch_more_videos_tv.setVisibility(View.VISIBLE);
+                        all_caught_up_tv.setVisibility(View.VISIBLE);
+                        all_caught_up_iv.setVisibility(View.VISIBLE);
+                    }
+                }
 
-            }
+                @Override
+                public void onCardRewound() {
 
-            @Override
-            public void onCardDisappeared(View view, int position) {
+                }
 
-            }
-        });
-        cardStackLayoutManager.setVisibleCount(3);
-        cardStackLayoutManager.setTranslationInterval(8.0f);
-        cardStackLayoutManager.setScaleInterval(0.95f);
-        cardStackLayoutManager.setSwipeThreshold(0.3f);
-        cardStackLayoutManager.setMaxDegree(20.0f);
-        cardStackLayoutManager.setDirections(Direction.HORIZONTAL);
-        cardStackLayoutManager.setCanScrollHorizontal(true);
-        cardStackLayoutManager.setSwipeableMethod(SwipeableMethod.Manual);
-        newsAdapter = new NewsAdapter(this,newsCollection);
-        cardStackView.setLayoutManager(cardStackLayoutManager);
-        cardStackView.setAdapter(newsAdapter);
-        cardStackView.setItemAnimator(new DefaultItemAnimator());
+                @Override
+                public void onCardCanceled() {
 
-        // Register the AdapterdataObserver to the RecyclerView.Adapter
-        // onChanged would be called when data set of adapter changes
-        CardStackView.AdapterDataObserver observer= new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onChanged() {
-                //Toast.makeText(HomeActivity.this,"recyclerview loaded",Toast.LENGTH_SHORT).show();
-                loading_indicator_iv.setVisibility(View.GONE);
-            }
-        };
-        newsAdapter.registerAdapterDataObserver(observer);
+                }
 
+                @Override
+                public void onCardAppeared(View view, int position) {
+
+                }
+
+                @Override
+                public void onCardDisappeared(View view, int position) {
+
+                }
+            });
+            cardStackLayoutManager.setVisibleCount(3);
+            cardStackLayoutManager.setTranslationInterval(8.0f);
+            cardStackLayoutManager.setScaleInterval(0.95f);
+            cardStackLayoutManager.setSwipeThreshold(0.3f);
+            cardStackLayoutManager.setMaxDegree(20.0f);
+            cardStackLayoutManager.setDirections(Direction.HORIZONTAL);
+            cardStackLayoutManager.setCanScrollHorizontal(true);
+            cardStackLayoutManager.setSwipeableMethod(SwipeableMethod.Manual);
+            newsAdapter = new NewsAdapter(this, newsCollection);
+            cardStackView.setLayoutManager(cardStackLayoutManager);
+            cardStackView.setAdapter(newsAdapter);
+            cardStackView.setItemAnimator(new DefaultItemAnimator());
+
+            // Register the AdapterdataObserver to the RecyclerView.Adapter
+            // onChanged would be called when data set of adapter changes
+            CardStackView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onChanged() {
+                    //Toast.makeText(HomeActivity.this,"recyclerview loaded",Toast.LENGTH_SHORT).show();
+                    loading_indicator_iv.setVisibility(View.GONE);
+                }
+            };
+            newsAdapter.registerAdapterDataObserver(observer);
+        }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(4);
@@ -168,6 +187,17 @@ public class NewsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void initViewElements() {
+        all_caught_up_iv = findViewById(R.id.all_caught_up_iv);
+        watch_more_videos_tv = findViewById(R.id.watch_more_videos_tv);
+        all_caught_up_tv = findViewById(R.id.all_caught_up_tv);
+        cardStackView = findViewById(R.id.card_stack_view);
+        loading_indicator_iv = findViewById(R.id.loading_indicator_news_iv);
+        offline_mode_iv = findViewById(R.id.offline_mode_iv);
+        offline_mode_tv = findViewById(R.id.offline_mode_tv);
+        go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
     }
 
     private void initNewsViewModel() {

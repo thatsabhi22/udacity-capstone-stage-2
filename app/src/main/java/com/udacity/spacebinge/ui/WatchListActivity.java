@@ -20,51 +20,71 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.WatchListAdapter;
 import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.viewmodels.WatchlistViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class WatchListActivity extends AppCompatActivity {
 
     WatchListAdapter watchListAdapter;
     RecyclerView watch_list_recycler_view;
-    ImageView loading_indicator_watchlist_iv, no_data_watch_list_iv;
-    TextView no_data_watch_list_tv;
+    ImageView loading_indicator_watchlist_iv, no_data_watch_list_iv, offline_mode_iv;
+    TextView no_data_watch_list_tv, offline_mode_tv, go_to_downloads_tv;
     Observer<List<VideoItem>> videoItemListObserver;
     WatchlistViewModel watchlistViewModel;
     List<VideoItem> videoCollection;
+    boolean isOffline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch_list);
 
-        watch_list_recycler_view = findViewById(R.id.watch_list_recycler_view);
-        loading_indicator_watchlist_iv = findViewById(R.id.loading_indicator_watchlist_iv);
-        no_data_watch_list_iv = findViewById(R.id.no_data_watch_list_iv);
-        no_data_watch_list_tv = findViewById(R.id.no_data_watch_list_tv);
+        // Initializing all view elements in this method call
+        initViewElements();
 
-        Glide
-                .with(this)
-                .asGif().load(R.drawable.globe_loading)
-                .into(loading_indicator_watchlist_iv);
-        videoCollection = new ArrayList<>();
+        try {
+            isOffline = new AppUtil.CheckOnlineStatus().execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        initWatchlistViewModel();
+        if (isOffline) {
+            offline_mode_iv.setVisibility(View.VISIBLE);
+            offline_mode_tv.setVisibility(View.VISIBLE);
+            go_to_downloads_tv.setVisibility(View.VISIBLE);
 
-        watchListAdapter = new WatchListAdapter(this, videoCollection);
-        watch_list_recycler_view.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        watch_list_recycler_view.setAdapter(watchListAdapter);
+            go_to_downloads_tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(WatchListActivity.this, DownloadActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            Glide
+                    .with(this)
+                    .asGif().load(R.drawable.globe_loading)
+                    .into(loading_indicator_watchlist_iv);
+            videoCollection = new ArrayList<>();
 
-        RecyclerView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onChanged() {
-                loading_indicator_watchlist_iv.setVisibility(View.GONE);
-            }
-        };
-        watchListAdapter.registerAdapterDataObserver(observer);
+            initWatchlistViewModel();
 
+            watchListAdapter = new WatchListAdapter(this, videoCollection);
+            watch_list_recycler_view.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+            watch_list_recycler_view.setAdapter(watchListAdapter);
+
+            RecyclerView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onChanged() {
+                    loading_indicator_watchlist_iv.setVisibility(View.GONE);
+                }
+            };
+            watchListAdapter.registerAdapterDataObserver(observer);
+        }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(1);
@@ -104,6 +124,16 @@ public class WatchListActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void initViewElements() {
+        watch_list_recycler_view = findViewById(R.id.watch_list_recycler_view);
+        loading_indicator_watchlist_iv = findViewById(R.id.loading_indicator_watchlist_iv);
+        no_data_watch_list_iv = findViewById(R.id.no_data_watch_list_iv);
+        no_data_watch_list_tv = findViewById(R.id.no_data_watch_list_tv);
+        offline_mode_iv = findViewById(R.id.offline_mode_iv);
+        offline_mode_tv = findViewById(R.id.offline_mode_tv);
+        go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
     }
 
     private void initWatchlistViewModel() {

@@ -22,7 +22,10 @@
         android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/loading_indicator_cd"
-        android:src="@drawable/globe_loading" />
+        android:src="@drawable/globe_loading"
+        android:visibility="gone" />
+
+    <include layout="@layout/offline_layout"/>
 
     <ImageView
         android:id="@+id/all_caught_up_iv"

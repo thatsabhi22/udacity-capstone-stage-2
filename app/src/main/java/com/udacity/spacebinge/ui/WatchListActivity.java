@@ -65,6 +65,7 @@ public class WatchListActivity extends AppCompatActivity {
                 }
             });
         } else {
+            loading_indicator_watchlist_iv.setVisibility(View.VISIBLE);
             Glide
                     .with(this)
                     .asGif().load(R.drawable.globe_loading)

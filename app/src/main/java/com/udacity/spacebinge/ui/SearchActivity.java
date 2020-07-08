@@ -65,7 +65,6 @@ public class SearchActivity extends AppCompatActivity {
             go_to_downloads_tv.setVisibility(View.VISIBLE);
             video_search_view.setVisibility(View.GONE);
 
-
             go_to_downloads_tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,6 +82,8 @@ public class SearchActivity extends AppCompatActivity {
             } else {
                 query = "";
             }
+
+            loading_indicator_search_iv.setVisibility(View.VISIBLE);
             Glide
                     .with(this)
                     .asGif().load(R.drawable.globe_loading)

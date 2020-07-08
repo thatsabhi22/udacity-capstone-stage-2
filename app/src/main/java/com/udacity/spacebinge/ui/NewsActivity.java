@@ -71,6 +71,8 @@ public class NewsActivity extends AppCompatActivity {
                 }
             });
         }  else {
+
+            loading_indicator_iv.setVisibility(View.VISIBLE);
             Glide
                     .with(this)
                     .asGif().load(R.drawable.globe_loading)

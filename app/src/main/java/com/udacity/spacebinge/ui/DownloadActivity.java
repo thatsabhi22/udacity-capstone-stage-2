@@ -19,10 +19,8 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.DownloadedAdapter;
-import com.udacity.spacebinge.adapters.WatchListAdapter;
 import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.viewmodels.DownloadlistViewModel;
-import com.udacity.spacebinge.viewmodels.WatchlistViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

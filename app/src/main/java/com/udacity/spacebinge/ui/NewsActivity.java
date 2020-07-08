@@ -39,9 +39,9 @@ public class NewsActivity extends AppCompatActivity {
     NewsAdapter newsAdapter;
     Observer<List<Article>> newsListObserver;
     NewsViewModel newsViewModel;
-    String query,api_key;
-    TextView watch_more_videos_tv, all_caught_up_tv,offline_mode_tv,go_to_downloads_tv;
-    ImageView all_caught_up_iv,loading_indicator_iv,offline_mode_iv;
+    String query, api_key;
+    TextView watch_more_videos_tv, all_caught_up_tv, offline_mode_tv, go_to_downloads_tv;
+    ImageView all_caught_up_iv, loading_indicator_iv, offline_mode_iv;
     List<Article> newsCollection;
     boolean isOffline;
 
@@ -70,7 +70,7 @@ public class NewsActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        }  else {
+        } else {
 
             loading_indicator_iv.setVisibility(View.VISIBLE);
             Glide

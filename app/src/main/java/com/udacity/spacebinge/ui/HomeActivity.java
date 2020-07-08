@@ -20,8 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.HomePageAdapter;
 import com.udacity.spacebinge.models.VideoItem;
-import com.udacity.spacebinge.repositories.VideoItemRepository;
-import com.udacity.spacebinge.tasks.SpaceWebService;
 import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.viewmodels.HomePageViewModel;
 

@@ -1,6 +1,7 @@
 package com.udacity.spacebinge.utils;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 
@@ -9,6 +10,10 @@ import androidx.core.content.ContextCompat;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -72,5 +77,35 @@ public class AppUtil {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float px = (sp * displayMetrics.scaledDensity);
         return px;
+    }
+
+    /**
+     * No Network Condition handled based on link below
+     * https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
+     */
+
+    public static boolean isOnline() {
+        try {
+            int timeoutMs = 1500;
+            Socket sock = new Socket();
+            SocketAddress sockaddr = new InetSocketAddress("8.8.8.8", 53);
+
+            sock.connect(sockaddr, timeoutMs);
+            sock.close();
+
+            return false;
+        } catch (IOException e) {
+            return true;
+        }
+    }
+
+    public static class CheckOnlineStatus extends AsyncTask<Void, Integer, Boolean> {
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            //This is a background thread, when it finishes executing will return the result from your function.
+            Boolean isOffline;
+            isOffline = isOnline();
+            return isOffline;
+        }
     }
 }

@@ -33,5 +33,9 @@
         <item>Earth</item>
         <item>Black Holes</item>
         <item>Outer Space</item>
+        <item>Mars</item>
+        <item>Planets</item>
+        <item>Asteroids</item>
+        <item>Constellation</item>
     </string-array>
 </resources>

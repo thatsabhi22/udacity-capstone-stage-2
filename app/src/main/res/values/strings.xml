@@ -29,6 +29,11 @@
     <string name="offline_iv_cd">Offline mode image view Content Description</string>
     <string name="offline_mode_tv">Please Check \n your Internet Connection</string>
     <string name="watch_offline_videos_tv">Watch Your Offline Videos</string>
+    <string name="create_account_tv_text">Create Account</string>
+    <string name="sign_up_email_edittext_hint">Email</string>
+    <string name="sign_up_p_edittext_hint">Password</string>
+    <string name="sign_up_c_p_edittext_hint">Confirm Password</string>
+    <string name="sign_up_button_text">SIGN UP ></string>
 
     <string-array name="topics">
         <item>Latest</item>

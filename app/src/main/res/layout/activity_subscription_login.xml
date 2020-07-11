@@ -16,70 +16,13 @@
         android:contentDescription="@string/app_icon_cd"
         android:src="@drawable/spacebinge_icon" />
 
-    <TextView
-        android:id="@+id/account_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_app_icon"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/create_account_tv_text"
-        android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/sign_up_email_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/account_tv"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:autofillHints="a@bf.c"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="@string/sign_up_email_edittext_hint"
-        android:inputType="textEmailAddress"
-        android:textColorHint="@android:color/white" />
-
-    <EditText
-        android:id="@+id/sign_up_p_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sign_up_email_edittext"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="@string/sign_up_p_edittext_hint"
-        android:inputType="textPassword"
-        android:textColorHint="@android:color/white" />
-
-    <EditText
-        android:id="@+id/sign_up_c_p_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sign_up_p_edittext"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="@string/sign_up_c_p_edittext_hint"
-        android:inputType="textPassword"
-        android:textColorHint="@android:color/white" />
-
     <Button
-        android:id="@+id/sign_up_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sign_up_c_p_edittext"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/sign_up_button_text"
-        android:textSize="16sp" />
+        android:id="@+id/google_sign_in_btn"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_google_signin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="280dp" />
 
     <RelativeLayout
         android:id="@+id/bottomBar"

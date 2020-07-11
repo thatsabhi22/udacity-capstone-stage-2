@@ -4,20 +4,45 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.udacity.spacebinge.R;
 
 public class SubscriptionLoginActivity extends AppCompatActivity {
 
+    Button google_sign_in_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_subscription_login);
+
+        google_sign_in_btn = findViewById(R.id.google_sign_in_btn);
+
+        google_sign_in_btn.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+                    google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin_light));
+                    return true;
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+
+                    google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin));
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();

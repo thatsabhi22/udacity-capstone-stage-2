@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "130094465980",
+    "firebase_url": "https://spacebinge-4f9aa.firebaseio.com",
+    "project_id": "spacebinge-4f9aa",
+    "storage_bucket": "spacebinge-4f9aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130094465980:android:2efda76c7f33599ef761b9",
+        "android_client_info": {
+          "package_name": "com.udacity.spacebinge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130094465980-8l9o05or85n3jo4jpsqkmdln1c687ea5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHN4r34DMWTAYz5kXr0-b1rP98iAuv-c4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130094465980-8l9o05or85n3jo4jpsqkmdln1c687ea5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

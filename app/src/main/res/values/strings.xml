@@ -42,6 +42,9 @@
     <string name="navigation_drawer_button_image_cd">Navigation Drawer Button Image</string>
     <string name="credits_image_cd">credits image</string>
     <string name="credit_text">This app is completely free. No Subscription required.All the videos, images and description contents in the app has been created by NASA.\n\nThe developers of this app have made an effort to bring you all this content from NASA  in a more user-friendly and handy manner.\n\nStream latest videos on latest happenings on NASA with Space Binge\n</string>
+    <string name="email_address_tv_text">Email Address</string>
+    <string name="sign_out_btn_text">Sign Out</string>
+    <string name="user_name_tv_text">User Name</string>
 
     <string-array name="topics">
         <item>Latest</item>

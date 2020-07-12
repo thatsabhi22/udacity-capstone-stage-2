@@ -48,6 +48,7 @@
             android:name=".ui.CreditsActivity"
             android:parentActivityName=".ui.HomeActivity" />
         <activity android:name=".ui.ProfileActivity"
+            android:noHistory="true"
             android:parentActivityName=".ui.HomeActivity"/>
     </application>
 

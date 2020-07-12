@@ -1,9 +1,9 @@
 package com.udacity.spacebinge.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.udacity.spacebinge.R;
 

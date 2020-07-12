@@ -71,11 +71,10 @@ public class SignUpActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    if(!isOffline){
+                    if (!isOffline) {
                         signIn();
                         sign_up_no_internet_tv.setVisibility(View.GONE);
-                    }
-                    else{
+                    } else {
                         sign_up_no_internet_tv.setVisibility(View.VISIBLE);
                     }
 

@@ -47,7 +47,7 @@ public class AppUtil {
         return getBytesToMBString(currentBytes) + "/" + getBytesToMBString(totalBytes);
     }
 
-    private static String getBytesToMBString(long bytes){
+    private static String getBytesToMBString(long bytes) {
         return String.format(Locale.ENGLISH, "%.2fMb", bytes / (1024.00 * 1024.00));
     }
 

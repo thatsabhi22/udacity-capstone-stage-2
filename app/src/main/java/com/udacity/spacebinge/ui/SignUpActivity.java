@@ -1,10 +1,10 @@
 package com.udacity.spacebinge.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,7 +19,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,10 +34,11 @@ public class SignUpActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subscription_login);
+        setContentView(R.layout.activity_signup);
 
         google_sign_in_btn = findViewById(R.id.google_sign_in_btn);
 
@@ -52,50 +52,16 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        google_sign_in_btn.setOnClickListener(new View.OnClickListener() {
+        google_sign_in_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(true);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.home:
-                        break;
-
-                    case R.id.watchlist:
-                        Intent intent1 = new Intent(SignUpActivity.this, WatchListActivity.class);
-                        //intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent1);
-                        break;
-
-                    case R.id.search:
-                        Intent intent2 = new Intent(SignUpActivity.this, SearchActivity.class);
-                        //intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent2);
-                        break;
-
-                    case R.id.downloaded:
-                        Intent intent3 = new Intent(SignUpActivity.this, DownloadActivity.class);
-                        //intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent3);
-                        break;
-
-                    case R.id.news:
-                        Intent intent4 = new Intent(SignUpActivity.this, NewsActivity.class);
-                        //intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent4);
-                        break;
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin_light));
+                    signIn();
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin));
                 }
-                return false;
+                return true;
             }
         });
     }

@@ -103,33 +103,24 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private void goToNavDrawerItem(int item) {
         switch (item) {
-            case R.id.nav_about:
-                startActivity(new Intent(this, AboutActivity.class));
+            case R.id.nav_home:
+                startActivity(new Intent(this, HomeActivity.class));
                 break;
-            case R.id.nav_credits:
-                startActivity(new Intent(this, CreditsActivity.class));
+            case R.id.nav_search:
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
-//            case R.id.nav_settings:
-//                startActivity(new Intent(this, SettingsActivity.class));
-//                break;
+            case R.id.nav_watchlist:
+                startActivity(new Intent(this, WatchListActivity.class));
+                break;
+            case R.id.nav_downloads:
+                startActivity(new Intent(this, DownloadActivity.class));
+                break;
+            case R.id.nav_news:
+                startActivity(new Intent(this, NewsActivity.class));
+                break;
+
         }
     }
-
-    /**
-     * Provides the action bar instance.
-     *
-     * @return the action bar.
-     */
-    protected ActionBar getActionBarToolbar() {
-        if (actionBarToolbar == null) {
-            actionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
-            if (actionBarToolbar != null) {
-                setSupportActionBar(actionBarToolbar);
-            }
-        }
-        return getSupportActionBar();
-    }
-
 
     /**
      * Returns the navigation drawer item that corresponds to this Activity. Subclasses

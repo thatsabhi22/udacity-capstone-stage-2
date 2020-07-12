@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,7 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     public static final String TAG = HomeActivity.class.getSimpleName();
     HomePageViewModel homePageViewModel;
@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     HomePageAdapter homePageAdapter;
     ImageView loading_indicator_iv;
     TextView offline_mode_tv, go_to_downloads_tv;
-    ImageView offline_mode_iv;
+    ImageView offline_mode_iv,nav_drawer_btn_iv;
     boolean isOffline;
     private Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;
@@ -74,6 +74,13 @@ public class HomeActivity extends AppCompatActivity {
                     .with(this)
                     .asGif().load(R.drawable.globe_loading)
                     .into(loading_indicator_iv);
+
+            nav_drawer_btn_iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDrawer();
+                }
+            });
 
             videoCollection = new LinkedHashMap<String, List<VideoItem>>();
             topics = Arrays.asList(getResources().getStringArray(R.array.topics));
@@ -139,6 +146,7 @@ public class HomeActivity extends AppCompatActivity {
         offline_mode_iv = findViewById(R.id.offline_mode_iv);
         go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
         loading_indicator_iv = findViewById(R.id.loading_indicator_home_iv);
+        nav_drawer_btn_iv = findViewById(R.id.nav_drawer_btn_iv);
     }
 
     private void initHomepageViewModel() {
@@ -162,5 +170,20 @@ public class HomeActivity extends AppCompatActivity {
                 .get(HomePageViewModel.class);
         homePageViewModel.getLatest(topics, "video")
                 .observe(HomeActivity.this, videoItemObserver);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                openDrawer();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean providesActivityToolbar() {
+        return true;
     }
 }

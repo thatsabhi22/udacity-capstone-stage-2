@@ -35,6 +35,7 @@
     <string name="sign_up_c_p_edittext_hint">Confirm Password</string>
     <string name="sign_up_button_text">SIGN UP ></string>
     <string name="navigation_drawer_header_image_cd">navigation drawer header image</string>
+    <string name="navigation_drawer_button_image_cd">Navigation Drawer Button Image</string>
 
     <string-array name="topics">
         <item>Latest</item>

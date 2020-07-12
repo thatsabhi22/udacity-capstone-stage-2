@@ -24,6 +24,20 @@
         android:contentDescription="@string/app_icon_cd"
         android:src="@drawable/icon_text_full" />
 
+    <TextView
+        android:id="@+id/sign_up_no_internet_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/google_sign_in_btn"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="64dp"
+        android:text="@string/offline_mode_tv"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/google_sign_in_btn"
         android:layout_width="180dp"

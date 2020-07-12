@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,14 +26,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.udacity.spacebinge.R;
+import com.udacity.spacebinge.utils.AppUtil;
+
+import java.util.concurrent.ExecutionException;
 
 public class SignUpActivity extends AppCompatActivity {
 
     public static final int RC_SIGN_IN = 22;
     private static final String TAG = "SignUpActivity";
     Button google_sign_in_btn;
+    TextView sign_up_no_internet_tv;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth;
+    boolean isOffline;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -41,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         google_sign_in_btn = findViewById(R.id.google_sign_in_btn);
+        sign_up_no_internet_tv = findViewById(R.id.sign_up_no_internet_tv);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -57,7 +64,21 @@ public class SignUpActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin_light));
-                    signIn();
+
+                    try {
+                        isOffline = new AppUtil.CheckOnlineStatus().execute().get();
+                    } catch (ExecutionException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    if(!isOffline){
+                        signIn();
+                        sign_up_no_internet_tv.setVisibility(View.GONE);
+                    }
+                    else{
+                        sign_up_no_internet_tv.setVisibility(View.VISIBLE);
+                    }
+
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin));
                 }
@@ -72,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            Intent intent = new Intent(this, ProfileActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         }
     }
@@ -113,7 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(SignUpActivity.this, "Display Name ->" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignUpActivity.this, ProfileActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.

@@ -5,6 +5,10 @@
     <string name="search">Search</string>
     <string name="downloaded">Downloaded</string>
     <string name="news">News</string>
+    <string name="news_nav_menu">Latest @NASA</string>
+    <string name="credits_nav_menu">Credits</string>
+    <string name="profile">Profile</string>
+    <string name="credits">Credits</string>
     <string name="see_all_text">See All</string>
     <string name="video_dwn_cont_desc">Video Download Button</string>
     <string name="video_watchlist_cont_desc">Video Watchlist Button</string>
@@ -36,6 +40,8 @@
     <string name="sign_up_button_text">SIGN UP ></string>
     <string name="navigation_drawer_header_image_cd">navigation drawer header image</string>
     <string name="navigation_drawer_button_image_cd">Navigation Drawer Button Image</string>
+    <string name="credits_image_cd">credits image</string>
+    <string name="credit_text">This app is completely free. No Subscription required.All the videos, images and description contents in the app has been created by NASA.\n\nThe developers of this app have made an effort to bring you all this content from NASA  in a more user-friendly and handy manner.\n\nStream latest videos on latest happenings on NASA with Space Binge\n</string>
 
     <string-array name="topics">
         <item>Latest</item>

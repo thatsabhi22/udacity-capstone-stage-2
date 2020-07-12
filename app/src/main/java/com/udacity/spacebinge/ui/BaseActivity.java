@@ -106,14 +106,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.nav_home:
                 startActivity(new Intent(this, HomeActivity.class));
                 break;
-            case R.id.nav_search:
-                startActivity(new Intent(this, SearchActivity.class));
+            case R.id.nav_profile:
+                startActivity(new Intent(this, ProfileActivity.class));
                 break;
-            case R.id.nav_watchlist:
-                startActivity(new Intent(this, WatchListActivity.class));
-                break;
-            case R.id.nav_downloads:
-                startActivity(new Intent(this, DownloadActivity.class));
+            case R.id.nav_credits:
+                startActivity(new Intent(this, CreditsActivity.class));
                 break;
             case R.id.nav_news:
                 startActivity(new Intent(this, NewsActivity.class));

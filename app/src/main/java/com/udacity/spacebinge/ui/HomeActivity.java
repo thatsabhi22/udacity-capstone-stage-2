@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +35,7 @@ public class HomeActivity extends BaseActivity {
     HomePageAdapter homePageAdapter;
     ImageView loading_indicator_iv;
     TextView offline_mode_tv, go_to_downloads_tv;
-    ImageView offline_mode_iv,nav_drawer_btn_iv;
+    ImageView offline_mode_iv, nav_drawer_btn_iv;
     boolean isOffline;
     private Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;

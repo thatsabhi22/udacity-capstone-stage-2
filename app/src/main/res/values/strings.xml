@@ -45,6 +45,7 @@
     <string name="email_address_tv_text">Email Address</string>
     <string name="sign_out_btn_text">Sign Out</string>
     <string name="user_name_tv_text">User Name</string>
+    <string name="fullscreen_button_cd">FullScreen Button</string>
 
     <string-array name="topics">
         <item>Latest</item>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,12 +9,12 @@
     tools:context=".ui.PlayerActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/exo_player_card_view"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_weight="3"
         android:backgroundTint="@color/colorAccent"
         android:elevation="10dp"
         app:cardCornerRadius="6dp">
@@ -33,16 +33,15 @@
                 android:layout_marginBottom="@dimen/short_margin"
                 app:layout_constraintDimensionRatio="4:3"
                 app:use_artwork="true" />
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/exo_player_card_view"
+        android:visibility="gone"
+        android:layout_height="0dp"
         android:layout_margin="12dp"
-        android:layout_above="@id/bottomBar"
+        android:layout_weight="10"
         android:elevation="4dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="28dp">
@@ -134,9 +133,10 @@
 
     <RelativeLayout
         android:id="@+id/bottomBar"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_bar_navigation"
@@ -148,4 +148,4 @@
             app:menu="@menu/bottom_navigation_menu" />
 
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

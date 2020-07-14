@@ -49,6 +49,13 @@ public class HomeActivity extends BaseActivity {
         // Initializing all view elements in this method call
         initViewElements();
 
+        nav_drawer_btn_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer();
+            }
+        });
+
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -73,13 +80,6 @@ public class HomeActivity extends BaseActivity {
                     .with(this)
                     .asGif().load(R.drawable.globe_loading)
                     .into(loading_indicator_iv);
-
-            nav_drawer_btn_iv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openDrawer();
-                }
-            });
 
             videoCollection = new LinkedHashMap<String, List<VideoItem>>();
             topics = Arrays.asList(getResources().getStringArray(R.array.topics));

@@ -1,13 +1,17 @@
 package com.udacity.spacebinge.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.OrientationEventListener;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -42,13 +46,10 @@ import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.viewmodels.PlayerViewModel;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 
 public class PlayerActivity extends AppCompatActivity {
@@ -59,8 +60,10 @@ public class PlayerActivity extends AppCompatActivity {
     public static final String VIDEO_PLAY_WINDOW_INDEX = "video_play_window_index";
     public static final String VIDEO_SINGLE = "video_single";
     private static String dirPath;
+    OrientationEventListener mListener;
     TextView videoTitleTV, videoDateTV, videoDescriptionTV;
     ImageView do_watchlist_icon_iv, do_download_icon_iv;
+    ImageButton exo_fullscreen;
     PlayerViewModel playerViewModel;
     ProgressBar download_progressbar;
     Observer<VideoItem> videoItemObserver;
@@ -96,7 +99,6 @@ public class PlayerActivity extends AppCompatActivity {
         // Get the VideoItem object passed from HomePage from Intent
         current = intent.getParcelableExtra(VIDEO_ITEM_OBJECT);
 
-
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         dirPath = AppUtil.getRootDirPath(getApplicationContext()) + "/videos/";
 
@@ -110,6 +112,25 @@ public class PlayerActivity extends AppCompatActivity {
         date = AppUtil.formatDate(date);
         videoDateTV.setText(date);
         videoDescriptionTV.setText(current.getDescription());
+
+        exo_fullscreen.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SourceLockedOrientationActivity")
+            @Override
+            public void onClick(View v) {
+                if (getResources().getConfiguration().orientation == SCREEN_ORIENTATION_PORTRAIT) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE);
+                } else {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
+                }
+            }
+        });
+
+        mListener = new OrientationEventListener(this) {
+            @Override
+            public void onOrientationChanged(int orientation) {
+                Toast.makeText(PlayerActivity.this, "Orientation Changed" + orientation, Toast.LENGTH_SHORT).show();
+            }
+        };
 
         videoItem = new VideoItem();
 
@@ -140,7 +161,6 @@ public class PlayerActivity extends AppCompatActivity {
                     }
                 });
 
-
         // Check if there is any state saved
         if (savedInstanceState != null) {
             current = savedInstanceState.getParcelable(VIDEO_SINGLE);
@@ -152,9 +172,9 @@ public class PlayerActivity extends AppCompatActivity {
             //mVideoUri = Uri.parse("https://images-assets.nasa.gov/video/GSFC_20190130_NICER_m12854_BlkHole/GSFC_20190130_NICER_m12854_BlkHole~mobile.mp4");
             //mVideoUri = Uri.parse("http://images-assets.nasa.gov/video/42_RethinkingAnAlienWorld/42_RethinkingAnAlienWorld~mobile.mp4");
 
-            if(isOffline){
-                mVideoUri =  Uri.parse(current.getStorage_path());
-            }else {
+            if (isOffline) {
+                mVideoUri = Uri.parse(current.getStorage_path());
+            } else {
                 mVideoUri = Uri.parse(current.getVideo_url());
             }
         }
@@ -227,6 +247,7 @@ public class PlayerActivity extends AppCompatActivity {
         do_watchlist_icon_iv = findViewById(R.id.do_watchlist_icon);
         do_download_icon_iv = findViewById(R.id.do_download_icon);
         download_progressbar = findViewById(R.id.download_progressbar);
+        exo_fullscreen = findViewById(R.id.exo_fullscreen);
     }
 
     // Get the current state of the player

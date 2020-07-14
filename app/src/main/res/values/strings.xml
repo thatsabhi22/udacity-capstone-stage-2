@@ -46,6 +46,8 @@
     <string name="sign_out_btn_text">Sign Out</string>
     <string name="user_name_tv_text">User Name</string>
     <string name="fullscreen_button_cd">FullScreen Button</string>
+    <string name="splash_background_cd">Splash Background</string>
+    <string name="splash_loading_indicator_cd">Splash Screen Loading Indicator</string>
 
     <string-array name="topics">
         <item>Latest</item>

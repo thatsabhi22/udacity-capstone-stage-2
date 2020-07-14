@@ -45,7 +45,7 @@
         android:layout_above="@id/bottomBar"
         android:elevation="4dp"
         app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="28dp">
+        app:cardCornerRadius="20dp">
 
         <ScrollView
             android:layout_width="match_parent"

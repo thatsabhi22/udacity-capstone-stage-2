@@ -33,13 +33,15 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.SignUpActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".ui.SplashActivity"
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SplashActivity" />
         <activity
             android:name=".ui.HomeActivity"
             android:theme="@style/NoActionBar" />
@@ -51,5 +53,4 @@
             android:noHistory="true"
             android:parentActivityName=".ui.HomeActivity" />
     </application>
-
 </manifest>

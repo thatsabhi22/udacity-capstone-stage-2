@@ -125,13 +125,6 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        mListener = new OrientationEventListener(this) {
-            @Override
-            public void onOrientationChanged(int orientation) {
-                Toast.makeText(PlayerActivity.this, "Orientation Changed" + orientation, Toast.LENGTH_SHORT).show();
-            }
-        };
-
         videoItem = new VideoItem();
 
         playerViewModel.getVideoItemsByNasaIdWatchList(current.getNasa_id())

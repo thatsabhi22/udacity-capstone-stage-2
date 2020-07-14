@@ -2,6 +2,7 @@ package com.udacity.spacebinge.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.HomePageAdapter;
 import com.udacity.spacebinge.models.VideoItem;
@@ -37,6 +39,7 @@ public class HomeActivity extends BaseActivity {
     TextView offline_mode_tv, go_to_downloads_tv;
     ImageView offline_mode_iv, nav_drawer_btn_iv;
     boolean isOffline;
+    Intent logout;
     private Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;
     private List<String> topics;
@@ -55,6 +58,11 @@ public class HomeActivity extends BaseActivity {
                 openDrawer();
             }
         });
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
+            logout = new Intent(this,SignUpActivity.class);
+            startActivity(logout);
+        }
 
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();

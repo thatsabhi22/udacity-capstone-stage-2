@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_web"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:background="@color/cardview_dark_background"
+    android:padding="2dp"
+    tools:context=".ui.WebActivity">
+
+    <com.udacity.spacebinge.utils.DotProgressBar
+        android:id="@+id/dot_progress_bar"
+        android:layout_width="130dp"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="180dp"
+        custom:amount="4"
+        custom:duration="@android:integer/config_mediumAnimTime"
+        custom:endColor="@color/colorPrimary"
+        custom:startColor="@color/colorAccent" />
+
+    <WebView
+        android:id="@+id/news_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

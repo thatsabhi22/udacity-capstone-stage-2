@@ -1,12 +1,14 @@
 package com.udacity.spacebinge.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.Article;
+import com.udacity.spacebinge.ui.WebActivity;
 import com.udacity.spacebinge.utils.AppUtil;
 
 import java.util.List;
@@ -54,6 +57,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         holder.published_at_tv.setText(AppUtil.formatDate(current.getPublishedAt()));
         holder.news_url_tv.setText(current.getUrl());
         holder.news_description_tv.setText(current.getDescription());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(mContext, current.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, WebActivity.class);
+                intent.putExtra("newsArticleUrl", current.getUrl());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

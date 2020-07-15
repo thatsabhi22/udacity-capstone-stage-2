@@ -1,7 +1,5 @@
 package com.udacity.spacebinge.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +7,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.utils.DotProgressBar;

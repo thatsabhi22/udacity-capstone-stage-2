@@ -48,7 +48,6 @@ import com.udacity.spacebinge.viewmodels.PlayerViewModel;
 
 import java.util.concurrent.ExecutionException;
 
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
 

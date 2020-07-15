@@ -37,20 +37,20 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
             if (position != state.getItemCount() - 1) {
                 outRect.right = horizontalSpacing;
             }
-        }else if (type == 1){
+        } else if (type == 1) {
             //First Item
-            if (position == 0){
+            if (position == 0) {
                 outRect.left = start;
-                if (state.getItemCount() == 1){
+                if (state.getItemCount() == 1) {
                     //Single Item
                     outRect.right = end;
-                }else{
+                } else {
                     outRect.right = middle;
                 }
-            }else if (position == state.getItemCount() - 1){
+            } else if (position == state.getItemCount() - 1) {
                 //Last Item
-                outRect.right =end;
-            }else{
+                outRect.right = end;
+            } else {
                 outRect.right = middle;
             }
         }

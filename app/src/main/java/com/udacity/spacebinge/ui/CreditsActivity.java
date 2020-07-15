@@ -15,10 +15,7 @@ public class CreditsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
-
         credits_tv = findViewById(R.id.credits_tv);
-
         credits_tv.setText(getString(R.string.credit_text));
-
     }
 }

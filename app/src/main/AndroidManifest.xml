@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.udacity.spacebinge">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -54,5 +53,17 @@
             android:name=".ui.ProfileActivity"
             android:noHistory="true"
             android:parentActivityName=".ui.HomeActivity" />
+
+        <receiver android:name=".widget.SpaceBingeWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/spacebingewidgetinfo" />
+        </receiver>
+
+        <service android:name=".widget.SpaceBingeWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false" />
     </application>
 </manifest>

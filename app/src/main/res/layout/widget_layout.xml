@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/app_title"
+        android:text="@string/space_binge_widget_title_tv"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:background="@android:color/background_dark"
+        android:textColor="@color/colorPrimary"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ListView
+        android:id="@+id/w_list_view"
+        android:layout_width="match_parent"
+        android:layout_below="@id/app_title"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:loopViews="true" />
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_below="@id/app_title"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@drawable/widget_item_background"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="@string/empty_view_text"
+        android:textSize="20sp" />
+</RelativeLayout>

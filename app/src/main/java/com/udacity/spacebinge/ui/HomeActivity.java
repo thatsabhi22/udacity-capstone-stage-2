@@ -2,7 +2,6 @@ package com.udacity.spacebinge.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,8 +58,8 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
-        if(FirebaseAuth.getInstance().getCurrentUser() == null){
-            logout = new Intent(this,SignUpActivity.class);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            logout = new Intent(this, SignUpActivity.class);
             startActivity(logout);
         }
 

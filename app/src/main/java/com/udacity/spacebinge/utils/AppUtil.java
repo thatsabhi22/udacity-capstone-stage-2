@@ -1,5 +1,6 @@
 package com.udacity.spacebinge.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -107,5 +108,15 @@ public class AppUtil {
             isOffline = isOnline();
             return isOffline;
         }
+    }
+
+    public static void showpDialog(ProgressDialog pDialog) {
+        if (!pDialog.isShowing())
+            pDialog.show();
+    }
+
+    public static void hidepDialog(ProgressDialog pDialog) {
+        if (pDialog.isShowing())
+            pDialog.dismiss();
     }
 }

@@ -1,6 +1,7 @@
 package com.udacity.spacebinge.ui;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth;
     boolean isOffline;
+    private ProgressDialog pDialog;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -62,6 +64,10 @@ public class SignUpActivity extends AppCompatActivity {
         google_sign_in_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                pDialog = new ProgressDialog(SignUpActivity.this);
+                pDialog.setMessage("Stars can't Shine without Darkness...");
+                pDialog.setCancelable(false);
+
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     google_sign_in_btn.setBackground(getDrawable(R.drawable.btn_google_signin_light));
 
@@ -72,6 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
 
                     if (!isOffline) {
+                        AppUtil.showpDialog(pDialog);
                         signIn();
                         sign_up_no_internet_tv.setVisibility(View.GONE);
                     } else {
@@ -132,7 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(SignUpActivity.this, "Display Name ->" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignUpActivity.this, "Display Name ->" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                             startActivity(intent);
                         } else {

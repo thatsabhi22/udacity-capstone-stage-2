@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
@@ -49,7 +48,10 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "OnResume Called", Toast.LENGTH_SHORT).show();
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            logout = new Intent(this, SignUpActivity.class);
+            startActivity(logout);
+        }
     }
 
     @Override
@@ -69,10 +71,6 @@ public class HomeActivity extends BaseActivity {
                 openDrawer();
             }
         });
-
-        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-           return;
-        }
 
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();

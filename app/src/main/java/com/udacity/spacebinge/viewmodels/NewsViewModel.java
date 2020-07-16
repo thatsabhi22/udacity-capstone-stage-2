@@ -23,4 +23,8 @@ public class NewsViewModel extends AndroidViewModel {
     public LiveData<List<Article>> getLatestNews(String query, String api_key) {
         return newsRepository.getLatestNews(query, api_key);
     }
+
+    public List<Article> getNews(String query, String api_key) {
+        return newsRepository.getNews(query, api_key);
+    }
 }

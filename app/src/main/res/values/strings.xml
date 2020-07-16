@@ -48,8 +48,8 @@
     <string name="fullscreen_button_cd">FullScreen Button</string>
     <string name="splash_background_cd">Splash Background</string>
     <string name="splash_loading_indicator_cd">Splash Screen Loading Indicator</string>
-    <string name="empty_view_text">This is the empty view</string>
-    <string name="space_binge_widget_title_tv">SPACE BINGE</string>
+    <string name="empty_view_text">Loading Latest News....</string>
+    <string name="space_binge_widget_title_tv">SPACE BINGE NEWS</string>
 
     <string-array name="topics">
         <item>Latest</item>

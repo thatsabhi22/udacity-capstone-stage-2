@@ -7,14 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import com.udacity.spacebinge.R;
+import com.udacity.spacebinge.ui.WebActivity;
 
-public class SpaceBingeWidgetProvider  extends AppWidgetProvider {
+public class SpaceBingeWidgetProvider extends AppWidgetProvider {
     public static final String TOAST_ACTION = "com.udacity.spacebinge.TOAST_ACTION";
     public static final String EXTRA_ITEM = "com.udacity.spacebinge.EXTRA_ITEM";
-
+    public static final String NEWS_ITEM = "com.udacity.spacebinge.NEWS_ITEM";
 
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
@@ -38,7 +38,11 @@ public class SpaceBingeWidgetProvider  extends AppWidgetProvider {
             int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                     AppWidgetManager.INVALID_APPWIDGET_ID);
             int viewIndex = intent.getIntExtra(EXTRA_ITEM, 0);
-            Toast.makeText(context, "Touched view " + viewIndex, Toast.LENGTH_SHORT).show();
+            String url = intent.getStringExtra("newsArticleUrl");
+            Intent openIntent = new Intent(context, WebActivity.class);
+            openIntent.putExtra("newsArticleUrl", url);
+            openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(openIntent);
         }
         super.onReceive(context, intent);
     }
@@ -78,5 +82,4 @@ public class SpaceBingeWidgetProvider  extends AppWidgetProvider {
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
-
 }

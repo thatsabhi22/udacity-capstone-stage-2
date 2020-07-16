@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
@@ -46,6 +47,12 @@ public class HomeActivity extends BaseActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "OnResume Called", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -64,8 +71,7 @@ public class HomeActivity extends BaseActivity {
         });
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            logout = new Intent(this, SignUpActivity.class);
-            startActivity(logout);
+           return;
         }
 
         try {

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="200dp"
     android:minHeight="200dp"
+    android:widgetCategory="home_screen"
     android:updatePeriodMillis="3600000"
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/widget_layout"

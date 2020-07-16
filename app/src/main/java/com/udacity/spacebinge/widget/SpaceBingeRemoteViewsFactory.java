@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpaceBingeRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
-    private static final int mCount = 10;
+    private static int mCount = 10;
     NewsRepository newsRepository;
     private List<Article> mWidgetItems = new ArrayList<>();
     private Context mContext;
@@ -35,6 +35,7 @@ public class SpaceBingeRemoteViewsFactory implements RemoteViewsService.RemoteVi
         mWidgetItems = newsRepository
                 .getNews(mContext.getString(R.string.default_news_query),
                         mContext.getString(R.string.news_api_key));
+        mCount = mWidgetItems.size();
 
         // We sleep for 3 seconds here to show how the empty view appears in the interim.
         // The empty view is set in the SpaceBingeWidgetProvider and should be a sibling of the
@@ -65,14 +66,13 @@ public class SpaceBingeRemoteViewsFactory implements RemoteViewsService.RemoteVi
             rv.setTextViewText(R.id.widget_item, mWidgetItems.get(position).getTitle());
             extras.putInt(SpaceBingeWidgetProvider.EXTRA_ITEM, position);
             extras.putString("newsArticleUrl", mWidgetItems.get(position).getUrl());
+
+            // Next, we set a fill-intent which will be used to fill-in the pending intent template
+            // which is set on the collection view in SpaceBingeWidgetProvider.
+            Intent fillInIntent = new Intent();
+            fillInIntent.putExtras(extras);
+            rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent);
         }
-        // Next, we set a fill-intent which will be used to fill-in the pending intent template
-        // which is set on the collection view in SpaceBingeWidgetProvider.
-        Intent fillInIntent = new Intent();
-        fillInIntent.putExtras(extras);
-        rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent);
-
-
         // You can do heaving lifting in here, synchronously. For example, if you need to
         // process an image, fetch something from the network, etc., it is ok to do it here,
         // synchronously. A loading view will show up in lieu of the actual contents in the

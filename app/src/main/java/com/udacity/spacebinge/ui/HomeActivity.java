@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.adapters.HomePageAdapter;
@@ -42,6 +43,7 @@ public class HomeActivity extends BaseActivity {
     private Observer<LinkedHashMap<String, List<VideoItem>>> videoItemObserver;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;
     private List<String> topics;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,9 @@ public class HomeActivity extends BaseActivity {
 
         // Initializing all view elements in this method call
         initViewElements();
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         nav_drawer_btn_iv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +188,10 @@ public class HomeActivity extends BaseActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 openDrawer();
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "navigation_drawer");
+                bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "button");
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
                 return true;
         }
         return super.onOptionsItemSelected(item);

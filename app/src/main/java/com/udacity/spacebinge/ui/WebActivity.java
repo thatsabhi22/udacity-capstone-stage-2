@@ -40,7 +40,7 @@ public class WebActivity extends AppCompatActivity {
             news_web_view.getSettings().setSupportZoom(true);
             news_web_view.getSettings().setBuiltInZoomControls(true);
             news_web_view.loadUrl(articleUrl);
-            news_web_view.setBackgroundColor(Color.TRANSPARENT);
+            news_web_view.setBackgroundColor(Color.TRANSPARENT);    
         }
     }
 

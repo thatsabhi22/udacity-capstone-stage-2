@@ -14,7 +14,6 @@ import com.udacity.spacebinge.ui.WebActivity;
 public class SpaceBingeWidgetProvider extends AppWidgetProvider {
     public static final String TOAST_ACTION = "com.udacity.spacebinge.TOAST_ACTION";
     public static final String EXTRA_ITEM = "com.udacity.spacebinge.EXTRA_ITEM";
-    public static final String NEWS_ITEM = "com.udacity.spacebinge.NEWS_ITEM";
 
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {

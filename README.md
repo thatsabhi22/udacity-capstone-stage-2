@@ -42,14 +42,20 @@ public viewership.
 - Material Design
   - RecyclerView with ViewHolder
   - CardView
+  - Card Stack View ( News Section )
 
 - Google Firebase
   - Firebase Identity
   - Firebase analytics
 
+- Video Downloading library
+  - PRdownloader
+
 - Stetho ( A debugging library for Android applications )
 - Android Homescreen Widget
 
+
+.
 ![Alt text](/Screenshots/s1.png?raw=true)
 ![Alt text](/Screenshots/s2.png?raw=true)
 ![Alt text](/Screenshots/s3.png?raw=true)

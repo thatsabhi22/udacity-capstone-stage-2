@@ -45,7 +45,7 @@ public viewership.
   - Card Stack View ( News Section )
 
 - Google Firebase
-  - Firebase Identity
+  - Firebase Auth
   - Firebase analytics
 
 - Video Downloading library

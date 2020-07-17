@@ -1,0 +1,88 @@
+07-18 00:33:25.790 3263-3263/? I/art: Late-enabling -Xcheck:jni
+07-18 00:33:26.562 3263-3263/com.udacity.spacebinge W/System: ClassLoader referenced unknown path: /data/app/com.udacity.spacebinge-1/lib/arm
+07-18 00:33:27.319 3263-3314/com.udacity.spacebinge I/DynamiteModule: Considering local module com.google.android.gms.measurement.dynamite:15 and remote module com.google.android.gms.measurement.dynamite:0
+07-18 00:33:27.319 3263-3314/com.udacity.spacebinge I/DynamiteModule: Selected local version of com.google.android.gms.measurement.dynamite
+07-18 00:33:27.392 3263-3273/com.udacity.spacebinge W/art: Suspending all threads took: 6.969ms
+07-18 00:33:27.434 3263-3273/com.udacity.spacebinge I/art: Background sticky concurrent mark sweep GC freed 11852(596KB) AllocSpace objects, 1(20KB) LOS objects, 29% free, 7MB/11MB, paused 40.501ms total 149.886ms
+07-18 00:33:27.452 3263-3317/com.udacity.spacebinge W/DynamiteModule: Local module descriptor class for com.google.firebase.auth not found.
+07-18 00:33:27.481 3263-3263/com.udacity.spacebinge I/FirebaseInitProvider: FirebaseApp initialization successful
+07-18 00:33:27.570 3263-3319/com.udacity.spacebinge W/DynamiteModule: Local module descriptor class for com.google.firebase.auth not found.
+07-18 00:33:27.595 3263-3319/com.udacity.spacebinge I/FirebaseAuth: [FirebaseAuth:] Preparing to create service connection to gms implementation
+07-18 00:33:27.655 3263-3322/com.udacity.spacebinge I/stetho: Listening on @stetho_com.udacity.spacebinge_devtools_remote
+07-18 00:33:27.767 3263-3263/com.udacity.spacebinge W/art: Before Android 4.1, method android.graphics.PorterDuffColorFilter androidx.vectordrawable.graphics.drawable.VectorDrawableCompat.updateTintFilter(android.graphics.PorterDuffColorFilter, android.content.res.ColorStateList, android.graphics.PorterDuff$Mode) would have incorrectly overridden the package-private method in android.graphics.drawable.Drawable
+07-18 00:33:27.789 3263-3321/com.udacity.spacebinge V/FA: App measurement enabled for app package, google app id: com.udacity.spacebinge, 1:130094465980:android:2efda76c7f33599ef761b9
+07-18 00:33:27.791 3263-3321/com.udacity.spacebinge I/FA: App measurement initialized, version: 31000
+07-18 00:33:27.791 3263-3321/com.udacity.spacebinge I/FA: To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+07-18 00:33:27.792 3263-3321/com.udacity.spacebinge I/FA: To enable faster debug mode event logging run:
+      adb shell setprop debug.firebase.analytics.app com.udacity.spacebinge
+07-18 00:33:27.792 3263-3321/com.udacity.spacebinge D/FA: Debug-level message logging enabled
+07-18 00:33:27.792 3263-3321/com.udacity.spacebinge V/FA: Persisting first open: 1595012607283
+07-18 00:33:27.801 3263-3321/com.udacity.spacebinge V/FA: App measurement setting deferred collection: false
+07-18 00:33:27.803 3263-3314/com.udacity.spacebinge V/FA: onActivityCreated
+07-18 00:33:27.881 3263-3263/com.udacity.spacebinge I/art: Rejecting re-init on previously-failed class java.lang.Class<androidx.core.view.ViewCompat$2>
+07-18 00:33:27.881 3263-3263/com.udacity.spacebinge I/art: Rejecting re-init on previously-failed class java.lang.Class<androidx.core.view.ViewCompat$2>
+07-18 00:33:28.117 3263-3263/com.udacity.spacebinge W/Glide: Failed to find GeneratedAppGlideModule. You should include an annotationProcessor compile dependency on com.github.bumptech.glide:compiler in your application and a @GlideModule annotated AppGlideModule implementation or LibraryGlideModules will be silently ignored
+07-18 00:33:28.281 3263-3340/com.udacity.spacebinge D/OpenGLRenderer: Use EGL_SWAP_BEHAVIOR_PRESERVED: true
+07-18 00:33:28.349 3263-3340/com.udacity.spacebinge I/Adreno-EGL: <qeglDrvAPI_eglInitialize:379>: QUALCOMM Build: 10/09/15, 6cbbf7d, I3193f6e94a
+07-18 00:33:28.364 3263-3340/com.udacity.spacebinge I/OpenGLRenderer: Initialized EGL, version 1.4
+07-18 00:33:29.475 3263-3321/com.udacity.spacebinge V/FA: Checking service availability
+07-18 00:33:29.481 3263-3321/com.udacity.spacebinge V/FA: Service available
+07-18 00:33:29.489 3263-3321/com.udacity.spacebinge V/FA: Connecting to remote service
+07-18 00:33:29.511 3263-3321/com.udacity.spacebinge V/FA: Session started, time: 253875601
+07-18 00:33:29.622 3263-3321/com.udacity.spacebinge I/FA: Tag Manager is not found and thus will not be used
+07-18 00:33:29.656 3263-3321/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:33:29.673 3263-3321/com.udacity.spacebinge V/FA: Activity resumed, time: 253874340
+07-18 00:33:29.706 3263-3321/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:33:29.707 3263-3321/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:33:29.709 3263-3321/com.udacity.spacebinge D/FA: Connected to remote service
+07-18 00:33:29.710 3263-3321/com.udacity.spacebinge V/FA: Processing queued up service tasks: 6
+07-18 00:33:31.362 3263-3321/com.udacity.spacebinge V/FA: Recording user engagement, ms: 3084
+07-18 00:33:31.370 3263-3321/com.udacity.spacebinge V/FA: Activity paused, time: 253877429
+07-18 00:33:31.592 3263-3321/com.udacity.spacebinge V/FA: Activity resumed, time: 253877680
+07-18 00:33:31.740 3263-3340/com.udacity.spacebinge E/Surface: getSlotFromBufferLocked: unknown buffer: 0xba0dd958
+07-18 00:33:36.680 3263-3321/com.udacity.spacebinge V/FA: Inactivity, disconnecting from the service
+07-18 00:37:28.447 3263-3707/com.udacity.spacebinge V/FA: Connecting to remote service
+07-18 00:37:28.466 3263-3707/com.udacity.spacebinge V/FA: Activity paused, time: 254114524
+07-18 00:37:28.500 3263-3707/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:37:28.637 3263-3706/com.udacity.spacebinge V/FA: onActivityCreated
+07-18 00:37:28.674 3263-3707/com.udacity.spacebinge V/FA: Activity resumed, time: 254114761
+07-18 00:37:28.736 3263-3707/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:37:28.737 3263-3707/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:37:28.751 3263-3707/com.udacity.spacebinge V/FA: Screen exposed for less than 1000 ms. Event not sent. time: 70
+07-18 00:37:28.751 3263-3707/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:37:28.751 3263-3707/com.udacity.spacebinge V/FA: Activity paused, time: 254114833
+07-18 00:37:28.798 3263-3707/com.udacity.spacebinge D/FA: Connected to remote service
+07-18 00:37:28.799 3263-3707/com.udacity.spacebinge V/FA: Processing queued up service tasks: 5
+07-18 00:37:30.765 3263-3707/com.udacity.spacebinge D/FA: Application going to the background
+07-18 00:37:36.923 3263-3340/com.udacity.spacebinge E/Surface: getSlotFromBufferLocked: unknown buffer: 0xb9f3fbe0
+07-18 00:39:12.689 3263-3340/com.udacity.spacebinge I/Adreno-EGL: <qeglDrvAPI_eglInitialize:379>: QUALCOMM Build: 10/09/15, 6cbbf7d, I3193f6e94a
+07-18 00:39:12.691 3263-3340/com.udacity.spacebinge I/OpenGLRenderer: Initialized EGL, version 1.4
+07-18 00:39:13.593 3263-3263/com.udacity.spacebinge I/Choreographer: Skipped 45 frames!  The application may be doing too much work on its main thread.
+07-18 00:39:29.644 3263-3263/com.udacity.spacebinge I/Choreographer: Skipped 68 frames!  The application may be doing too much work on its main thread.
+07-18 00:39:29.770 3263-6088/com.udacity.spacebinge V/FA: Connecting to remote service
+07-18 00:39:29.930 3263-6088/com.udacity.spacebinge V/FA: Screen exposed for less than 1000 ms. Event not sent. time: 128
+07-18 00:39:29.930 3263-6088/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:39:29.930 3263-6088/com.udacity.spacebinge V/FA: Activity paused, time: 254235900
+07-18 00:39:30.011 3263-3263/com.udacity.spacebinge D/SignUpActivity: firebaseAuthWithGoogle:107887320302099446578
+07-18 00:39:30.135 3263-3263/com.udacity.spacebinge I/BiChannelGoogleApi: [FirebaseAuth: ] getGoogleApiForMethod() returned Gms: com.google.firebase.auth.api.internal.zzao@3db74b6
+07-18 00:39:30.166 3263-6088/com.udacity.spacebinge V/FA: Activity resumed, time: 254236254
+07-18 00:39:30.207 3263-3319/com.udacity.spacebinge W/DynamiteModule: Local module descriptor class for com.google.firebase.auth not found.
+07-18 00:39:30.207 3263-3319/com.udacity.spacebinge I/FirebaseAuth: [FirebaseAuth:] Preparing to create service connection to gms implementation
+07-18 00:39:30.647 3263-6088/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:39:30.648 3263-6088/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:39:30.649 3263-6088/com.udacity.spacebinge D/FA: Connected to remote service
+07-18 00:39:30.652 3263-6088/com.udacity.spacebinge V/FA: Processing queued up service tasks: 4
+07-18 00:39:35.159 3263-3275/com.udacity.spacebinge D/FirebaseAuth: Notifying id token listeners about user ( RQqKK1fNk8dnlD5hoQMIsIt8GAs2 ).
+07-18 00:39:35.180 3263-3275/com.udacity.spacebinge D/FirebaseAuth: Notifying auth state listeners about user ( RQqKK1fNk8dnlD5hoQMIsIt8GAs2 ).
+07-18 00:39:35.417 3263-3263/com.udacity.spacebinge D/SignUpActivity: signInWithCredential:success
+07-18 00:39:36.007 3263-3263/com.udacity.spacebinge I/Choreographer: Skipped 35 frames!  The application may be doing too much work on its main thread.
+07-18 00:39:36.060 3263-6088/com.udacity.spacebinge V/FA: Recording user engagement, ms: 5891
+07-18 00:39:36.105 3263-6088/com.udacity.spacebinge V/FA: Connecting to remote service
+07-18 00:39:36.178 3263-6088/com.udacity.spacebinge V/FA: Activity paused, time: 254242146
+07-18 00:39:36.431 3263-6088/com.udacity.spacebinge V/FA: Connection attempt already in progress
+07-18 00:39:37.249 3263-5573/com.udacity.spacebinge V/FA: onActivityCreated
+07-18 00:39:41.579 3263-3263/com.udacity.spacebinge W/art: Verification of void androidx.recyclerview.widget.RecyclerView.<clinit>() took 243.344ms
+07-18 00:39:41.756 3263-3263/com.udacity.spacebinge W/art: Verification of void androidx.recyclerview.widget.RecyclerView.<init>(android.content.Context, android.util.AttributeSet) took 177.274ms
+07-18 00:39:42.081 3263-3263/com.udacity.spacebinge W/art: Verification of void androidx.recyclerview.widget.RecyclerView.<init>(android.content.Context, android.util.AttributeSet, int) took 325.078ms
+07-18 00:39:45.067 3263-3263/com.udacity.spacebinge D/VideoItemsDatabase: Creating new database instance
+07-18 00:39:45.075 3263-3263/com.udacity.spacebinge D/VideoItemsDatabase: Getting the database instance

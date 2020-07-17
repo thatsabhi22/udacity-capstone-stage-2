@@ -1,0 +1,204 @@
+07/18 00:07:35: Launching 'app' on samsung SM-A505F.
+$ adb shell am start -n "com.udacity.spacebinge/com.udacity.spacebinge.ui.SplashActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+Connected to process 10679 on device 'samsung-sm_a505f-RZ8M92WXM2J'.
+Capturing and displaying logcat messages from application. This behavior can be disabled in the "Logcat output" section of the "Debugger" settings page.
+D/PhoneWindow: forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4238 com.android.internal.policy.DecorView.updateColorViews:1490 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3216 android.view.Window.setFlags:1148 com.android.internal.policy.PhoneWindow.generateLayout:2444
+I/MultiWindowDecorSupport: updateCaptionType >> DecorView@e2a5d0f[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true
+D/MultiWindowDecorSupport: setCaptionType = 0, DecorView = DecorView@e2a5d0f[]
+W/city.spacebing: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (greylist, reflection, allowed)
+W/city.spacebing: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (greylist, reflection, allowed)
+V/FA: App measurement collection enabled
+V/FA: App measurement enabled for app package, google app id: com.udacity.spacebinge, 1:130094465980:android:2efda76c7f33599ef761b9
+I/FA: App measurement initialized, version: 31000
+    To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
+    To enable faster debug mode event logging run:
+      adb shell setprop debug.firebase.analytics.app com.udacity.spacebinge
+D/FA: Debug-level message logging enabled
+V/FA: Persisting first open: 1595011066328
+W/Glide: Failed to find GeneratedAppGlideModule. You should include an annotationProcessor compile dependency on com.github.bumptech.glide:compiler in your application and a @GlideModule annotated AppGlideModule implementation or LibraryGlideModules will be silently ignored
+V/FA: App measurement setting deferred collection: false
+D/NetworkSecurityConfig: No Network Security Config specified, using platform default
+I/System.out: (HTTPLog)-Static: isSBSettingEnabled false
+I/System.out: (HTTPLog)-Static: isSBSettingEnabled false
+D/ViewRootImpl@8c08a74[SplashActivity]: setView = com.android.internal.policy.DecorView@e2a5d0f TM=true MM=false
+V/FA: Checking service availability
+D/ViewRootImpl@8c08a74[SplashActivity]: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) req=(1080,2340)0 dur=11 res=0x7 s={true 521301667840} ch=true
+D/OpenGLRenderer: createReliableSurface : 0x78cde1cbc0, 0x7960003000
+V/FA: Service available
+V/FA: Connecting to remote service
+V/FA: Detected application was in foreground
+V/FA: Session started, time: 1175553269
+I/mali_winsys: new_window_surface() [1080x2340] return: 0x3000
+V/FA: Connection attempt already in progress
+I/FA: Tag Manager is not found and thus will not be used
+W/Gralloc3: mapper 3.x is not supported
+I/gralloc: Arm Module v1.0
+V/FA: Connection attempt already in progress
+D/ViewRootImpl@8c08a74[SplashActivity]: MSG_WINDOW_FOCUS_CHANGED 1 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@e2a5d0f[SplashActivity]
+    getNavigationBarColor() -855310
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@e2a5d0f[SplashActivity]
+D/InputMethodManager: getNavigationBarColor() -855310
+V/InputMethodManager: Starting input: tba=com.udacity.spacebinge ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false
+D/InputMethodManager: startInputInner - Id : 0
+I/InputMethodManager: startInputInner - mService.startInputOrWindowGainedFocus
+D/ViewRootImpl@8c08a74[SplashActivity]: MSG_RESIZED: frame=(0,0,1080,2340) ci=(0,83,0,144) vi=(0,83,0,144) or=1
+V/FA: Connection attempt already in progress
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@e2a5d0f[SplashActivity]
+    getNavigationBarColor() -855310
+V/InputMethodManager: Starting input: tba=com.udacity.spacebinge ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false
+D/InputMethodManager: startInputInner - Id : 0
+V/FA: Activity resumed, time: 1175553178
+V/FA: Connection attempt already in progress
+V/FA: Connection attempt already in progress
+D/FA: Connected to remote service
+V/FA: Processing queued up service tasks: 6
+V/FA: Recording user engagement, ms: 3018
+W/ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@a7e6587
+V/FA: Activity paused, time: 1175556199
+V/FA: onActivityCreated
+D/PhoneWindow: forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4238 com.android.internal.policy.DecorView.updateColorViews:1490 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3216 android.view.Window.setFlags:1148 com.android.internal.policy.PhoneWindow.generateLayout:2444
+I/MultiWindowDecorSupport: updateCaptionType >> DecorView@cc839b[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true
+D/MultiWindowDecorSupport: setCaptionType = 0, DecorView = DecorView@cc839b[]
+W/city.spacebing: Accessing hidden method Landroid/graphics/FontFamily;-><init>()V (greylist, reflection, allowed)
+W/city.spacebing: Accessing hidden method Landroid/graphics/FontFamily;->addFontFromAssetManager(Landroid/content/res/AssetManager;Ljava/lang/String;IZIII[Landroid/graphics/fonts/FontVariationAxis;)Z (greylist, reflection, allowed)
+    Accessing hidden method Landroid/graphics/FontFamily;->addFontFromBuffer(Ljava/nio/ByteBuffer;I[Landroid/graphics/fonts/FontVariationAxis;II)Z (greylist, reflection, allowed)
+    Accessing hidden method Landroid/graphics/FontFamily;->freeze()Z (greylist, reflection, allowed)
+    Accessing hidden method Landroid/graphics/FontFamily;->abortCreation()V (greylist, reflection, allowed)
+    Accessing hidden method Landroid/graphics/Typeface;->createFromFamiliesWithDefault([Landroid/graphics/FontFamily;Ljava/lang/String;II)Landroid/graphics/Typeface; (greylist, reflection, allowed)
+V/FA: Activity resumed, time: 1175556323
+D/ViewRootImpl@dfcc35b[SignUpActivity]: setView = com.android.internal.policy.DecorView@cc839b TM=true MM=false
+D/ViewRootImpl@8c08a74[SplashActivity]: MSG_WINDOW_FOCUS_CHANGED 0 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@e2a5d0f[SplashActivity]
+    getNavigationBarColor() -855310
+D/ViewRootImpl@dfcc35b[SignUpActivity]: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) req=(1080,2340)0 dur=7 res=0x7 s={true 518792388608} ch=true
+D/OpenGLRenderer: createReliableSurface : 0x78cde1e9c0, 0x78ca6fa000
+I/mali_winsys: new_window_surface() [1080x2340] return: 0x3000
+D/ViewRootImpl@dfcc35b[SignUpActivity]: MSG_WINDOW_FOCUS_CHANGED 1 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@cc839b[SignUpActivity]
+    getNavigationBarColor() -855310
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@cc839b[SignUpActivity]
+    getNavigationBarColor() -855310
+V/InputMethodManager: Starting input: tba=com.udacity.spacebinge ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false
+D/InputMethodManager: startInputInner - Id : 0
+I/InputMethodManager: startInputInner - mService.startInputOrWindowGainedFocus
+D/InputTransport: Input channel destroyed: 'ClientS', fd=77
+I/mali_egl: eglDestroySurface() in
+I/mali_winsys: delete_surface() [1080x2340] return
+I/mali_egl: eglDestroySurface() out
+W/libEGL: EGLNativeWindowType 0x78cde1cbd0 disconnect failed
+D/ViewRootImpl@8c08a74[SplashActivity]: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) req=(1080,2340)8 dur=5 res=0x5 s={false 0} ch=true
+D/ViewRootImpl@dfcc35b[SignUpActivity]: MSG_RESIZED: frame=(0,0,1080,2340) ci=(0,83,0,144) vi=(0,83,0,144) or=1
+D/ViewRootImpl@8c08a74[SplashActivity]: stopped(true) old=false
+D/ViewRootImpl@8c08a74[SplashActivity]: dispatchDetachedFromWindow
+D/InputTransport: Input channel destroyed: 'ef0bfac', fd=67
+V/FA: Inactivity, disconnecting from the service
+D/ViewRootImpl@dfcc35b[SignUpActivity]: ViewPostIme pointer 0
+D/Dialog: mIsSamsungBasicInteraction = false
+    mIsSamsungBasicInteraction = false, isMetaDataInActivity = false
+I/MultiWindowDecorSupport: updateCaptionType >> DecorView@1426721[], isFloating: true, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: false
+D/MultiWindowDecorSupport: setCaptionType = 0, DecorView = DecorView@1426721[]
+D/ScrollView: initGoToTop
+D/ScrollView: initGoToTop
+D/ViewRootImpl@9425a91[SignUpActivity]: setView = com.android.internal.policy.DecorView@1426721 TM=true MM=false
+D/Dialog: mIsSamsungBasicInteraction = false
+    mIsSamsungBasicInteraction = false, isMetaDataInActivity = false
+D/ViewRootImpl@dfcc35b[SignUpActivity]: ViewPostIme pointer 1
+D/Dialog: mIsSamsungBasicInteraction = false
+    mIsSamsungBasicInteraction = false, isMetaDataInActivity = false
+D/ViewRootImpl@9425a91[SignUpActivity]: Relayout returned: old=(0,83,1080,2196) new=(27,965,1053,1313) req=(1026,348)0 dur=7 res=0x7 s={true 517228797952} ch=true
+D/OpenGLRenderer: createReliableSurface : 0x78cde1ed80, 0x786d3d2000
+I/mali_winsys: new_window_surface() [1218x540] return: 0x3000
+E/DecorView: mWindow.mActivityCurrentConfig is null
+D/ViewRootImpl@9425a91[SignUpActivity]: MSG_WINDOW_FOCUS_CHANGED 1 1
+V/FA: Recording user engagement, ms: 10670
+V/FA: Connecting to remote service
+D/ViewRootImpl@9425a91[SignUpActivity]: MSG_RESIZED: frame=(27,965,1053,1313) ci=(0,0,0,0) vi=(0,0,0,0) or=1
+D/ViewRootImpl@dfcc35b[SignUpActivity]: MSG_WINDOW_FOCUS_CHANGED 0 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@cc839b[SignUpActivity]
+    getNavigationBarColor() -855310
+W/ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@3b983e8
+V/FA: onActivityCreated
+V/FA: Activity paused, time: 1175566995
+D/PhoneWindow: forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4238 com.android.internal.policy.DecorView.updateColorViews:1490 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3216 android.view.Window.setFlags:1148 com.android.internal.policy.PhoneWindow.generateLayout:2444
+I/MultiWindowDecorSupport: updateCaptionType >> DecorView@ebc7571[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true
+D/MultiWindowDecorSupport: setCaptionType = 0, DecorView = DecorView@ebc7571[]
+V/FA: Connection attempt already in progress
+V/FA: Activity resumed, time: 1175567084
+D/ViewRootImpl@f4361a9[SignInHubActivity]: setView = com.android.internal.policy.DecorView@ebc7571 TM=true MM=false
+D/ViewRootImpl@f4361a9[SignInHubActivity]: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) req=(1080,2340)0 dur=19 res=0x7 s={true 517236023296} ch=true
+D/OpenGLRenderer: createReliableSurface : 0x78cde1d0c0, 0x786dab6000
+I/mali_winsys: new_window_surface() [1080x2340] return: 0x3000
+D/ViewRootImpl@9425a91[SignUpActivity]: MSG_WINDOW_FOCUS_CHANGED 0 1
+V/FA: Connection attempt already in progress
+V/FA: Connection attempt already in progress
+D/ViewRootImpl@f4361a9[SignInHubActivity]: MSG_WINDOW_FOCUS_CHANGED 1 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@ebc7571[SignInHubActivity]
+    getNavigationBarColor() -855310
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@ebc7571[SignInHubActivity]
+    getNavigationBarColor() -855310
+V/InputMethodManager: Starting input: tba=com.udacity.spacebinge ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false
+D/InputMethodManager: startInputInner - Id : 0
+I/InputMethodManager: startInputInner - mService.startInputOrWindowGainedFocus
+V/FA: Screen exposed for less than 1000 ms. Event not sent. time: 81
+V/FA: Connection attempt already in progress
+V/FA: Activity paused, time: 1175567169
+D/InputTransport: Input channel destroyed: 'ClientS', fd=83
+D/ViewRootImpl@f4361a9[SignInHubActivity]: MSG_RESIZED: frame=(0,0,1080,2340) ci=(0,83,0,144) vi=(0,83,0,144) or=1
+D/FA: Connected to remote service
+V/FA: Processing queued up service tasks: 5
+D/ViewRootImpl@f4361a9[SignInHubActivity]: MSG_WINDOW_FOCUS_CHANGED 0 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@ebc7571[SignInHubActivity]
+    getNavigationBarColor() -855310
+D/InputTransport: Input channel destroyed: 'ClientS', fd=88
+D/FA: Application going to the background
+V/FA: Inactivity, disconnecting from the service
+D/ViewRootImpl@f4361a9[SignInHubActivity]: stopped(false) old=false
+V/FA: Activity resumed, time: 1175586040
+D/ViewRootImpl@f4361a9[SignInHubActivity]: MSG_WINDOW_FOCUS_CHANGED 1 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@ebc7571[SignInHubActivity]
+    getNavigationBarColor() -855310
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@ebc7571[SignInHubActivity]
+D/InputMethodManager: getNavigationBarColor() -855310
+V/InputMethodManager: Starting input: tba=com.udacity.spacebinge ic=null mNaviBarColor -855310 mIsGetNaviBarColorSuccess true , NavVisible : true , NavTrans : false
+D/InputMethodManager: startInputInner - Id : 0
+I/InputMethodManager: startInputInner - mService.startInputOrWindowGainedFocus
+V/FA: Connecting to remote service
+D/SignUpActivity: firebaseAuthWithGoogle:114900268161881218827
+I/BiChannelGoogleApi: [FirebaseAuth: ] getGoogleApiForMethod() returned Gms: com.google.firebase.auth.api.internal.zzao@fe871b7
+D/ViewRootImpl@9425a91[SignUpActivity]: stopped(false) old=false
+D/ViewRootImpl@dfcc35b[SignUpActivity]: stopped(false) old=false
+I/mali_egl: eglDestroySurface() in
+I/mali_winsys: delete_surface() [1080x2340] return
+I/mali_egl: eglDestroySurface() out
+W/libEGL: EGLNativeWindowType 0x78cde1d0d0 disconnect failed
+V/FA: Screen exposed for less than 1000 ms. Event not sent. time: 25
+V/FA: Connection attempt already in progress
+    Activity paused, time: 1175586071
+V/FA: Activity resumed, time: 1175586089
+D/ViewRootImpl@f4361a9[SignInHubActivity]: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) req=(1080,2340)8 dur=10 res=0x5 s={false 0} ch=true
+D/ViewRootImpl@9425a91[SignUpActivity]: MSG_WINDOW_FOCUS_CHANGED 1 1
+D/ViewRootImpl@f4361a9[SignInHubActivity]: MSG_WINDOW_FOCUS_CHANGED 0 1
+D/InputMethodManager: prepareNavigationBarInfo() DecorView@ebc7571[SignInHubActivity]
+    getNavigationBarColor() -855310
+D/ViewRootImpl@f4361a9[SignInHubActivity]: stopped(true) old=false
+V/FA: Connection attempt already in progress
+V/FA: Connection attempt already in progress
+D/FA: Connected to remote service
+V/FA: Processing queued up service tasks: 4
+D/ViewRootImpl@f4361a9[SignInHubActivity]: dispatchDetachedFromWindow
+D/InputTransport: Input channel destroyed: '14b408e', fd=84
+D/FirebaseAuth: Notifying id token listeners about user ( IFrKqQ11P2Ysoo2TZtyjmXNXLjQ2 ).
+D/FirebaseAuth: Notifying auth state listeners about user ( IFrKqQ11P2Ysoo2TZtyjmXNXLjQ2 ).
+D/SignUpActivity: signInWithCredential:success
+V/FA: Recording user engagement, ms: 1803
+W/ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@e7bf6fd
+V/FA: Activity paused, time: 1175587895
+V/FA: onActivityCreated
+D/PhoneWindow: forceLight changed to true [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:4238 com.android.internal.policy.DecorView.updateColorViews:1490 com.android.internal.policy.PhoneWindow.dispatchWindowAttributesChanged:3216 android.view.Window.setFlags:1148 com.android.internal.policy.PhoneWindow.generateLayout:2444
+I/MultiWindowDecorSupport: updateCaptionType >> DecorView@a1d7b31[], isFloating: false, isApplication: true, hasWindowDecorCaption: false, hasWindowControllerCallback: true
+D/MultiWindowDecorSupport: setCaptionType = 0, DecorView = DecorView@a1d7b31[]
+W/city.spacebing: Accessing hidden field Landroid/view/View;->mAccessibilityDelegate:Landroid/view/View$AccessibilityDelegate; (greylist, reflection, allowed)
+W/city.spacebing: Accessing hidden method Ldalvik/system/CloseGuard;->get()Ldalvik/system/CloseGuard; (greylist,core-platform-api, reflection, allowed)
+    Accessing hidden method Ldalvik/system/CloseGuard;->open(Ljava/lang/String;)V (greylist,core-platform-api, reflection, allowed)
+    Accessing hidden method Ldalvik/system/CloseGuard;->warnIfOpen()V (greylist,core-platform-api, reflection, allowed)

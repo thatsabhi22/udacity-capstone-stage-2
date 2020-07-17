@@ -37,4 +37,15 @@
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/offline_refresh_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/go_to_downloads_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/offline_refresh_btn_text"
+        android:visibility="gone" />
 </RelativeLayout>

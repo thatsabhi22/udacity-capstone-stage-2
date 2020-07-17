@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class WatchListActivity extends AppCompatActivity {
     ImageView loading_indicator_watchlist_iv, no_data_watch_list_iv, offline_mode_iv;
     TextView no_data_watch_list_tv, offline_mode_tv, go_to_downloads_tv;
     Observer<List<VideoItem>> videoItemListObserver;
+    Button offline_refresh_btn;
     WatchlistViewModel watchlistViewModel;
     List<VideoItem> videoCollection;
     boolean isOffline;
@@ -56,6 +58,7 @@ public class WatchListActivity extends AppCompatActivity {
             offline_mode_iv.setVisibility(View.VISIBLE);
             offline_mode_tv.setVisibility(View.VISIBLE);
             go_to_downloads_tv.setVisibility(View.VISIBLE);
+            offline_refresh_btn.setVisibility(View.GONE);
 
             go_to_downloads_tv.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -135,6 +138,7 @@ public class WatchListActivity extends AppCompatActivity {
         offline_mode_iv = findViewById(R.id.offline_mode_iv);
         offline_mode_tv = findViewById(R.id.offline_mode_tv);
         go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
+        offline_refresh_btn = findViewById(R.id.offline_refresh_btn);
     }
 
     private void initWatchlistViewModel() {

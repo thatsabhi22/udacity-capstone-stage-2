@@ -50,6 +50,7 @@
     <string name="splash_loading_indicator_cd">Splash Screen Loading Indicator</string>
     <string name="empty_view_text">Loading Latest News....</string>
     <string name="space_binge_widget_title_tv">SPACE BINGE NEWS</string>
+    <string name="offline_refresh_btn_text">refresh</string>
 
     <string-array name="topics">
         <item>Latest</item>

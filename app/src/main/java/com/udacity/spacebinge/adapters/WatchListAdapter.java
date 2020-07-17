@@ -16,8 +16,11 @@ import com.squareup.picasso.Picasso;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.ui.PlayerActivity;
+import com.udacity.spacebinge.ui.WatchListActivity;
+import com.udacity.spacebinge.utils.AppUtil;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.udacity.spacebinge.utils.ConstantUtil.INTENT_KEY_SOURCE_ACTIVITY;
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
@@ -59,7 +62,21 @@ public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.Watc
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, PlayerActivity.class);
+
+                Intent intent;
+                boolean isOffline = false;
+                try {
+                    isOffline = new AppUtil.CheckOnlineStatus().execute().get();
+                } catch (ExecutionException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (isOffline) {
+                    intent = new Intent(mContext, WatchListActivity.class);
+                } else {
+                    intent = new Intent(mContext, PlayerActivity.class);
+                }
+
                 intent.putExtra(INTENT_KEY_SOURCE_ACTIVITY, "watchlist");
                 intent.putExtra(VIDEO_ITEM_OBJECT, current);
                 mContext.startActivity(intent);

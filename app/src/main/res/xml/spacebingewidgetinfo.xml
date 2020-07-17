@@ -4,7 +4,7 @@
     android:minWidth="200dp"
     android:minHeight="200dp"
     android:widgetCategory="home_screen"
-    android:updatePeriodMillis="3600000"
+    android:updatePeriodMillis="3000"
     android:previewImage="@drawable/preview"
     android:initialLayout="@layout/widget_layout"
     android:autoAdvanceViewId="@id/w_list_view">

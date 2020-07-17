@@ -12,14 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.udacity.spacebinge.R;
-import com.udacity.spacebinge.models.Topic;
 import com.udacity.spacebinge.models.VideoItem;
 import com.udacity.spacebinge.ui.SearchActivity;
 import com.udacity.spacebinge.utils.AppUtil;
 import com.udacity.spacebinge.utils.HorizontalItemDecoration;
 import com.udacity.spacebinge.utils.TransformUtils;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +27,6 @@ import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_SEARCH_KEY;
 
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.TopicsViewHolder> {
 
-    public ArrayList<Topic> topics;
     private Context context;
     private LayoutInflater layoutInflater;
     private LinkedHashMap<String, List<VideoItem>> videoCollection;

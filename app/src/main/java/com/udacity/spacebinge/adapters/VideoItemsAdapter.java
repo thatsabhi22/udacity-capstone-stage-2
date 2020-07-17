@@ -21,9 +21,12 @@ import com.bumptech.glide.request.target.Target;
 import com.squareup.picasso.Picasso;
 import com.udacity.spacebinge.R;
 import com.udacity.spacebinge.models.VideoItem;
+import com.udacity.spacebinge.ui.HomeActivity;
 import com.udacity.spacebinge.ui.PlayerActivity;
+import com.udacity.spacebinge.utils.AppUtil;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.udacity.spacebinge.utils.ConstantUtil.INTENT_KEY_SOURCE_ACTIVITY;
 import static com.udacity.spacebinge.utils.ConstantUtil.VIDEO_ITEM_OBJECT;
@@ -52,7 +55,6 @@ public class VideoItemsAdapter extends RecyclerView.Adapter<VideoItemsAdapter.Vi
         final VideoItem current = mVideoList.get(position);
 
         holder.title_tv.setText(current.getTitle());
-
         Glide
                 .with(mContext)
                 .asGif().load(R.drawable.globe_loading)
@@ -83,7 +85,20 @@ public class VideoItemsAdapter extends RecyclerView.Adapter<VideoItemsAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, PlayerActivity.class);
+                Intent intent;
+                boolean isOffline = false;
+                try {
+                    isOffline = new AppUtil.CheckOnlineStatus().execute().get();
+                } catch (ExecutionException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (isOffline) {
+                    intent = new Intent(mContext, HomeActivity.class);
+                } else {
+                    intent = new Intent(mContext, PlayerActivity.class);
+                }
+
                 intent.putExtra(INTENT_KEY_SOURCE_ACTIVITY, "homepage");
                 intent.putExtra(VIDEO_ITEM_OBJECT, current);
                 mContext.startActivity(intent);

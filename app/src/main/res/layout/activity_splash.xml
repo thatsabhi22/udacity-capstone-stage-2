@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/splash_loading_indicator"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/nav_margin_dimen"
+        android:layout_height="@dimen/nav_margin_dimen"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"

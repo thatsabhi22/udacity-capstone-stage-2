@@ -1,6 +1,8 @@
 package com.udacity.spacebinge.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
@@ -15,10 +17,12 @@ public class SplashActivity extends AppCompatActivity {
     ImageView splash_loading_indicator;
     int SPLASH_TIME_OUT = 3000;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         splash_loading_indicator = findViewById(R.id.splash_loading_indicator);
 

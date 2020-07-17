@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/credits_image"
         android:layout_margin="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/twenties_dim"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_font_size"
         tools:text="{CREDIT TEXT}" />
 
 </RelativeLayout>

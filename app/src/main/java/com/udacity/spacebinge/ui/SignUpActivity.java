@@ -3,6 +3,7 @@ package com.udacity.spacebinge.ui;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -42,11 +43,12 @@ public class SignUpActivity extends AppCompatActivity {
     boolean isOffline;
     private ProgressDialog pDialog;
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "SourceLockedOrientationActivity"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         google_sign_in_btn = findViewById(R.id.google_sign_in_btn);
         sign_up_no_internet_tv = findViewById(R.id.sign_up_no_internet_tv);

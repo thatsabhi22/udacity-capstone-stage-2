@@ -9,13 +9,13 @@
         android:id="@+id/videoTypeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_small_margin"
+        android:layout_marginEnd="@dimen/standard_margin"
+        android:layout_marginBottom="@dimen/standard_small_margin"
         android:layout_toStartOf="@+id/seeAllTextView"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_font_size"
         android:textStyle="bold"
         tools:text="Collection" />
 
@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/videoTypeTextView"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:padding="8dp"
+        android:layout_marginEnd="@dimen/standard_margin"
+        android:padding="@dimen/standard_small_margin"
         android:textColor="@color/colorPrimary"
         tools:text="See All" />
 

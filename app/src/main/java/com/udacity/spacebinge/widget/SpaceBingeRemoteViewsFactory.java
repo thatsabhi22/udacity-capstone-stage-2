@@ -62,7 +62,7 @@ public class SpaceBingeRemoteViewsFactory implements RemoteViewsService.RemoteVi
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_item);
         if (mWidgetItems.size() > 0) {
             rv.setTextViewText(R.id.widget_item, mWidgetItems.get(position).getTitle());
-            
+
             // Next, we set a fill-intent which will be used to fill-in the pending intent template
             // which is set on the collection view in SpaceBingeWidgetProvider.
             Bundle extras = new Bundle();

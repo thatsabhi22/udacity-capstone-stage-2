@@ -11,13 +11,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/standard_small_margin"
+        android:layout_marginTop="@dimen/standard_small_margin"
+        android:layout_marginEnd="@dimen/standard_small_margin"
         android:layout_weight="3"
         android:backgroundTint="@color/colorAccent"
-        android:elevation="10dp"
-        app:cardCornerRadius="6dp">
+        android:elevation="@dimen/tens_dim"
+        app:cardCornerRadius="@dimen/card_corner_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,18 +38,18 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/zero_dimen"
         android:layout_margin="12dp"
         android:layout_weight="10"
-        android:elevation="4dp"
+        android:elevation="@dimen/micro_dim"
+        android:visibility="gone"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="28dp">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp">
+            android:layout_margin="@dimen/standard_margin">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -59,12 +59,12 @@
                     android:id="@+id/video_title_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="@dimen/standard_small_margin"
+                    android:layout_marginTop="@dimen/standard_small_margin"
+                    android:layout_marginEnd="@dimen/standard_small_margin"
+                    android:layout_marginBottom="@dimen/standard_small_margin"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/heading_6"
                     android:textStyle="bold"
                     tools:text="{Video Title}" />
 
@@ -73,12 +73,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/video_title_tv"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="@dimen/standard_small_margin"
+                    android:layout_marginTop="@dimen/standard_small_margin"
+                    android:layout_marginEnd="@dimen/standard_small_margin"
+                    android:layout_marginBottom="@dimen/standard_small_margin"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/standard_font_size"
                     tools:text="{Video Date}" />
 
                 <ImageView
@@ -88,9 +88,9 @@
                     android:layout_below="@id/video_title_tv"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="2dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="@dimen/standard_small_margin"
                     android:contentDescription="@string/video_watchlist_cont_desc"
-                    android:padding="4dp"
+                    android:padding="@dimen/micro_dim"
                     android:src="@drawable/ic_watchlist" />
 
                 <ImageView
@@ -98,8 +98,8 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_below="@id/video_title_tv"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="@dimen/micro_dim"
+                    android:layout_marginEnd="@dimen/standard_small_margin"
                     android:layout_toStartOf="@id/do_watchlist_icon"
                     android:contentDescription="@string/video_dwn_cont_desc"
                     android:src="@drawable/ic_download" />
@@ -110,7 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_below="@+id/do_download_icon"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/micro_dim"
                     android:background="@color/colorPrimary"
                     android:progressTint="@android:color/holo_red_light" />
 
@@ -119,13 +119,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/download_progressbar"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="@dimen/standard_small_margin"
+                    android:layout_marginTop="@dimen/standard_small_margin"
+                    android:layout_marginEnd="@dimen/standard_small_margin"
+                    android:layout_marginBottom="@dimen/standard_small_margin"
                     android:lineSpacingExtra="4sp"
                     android:textColor="@android:color/white"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/standard_font_size"
                     tools:text="{Video description}" />
             </RelativeLayout>
         </ScrollView>
@@ -133,10 +133,10 @@
 
     <RelativeLayout
         android:id="@+id/bottomBar"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5">
+        android:layout_height="@dimen/zero_dimen"
+        android:layout_weight="1.5"
+        android:visibility="gone">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_bar_navigation"

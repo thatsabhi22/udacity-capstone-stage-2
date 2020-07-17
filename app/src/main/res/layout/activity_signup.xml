@@ -34,14 +34,14 @@
         android:text="@string/offline_mode_tv"
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_light"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_font_size"
         android:textStyle="bold"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/google_sign_in_btn"
         android:layout_width="180dp"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/app_icon_dimen"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"

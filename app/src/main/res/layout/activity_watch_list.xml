@@ -9,17 +9,17 @@
 
     <ImageView
         android:id="@+id/watchlist_app_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/app_icon_dimen"
+        android:layout_height="@dimen/app_icon_dimen"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/standard_margin"
         android:contentDescription="@string/app_icon_cd"
         android:src="@drawable/spacebinge_icon" />
 
     <ImageView
         android:id="@+id/loading_indicator_watchlist_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/loading_indicator_dimen"
+        android:layout_height="@dimen/loading_indicator_dimen"
         android:layout_centerInParent="true"
         android:contentDescription="@string/loading_indicator_cd"
         android:src="@drawable/globe_loading"
@@ -44,7 +44,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/no_data_tv_text_watchlist"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="@dimen/standard_font_size"
         android:visibility="gone"
         tools:text="No Videos in your Watchlist" />
 
@@ -54,13 +54,13 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/bottomBar"
         android:layout_below="@id/watchlist_app_icon"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginStart="@dimen/standard_small_margin"
+        android:layout_marginEnd="@dimen/standard_small_margin" />
 
     <RelativeLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="@dimen/bottom_bar_height"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

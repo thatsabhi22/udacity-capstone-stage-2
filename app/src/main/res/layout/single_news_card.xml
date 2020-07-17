@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="8dp"
+    android:elevation="@dimen/standard_small_margin"
     app:cardBackgroundColor="@color/colorAccent"
     app:cardCornerRadius="32dp">
 
@@ -19,14 +19,14 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/sheet_text_scrim_height"
         android:background="@drawable/scrim_top"
-        app:layout_collapseMode="pin"/>
+        app:layout_collapseMode="pin" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/sheet_text_scrim_height"
-        android:layout_gravity="bottom"
         android:layout_alignBottom="@+id/image"
-        android:background="@drawable/scrim_bottom"/>
+        android:layout_gravity="bottom"
+        android:background="@drawable/scrim_bottom" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,14 +34,14 @@
         android:layout_gravity="bottom"
         android:background="#66616161"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/standard_margin">
 
         <TextView
             android:id="@+id/news_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
+            android:textSize="@dimen/heading_6"
             android:textStyle="bold"
             tools:text="{News title}" />
 
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_font_size"
             android:textStyle="bold"
             tools:text="{Publish Date}" />
 
@@ -72,16 +72,16 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/micro_dim"
             android:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/news_description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/micro_dim"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:textSize="@dimen/standard_font_size"
             tools:text="{News Description}" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

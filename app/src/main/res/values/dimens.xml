@@ -4,4 +4,21 @@
     <dimen name="short_margin">4dp</dimen>
     <dimen name="very_short_margin">2dp</dimen>
     <dimen name="sheet_text_scrim_height">700dp</dimen>
+    <dimen name="micro_dim">4dp</dimen>
+    <dimen name="tens_dim">4dp</dimen>
+    <dimen name="twenties_dim">4dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+
+    <dimen name="standard_font_size">16sp</dimen>
+    <dimen name="heading_6">20sp</dimen>
+    <dimen name="heading_5">24sp</dimen>
+    <dimen name="standard_small_margin">8dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="loading_indicator_dimen">50dp</dimen>
+    <dimen name="bottom_bar_height">60dp</dimen>
+    <dimen name="app_icon_dimen">40dp</dimen>
+    <dimen name="nav_margin_dimen">30dp</dimen>
+    <dimen name="zero_dimen">0dp</dimen>
+    <dimen name="card_height">160dp</dimen>
+
 </resources>

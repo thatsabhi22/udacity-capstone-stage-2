@@ -5,8 +5,8 @@
     android:id="@+id/rootCV"
     android:layout_width="250dp"
     android:layout_height="180dp"
-    android:elevation="6dp"
-    app:cardCornerRadius="10dp"
+    android:elevation="@dimen/card_corner_radius"
+    app:cardCornerRadius="@dimen/tens_dim"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -24,11 +24,11 @@
 
         <ImageView
             android:id="@+id/loading_placeholder_iv"
-            android:contentDescription="@string/video_item_card_content_description"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/twenties_dim"
+            android:layout_height="@dimen/twenties_dim"
             android:layout_centerInParent="true"
-            android:src="@drawable/globe_loading"/>
+            android:contentDescription="@string/video_item_card_content_description"
+            android:src="@drawable/globe_loading" />
 
         <TextView
             android:id="@+id/title_tv"
@@ -39,7 +39,7 @@
             android:background="#66616161"
             android:ellipsize="end"
             android:maxLines="2"
-            android:padding="8dp"
+            android:padding="@dimen/standard_small_margin"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             tools:text="title_tv" />

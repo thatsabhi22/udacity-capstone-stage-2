@@ -21,11 +21,11 @@
 
             <ImageView
                 android:id="@+id/nav_drawer_btn_iv"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/nav_margin_dimen"
+                android:layout_height="@dimen/nav_margin_dimen"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/standard_small_margin"
+                android:layout_marginEnd="@dimen/standard_small_margin"
                 android:contentDescription="@string/navigation_drawer_button_image_cd"
                 android:src="@drawable/ic_menu" />
 
@@ -34,9 +34,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:layout_marginBottom="@dimen/standard_small_margin"
                 android:layout_toEndOf="@id/nav_drawer_btn_iv"
                 android:src="@drawable/spacebinge_icon" />
 
@@ -45,9 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginTop="@dimen/standard_small_margin"
+                android:layout_marginBottom="@dimen/standard_small_margin"
                 android:layout_toEndOf="@id/app_icon"
                 android:src="@drawable/icon_text" />
         </RelativeLayout>
@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/loading_indicator_home_iv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/loading_indicator_dimen"
+            android:layout_height="@dimen/loading_indicator_dimen"
             android:layout_centerInParent="true"
             android:contentDescription="@string/loading_indicator_cd"
             android:src="@drawable/globe_loading"
@@ -74,7 +74,7 @@
         <RelativeLayout
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/bottom_bar_height"
             android:layout_alignParentBottom="true">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView

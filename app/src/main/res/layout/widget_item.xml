@@ -4,10 +4,10 @@
     android:id="@+id/widget_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:background="@drawable/widget_item_background"
+    android:gravity="center"
+    android:padding="@dimen/standard_margin"
     android:textColor="@color/colorPrimary"
-    android:padding="16dp"
+    android:textSize="@dimen/standard_font_size"
     android:textStyle="bold"
-    tools:text="{news}"
-    android:textSize="16sp" />
+    tools:text="{news}" />

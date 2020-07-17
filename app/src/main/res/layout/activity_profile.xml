@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/profile_app_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/app_icon_dimen"
+        android:layout_height="@dimen/app_icon_dimen"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/standard_margin"
         android:contentDescription="@string/app_icon_cd"
         android:src="@drawable/spacebinge_icon" />
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_app_icon"
-        android:layout_margin="16dp">
+        android:layout_margin="@dimen/standard_margin">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -31,10 +31,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:padding="8dp"
+                android:padding="@dimen/standard_small_margin"
                 android:text="@string/user_name_tv_text"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
+                android:textSize="@dimen/standard_font_size"
                 android:textStyle="bold" />
 
             <TextView
@@ -42,10 +42,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginEnd="@dimen/standard_margin"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/standard_font_size"
                 tools:text="{User Name}" />
         </TableRow>
 
@@ -58,10 +58,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:padding="8dp"
+                android:padding="@dimen/standard_small_margin"
                 android:text="@string/email_address_tv_text"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
+                android:textSize="@dimen/standard_font_size"
                 android:textStyle="bold" />
 
             <TextView
@@ -69,10 +69,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginEnd="@dimen/standard_margin"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/standard_font_size"
                 tools:text="{Email Address}" />
         </TableRow>
     </TableLayout>
@@ -84,7 +84,7 @@
         android:layout_below="@id/profile_table"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/standard_margin"
         android:background="@color/colorPrimary"
         android:text="@string/sign_out_btn_text" />
 

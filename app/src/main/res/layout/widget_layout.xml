@@ -2,33 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_dark"
+        android:padding="@dimen/standard_small_margin"
         android:text="@string/space_binge_widget_title_tv"
         android:textAlignment="center"
-        android:textStyle="bold"
-        android:background="@android:color/background_dark"
         android:textColor="@color/colorPrimary"
-        android:padding="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/w_list_view"
         android:layout_width="match_parent"
-        android:layout_below="@id/app_title"
         android:layout_height="match_parent"
+        android:layout_below="@id/app_title"
         android:gravity="center"
         android:loopViews="true" />
+
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_below="@id/app_title"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_below="@id/app_title"
         android:background="@drawable/widget_item_background"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
+        android:gravity="center"
         android:text="@string/empty_view_text"
-        android:textSize="20sp" />
+        android:textColor="#ffffff"
+        android:textSize="@dimen/heading_6"
+        android:textStyle="bold" />
 </RelativeLayout>

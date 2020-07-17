@@ -4,13 +4,13 @@
     android:background="@drawable/nav_header_bg_p"
     android:gravity="center_horizontal|center_vertical"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/standard_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/twenties_dim"
         android:layout_marginTop="80dp"
         android:contentDescription="@string/navigation_drawer_header_image_cd"
         android:src="@drawable/icon_text" />

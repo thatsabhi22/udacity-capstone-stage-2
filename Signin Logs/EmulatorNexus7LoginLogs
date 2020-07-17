@@ -1,0 +1,45 @@
+2020-07-18 01:03:05.257 4183-4183/com.udacity.spacebinge W/GooglePlayServicesUtil: Google Play services out of date.  Requires 12451000 but found 10298470
+
+    --------- beginning of system
+2020-07-18 01:03:05.594 4183-4216/com.udacity.spacebinge V/FA: Recording user engagement, ms: 23837
+2020-07-18 01:03:05.609 4183-4216/com.udacity.spacebinge V/FA: Using local app measurement service
+2020-07-18 01:03:05.617 4183-4216/com.udacity.spacebinge V/FA: Activity paused, time: 563428
+2020-07-18 01:03:05.714 4183-4216/com.udacity.spacebinge V/FA: Connection attempt already in progress
+2020-07-18 01:03:07.349 4183-4208/com.udacity.spacebinge V/FA: onActivityCreated
+2020-07-18 01:03:07.376 4183-4183/com.udacity.spacebinge I/Choreographer: Skipped 107 frames!  The application may be doing too much work on its main thread.
+2020-07-18 01:03:07.532 4183-4183/com.udacity.spacebinge V/FA: Local AppMeasurementService is starting up
+2020-07-18 01:03:07.855 4183-4183/com.udacity.spacebinge V/FA: Bound to IMeasurementService interface
+2020-07-18 01:03:07.859 4183-4216/com.udacity.spacebinge V/FA: Connected to service
+2020-07-18 01:03:07.861 4183-4216/com.udacity.spacebinge V/FA: Processing queued up service tasks: 2
+2020-07-18 01:03:07.865 4183-4183/com.udacity.spacebinge W/SignUpActivity: Google sign in failed
+    com.google.android.gms.common.api.ApiException: 12500:
+        at com.google.android.gms.common.internal.ApiExceptionUtil.fromStatus(com.google.android.gms:play-services-base@@17.1.0:4)
+        at com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFromIntent(com.google.android.gms:play-services-auth@@18.0.0:9)
+        at com.udacity.spacebinge.ui.SignUpActivity.onActivityResult(SignUpActivity.java:120)
+        at android.app.Activity.dispatchActivityResult(Activity.java:6915)
+        at android.app.ActivityThread.deliverResults(ActivityThread.java:4049)
+        at android.app.ActivityThread.handleSendResult(ActivityThread.java:4096)
+        at android.app.ActivityThread.-wrap20(ActivityThread.java)
+        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1516)
+        at android.os.Handler.dispatchMessage(Handler.java:102)
+        at android.os.Looper.loop(Looper.java:154)
+        at android.app.ActivityThread.main(ActivityThread.java:6077)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:865)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:755)
+2020-07-18 01:03:07.896 4183-4216/com.udacity.spacebinge V/FA: Logging event: origin=auto,name=user_engagement(_e),params=Bundle[{ga_event_origin(_o)=auto, engagement_time_msec(_et)=23837, ga_screen_class(_sc)=SignUpActivity, ga_screen_id(_si)=8609649577403036750}]
+2020-07-18 01:03:07.928 4183-4216/com.udacity.spacebinge W/GooglePlayServicesUtil: Google Play services out of date.  Requires 12451000 but found 10298470
+2020-07-18 01:03:08.245 4183-4216/com.udacity.spacebinge V/FA: Upload scheduled in approximately ms: 3202514
+2020-07-18 01:03:08.249 4183-4216/com.udacity.spacebinge V/FA: Unscheduling upload
+2020-07-18 01:03:08.261 4183-4216/com.udacity.spacebinge V/FA: Scheduling upload, millis: 3202514
+2020-07-18 01:03:08.275 4183-4216/com.udacity.spacebinge V/FA: Background event processing time, ms: 385
+2020-07-18 01:03:08.288 4183-4216/com.udacity.spacebinge D/FA: Application going to the background
+2020-07-18 01:03:08.365 4183-4216/com.udacity.spacebinge V/FA: Logging event: origin=auto,name=app_background(_ab),params=Bundle[{ga_event_origin(_o)=auto}]
+2020-07-18 01:03:08.409 4183-4216/com.udacity.spacebinge V/FA: Upload scheduled in approximately ms: 3202350
+2020-07-18 01:03:08.447 4183-4216/com.udacity.spacebinge V/FA: Unscheduling upload
+2020-07-18 01:03:08.458 4183-4216/com.udacity.spacebinge V/FA: Scheduling upload, millis: 3202350
+2020-07-18 01:03:08.474 4183-4216/com.udacity.spacebinge V/FA: Background event processing time, ms: 111
+2020-07-18 01:03:08.580 4183-4216/com.udacity.spacebinge V/FA: Activity resumed, time: 565716
+2020-07-18 01:03:13.807 4183-4216/com.udacity.spacebinge V/FA: Inactivity, disconnecting from the service
+2020-07-18 01:03:14.164 4183-4183/com.udacity.spacebinge V/FA: onUnbind called for intent. action: com.google.android.gms.measurement.START
+2020-07-18 01:03:14.166 4183-4183/com.udacity.spacebinge V/FA: Local AppMeasurementService is shutting down

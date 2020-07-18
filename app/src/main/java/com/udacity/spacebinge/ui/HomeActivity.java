@@ -89,6 +89,7 @@ public class HomeActivity extends BaseActivity {
                 }
             });
 
+            // On Click of button, if network is available activity gets reloaded with fresh data
             offline_refresh_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

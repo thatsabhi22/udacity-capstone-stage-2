@@ -11,7 +11,6 @@ public class CreditsActivity extends AppCompatActivity {
 
     TextView credits_tv;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

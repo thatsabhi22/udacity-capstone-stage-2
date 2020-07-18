@@ -104,7 +104,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         onClickListenerOne();
 
-        // Popluating data to views
+        // Populating data to views
         videoTitleTV.setText(current.getTitle());
 
         // Formatting date
@@ -165,9 +165,6 @@ public class PlayerActivity extends AppCompatActivity {
             mWindowIndex = savedInstanceState.getInt(VIDEO_PLAY_WINDOW_INDEX);
             mVideoUri = Uri.parse(savedInstanceState.getString(VIDEO_URI));
         } else if (!TextUtils.isEmpty(current.getVideo_url())) {
-            //mVideoUri = Uri.parse("https://images-assets.nasa.gov/video/GSFC_20190130_NICER_m12854_BlkHole/GSFC_20190130_NICER_m12854_BlkHole~mobile.mp4");
-            //mVideoUri = Uri.parse("http://images-assets.nasa.gov/video/42_RethinkingAnAlienWorld/42_RethinkingAnAlienWorld~mobile.mp4");
-
             if (isOffline) {
                 mVideoUri = Uri.parse(current.getStorage_path());
             } else {

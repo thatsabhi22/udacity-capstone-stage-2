@@ -10,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,6 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
+                    // Sign In only when Network is available
                     if (!isOffline) {
                         AppUtil.showpDialog(pDialog);
                         signIn();

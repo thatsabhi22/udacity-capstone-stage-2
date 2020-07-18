@@ -38,6 +38,7 @@
                 android:layout_marginTop="@dimen/standard_margin"
                 android:layout_marginBottom="@dimen/standard_small_margin"
                 android:layout_toEndOf="@id/nav_drawer_btn_iv"
+                android:contentDescription="@string/app_icon_cd"
                 android:src="@drawable/spacebinge_icon" />
 
             <ImageView
@@ -49,6 +50,7 @@
                 android:layout_marginTop="@dimen/standard_small_margin"
                 android:layout_marginBottom="@dimen/standard_small_margin"
                 android:layout_toEndOf="@id/app_icon"
+                android:contentDescription="@string/app_title_image_cd"
                 android:src="@drawable/icon_text" />
         </RelativeLayout>
 

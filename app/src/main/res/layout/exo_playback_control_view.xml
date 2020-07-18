@@ -9,6 +9,7 @@
         style="@style/ExoMediaButton"
         android:layout_gravity="end"
         android:layout_marginTop="@dimen/standard_small_margin"
+        android:contentDescription="@string/exoplayer_fullscreen_button_cd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_fullscreen" />
@@ -33,19 +34,23 @@
 
             <ImageButton
                 android:id="@id/exo_rew"
-                style="@style/ExoMediaButton.Rewind" />
+                style="@style/ExoMediaButton.Rewind"
+                android:contentDescription="@string/exoplayer_rewind_cd" />
 
             <ImageButton
                 android:id="@id/exo_play"
-                style="@style/ExoMediaButton.Play" />
+                style="@style/ExoMediaButton.Play"
+                android:contentDescription="@string/exoplayer_play_cd" />
 
             <ImageButton
                 android:id="@id/exo_pause"
-                style="@style/ExoMediaButton.Pause" />
+                style="@style/ExoMediaButton.Pause"
+                android:contentDescription="@string/exoplayer_pause_cd" />
 
             <ImageButton
                 android:id="@id/exo_ffwd"
-                style="@style/ExoMediaButton.FastForward" />
+                style="@style/ExoMediaButton.FastForward"
+                android:contentDescription="@string/exoplayer_fast_fwd_cd" />
 
         </LinearLayout>
 

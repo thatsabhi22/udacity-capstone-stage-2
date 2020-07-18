@@ -51,6 +51,12 @@
     <string name="empty_view_text">Loading Latest News....</string>
     <string name="space_binge_widget_title_tv">SPACE BINGE NEWS</string>
     <string name="offline_refresh_btn_text">refresh</string>
+    <string name="app_title_image_cd">Homepage App Title Content description</string>
+    <string name="exoplayer_fullscreen_button_cd">Exoplayer Fullscreen Button</string>
+    <string name="exoplayer_rewind_cd">Exoplayer Rewind Button</string>
+    <string name="exoplayer_play_cd">Exoplayer Play Button</string>
+    <string name="exoplayer_pause_cd">Exoplayer Pause Button</string>
+    <string name="exoplayer_fast_fwd_cd">Exoplayer Fast Forward Button</string>
 
     <string-array name="topics">
         <item>Latest</item>

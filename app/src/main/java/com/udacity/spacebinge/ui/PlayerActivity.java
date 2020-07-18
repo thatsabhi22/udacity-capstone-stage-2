@@ -84,6 +84,7 @@ public class PlayerActivity extends AppCompatActivity {
         // Initializing all view elements in this method call
         initViewElements();
 
+        // Check Network Status
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -112,6 +113,7 @@ public class PlayerActivity extends AppCompatActivity {
         videoDateTV.setText(date);
         videoDescriptionTV.setText(current.getDescription());
 
+        // Start full screen
         exo_fullscreen.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SourceLockedOrientationActivity")
             @Override
@@ -126,6 +128,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         videoItem = new VideoItem();
 
+        // Checking if the video is already available in the User's Watchlist
         playerViewModel.getVideoItemsByNasaIdWatchList(current.getNasa_id())
                 .observe(PlayerActivity.this, new Observer<VideoItem>() {
                     @Override
@@ -139,6 +142,7 @@ public class PlayerActivity extends AppCompatActivity {
                     }
                 });
 
+        // Checking if the video is already available in the User's Download List
         playerViewModel.getVideoItemsByNasaIdDownloadList(current.getNasa_id())
                 .observe(PlayerActivity.this, new Observer<VideoItem>() {
                     @Override
@@ -171,6 +175,7 @@ public class PlayerActivity extends AppCompatActivity {
             }
         }
 
+        // Setting up Download button icon listener
         do_watchlist_icon_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,6 +196,7 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
+        // Setting up bottom navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);

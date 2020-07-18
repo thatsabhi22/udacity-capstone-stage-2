@@ -54,8 +54,10 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        // Initializing all view elements in this method call
         initViewElements();
 
+        // Check network status
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -90,11 +92,13 @@ public class NewsActivity extends AppCompatActivity {
                 }
             });
 
+            // initializing default parameters for the News API Call
             api_key = getString(R.string.news_api_key);
             query = getString(R.string.default_news_query);
             newsCollection = new ArrayList<>();
             initNewsViewModel();
 
+            // Setting up Card Stack View for the news playing in Swipe Cards
             cardStackLayoutManager = new CardStackLayoutManager(this, new CardStackListener() {
                 @Override
                 public void onCardDragging(Direction direction, float ratio) {
@@ -148,12 +152,13 @@ public class NewsActivity extends AppCompatActivity {
             CardStackView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
                 @Override
                 public void onChanged() {
-                    //Toast.makeText(HomeActivity.this,"recyclerview loaded",Toast.LENGTH_SHORT).show();
                     loading_indicator_iv.setVisibility(View.GONE);
                 }
             };
             newsAdapter.registerAdapterDataObserver(observer);
         }
+
+        // Setting up Bottom Navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(4);
@@ -165,25 +170,21 @@ public class NewsActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         Intent intent0 = new Intent(NewsActivity.this, HomeActivity.class);
-                        //intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent0);
                         break;
 
                     case R.id.watchlist:
                         Intent intent1 = new Intent(NewsActivity.this, WatchListActivity.class);
-                        //intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
                         break;
 
                     case R.id.search:
                         Intent intent2 = new Intent(NewsActivity.this, SearchActivity.class);
-                        //intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent2);
                         break;
 
                     case R.id.downloaded:
                         Intent intent3 = new Intent(NewsActivity.this, DownloadActivity.class);
-                        //intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent3);
                         break;
 
@@ -206,6 +207,7 @@ public class NewsActivity extends AppCompatActivity {
         go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
     }
 
+    // initializing the ViewModel for News API Retrofit Calls
     private void initNewsViewModel() {
         newsListObserver =
                 new Observer<List<Article>>() {

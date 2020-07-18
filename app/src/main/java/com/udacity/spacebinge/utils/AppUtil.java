@@ -30,6 +30,7 @@ public class AppUtil {
         }
     }
 
+    // Formatting base date into conveniently readable date
     @NotNull
     public static String formatDate(String date) {
         Date date1 = null;
@@ -52,6 +53,7 @@ public class AppUtil {
         return String.format(Locale.ENGLISH, "%.2fMb", bytes / (1024.00 * 1024.00));
     }
 
+    // Returns Root path of a directory
     public static String getRootDirPath(Context context) {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             File file = ContextCompat.getExternalFilesDirs(context.getApplicationContext(),
@@ -110,11 +112,13 @@ public class AppUtil {
         }
     }
 
+    // Show ProgressDialog
     public static void showpDialog(ProgressDialog pDialog) {
         if (!pDialog.isShowing())
             pDialog.show();
     }
 
+    // Hide ProgressDialog
     public static void hidepDialog(ProgressDialog pDialog) {
         if (pDialog.isShowing())
             pDialog.dismiss();

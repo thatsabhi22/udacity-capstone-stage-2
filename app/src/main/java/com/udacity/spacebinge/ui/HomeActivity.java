@@ -49,15 +49,6 @@ public class HomeActivity extends BaseActivity {
     private List<String> topics;
     private FirebaseAnalytics mFirebaseAnalytics;
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            logout = new Intent(this, SignUpActivity.class);
-            startActivity(logout);
-        }
-    }
-
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +69,7 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
+        // Check network status
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -130,6 +122,7 @@ public class HomeActivity extends BaseActivity {
             homePageAdapter.registerAdapterDataObserver(observer);
         }
 
+        // Setting up Bottom Navigation
         BottomNavigationView bottomNavigationView
                 = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
@@ -166,6 +159,15 @@ public class HomeActivity extends BaseActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            logout = new Intent(this, SignUpActivity.class);
+            startActivity(logout);
+        }
     }
 
     private void initViewElements() {

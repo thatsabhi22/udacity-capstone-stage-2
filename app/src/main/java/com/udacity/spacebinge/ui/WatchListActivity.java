@@ -52,6 +52,7 @@ public class WatchListActivity extends AppCompatActivity {
         // Initializing all view elements in this method call
         initViewElements();
 
+        // Check Network Status
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -79,6 +80,7 @@ public class WatchListActivity extends AppCompatActivity {
                     .into(loading_indicator_watchlist_iv);
             videoCollection = new ArrayList<>();
 
+            // Initializing watchlist ViewModel
             initWatchlistViewModel();
 
             watchListAdapter = new WatchListAdapter(this, videoCollection);

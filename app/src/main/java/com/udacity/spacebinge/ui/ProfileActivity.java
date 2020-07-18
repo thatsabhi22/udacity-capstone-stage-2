@@ -31,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
         email_address_tv = findViewById(R.id.email_address_tv);
         sign_out_btn = findViewById(R.id.sign_out_btn);
 
+        // Get the current user display name and email id
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (signInAccount != null) {
             user_name_tv.setText(signInAccount.getDisplayName());

@@ -57,6 +57,7 @@ public class SearchActivity extends AppCompatActivity {
         // Initializing all view elements in this method call
         initViewElements();
 
+        // Check Network Status
         try {
             isOffline = new AppUtil.CheckOnlineStatus().execute().get();
         } catch (ExecutionException | InterruptedException e) {
@@ -87,6 +88,7 @@ public class SearchActivity extends AppCompatActivity {
                 query = "";
             }
 
+            // Setting up Loading indicator that is visible before search result get loaded
             loading_indicator_search_iv.setVisibility(View.VISIBLE);
             Glide
                     .with(this)
@@ -95,12 +97,15 @@ public class SearchActivity extends AppCompatActivity {
 
             videoCollection = new ArrayList<>();
 
-            initHomepageViewModel();
+            // Initializing Search Page ViewModel
+            initSearchViewModel();
 
+            // Setting up Recyclerview adapter for search result cards
             searchResultAdapter = new SearchResultAdapter(this, videoCollection);
             search_result_recycler_view.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
             search_result_recycler_view.setAdapter(searchResultAdapter);
 
+            // RecyclerView Observer that indicates if recycler view is completely loaded with data
             RecyclerView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
                 @Override
                 public void onChanged() {
@@ -109,6 +114,7 @@ public class SearchActivity extends AppCompatActivity {
             };
             searchResultAdapter.registerAdapterDataObserver(observer);
 
+            // On Query Listener
             video_search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
@@ -126,6 +132,7 @@ public class SearchActivity extends AppCompatActivity {
             });
         }
 
+        // Setting up Bottom Navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_bar_navigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(2);
@@ -173,7 +180,7 @@ public class SearchActivity extends AppCompatActivity {
         go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
     }
 
-    private void initHomepageViewModel() {
+    private void initSearchViewModel() {
         videoItemListObserver =
                 new Observer<List<VideoItem>>() {
                     @Override

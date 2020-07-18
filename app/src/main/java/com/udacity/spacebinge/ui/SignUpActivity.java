@@ -53,6 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
         google_sign_in_btn = findViewById(R.id.google_sign_in_btn);
         sign_up_no_internet_tv = findViewById(R.id.sign_up_no_internet_tv);
 
+        // Initializing Google sign-in Options Object
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -63,6 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        // Setting up onclick listener on sign-up button
         google_sign_in_btn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

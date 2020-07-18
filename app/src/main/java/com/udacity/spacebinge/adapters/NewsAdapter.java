@@ -60,7 +60,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(mContext, current.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, WebActivity.class);
                 intent.putExtra("newsArticleUrl", current.getUrl());
                 mContext.startActivity(intent);

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "130094465980-4jrcntckt3otk6ud1kvtq9polp5k0qau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.udacity.spacebinge",
+            "certificate_hash": "aaa3c76d1835b25e7a6ebad8f99cc091feb00d15"
+          }
+        },
+        {
           "client_id": "130094465980-e15e755m03rpjl7h5ivrcfa78s1vnncq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

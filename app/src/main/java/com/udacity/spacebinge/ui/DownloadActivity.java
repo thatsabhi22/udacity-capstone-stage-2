@@ -78,19 +78,16 @@ public class DownloadActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         Intent intent0 = new Intent(DownloadActivity.this, HomeActivity.class);
-                        //intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent0);
                         break;
 
                     case R.id.watchlist:
                         Intent intent1 = new Intent(DownloadActivity.this, WatchListActivity.class);
-                        //intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
                         break;
 
                     case R.id.search:
                         Intent intent2 = new Intent(DownloadActivity.this, SearchActivity.class);
-                        //intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent2);
                         break;
 
@@ -99,7 +96,6 @@ public class DownloadActivity extends AppCompatActivity {
 
                     case R.id.news:
                         Intent intent4 = new Intent(DownloadActivity.this, NewsActivity.class);
-                        //intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent4);
                         break;
                 }

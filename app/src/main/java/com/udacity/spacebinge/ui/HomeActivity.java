@@ -124,7 +124,6 @@ public class HomeActivity extends BaseActivity {
             RecyclerView.AdapterDataObserver observer = new RecyclerView.AdapterDataObserver() {
                 @Override
                 public void onChanged() {
-                    //Toast.makeText(HomeActivity.this,"recyclerview loaded",Toast.LENGTH_SHORT).show();
                     loading_indicator_iv.setVisibility(View.GONE);
                 }
             };

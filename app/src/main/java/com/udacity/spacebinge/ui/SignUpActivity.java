@@ -126,7 +126,6 @@ public class SignUpActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);
-                // ...
             }
         }
     }
@@ -141,7 +140,6 @@ public class SignUpActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-//                            Toast.makeText(SignUpActivity.this, "Display Name ->" + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
                             startActivity(intent);
                         } else {

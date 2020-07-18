@@ -137,13 +137,11 @@ public class SearchActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         Intent intent0 = new Intent(SearchActivity.this, HomeActivity.class);
-                        //intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent0);
                         break;
 
                     case R.id.watchlist:
                         Intent intent1 = new Intent(SearchActivity.this, WatchListActivity.class);
-                        //intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent1);
                         break;
 
@@ -152,13 +150,11 @@ public class SearchActivity extends AppCompatActivity {
 
                     case R.id.downloaded:
                         Intent intent3 = new Intent(SearchActivity.this, DownloadActivity.class);
-                        //intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent3);
                         break;
 
                     case R.id.news:
                         Intent intent4 = new Intent(SearchActivity.this, NewsActivity.class);
-                        //intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent4);
                         break;
                 }

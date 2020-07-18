@@ -104,7 +104,6 @@ public class WatchListActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home:
                         Intent intent0 = new Intent(WatchListActivity.this, HomeActivity.class);
-                        //intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent0);
                         break;
 
@@ -113,19 +112,16 @@ public class WatchListActivity extends AppCompatActivity {
 
                     case R.id.search:
                         Intent intent2 = new Intent(WatchListActivity.this, SearchActivity.class);
-                        //intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent2);
                         break;
 
                     case R.id.downloaded:
                         Intent intent3 = new Intent(WatchListActivity.this, DownloadActivity.class);
-                        //intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent3);
                         break;
 
                     case R.id.news:
                         Intent intent4 = new Intent(WatchListActivity.this, NewsActivity.class);
-                        //intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent4);
                         break;
                 }

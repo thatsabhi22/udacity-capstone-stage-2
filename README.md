@@ -1,5 +1,4 @@
-# udacity-capstone-stage-2
-SpaceBinge
+# SpaceBinge # udacity-capstone-stage-2
 
 SpaceBinge is a video streaming app, showcasing latest and upcoming missions and activities
 as NASA. These videos on space are exclusively created by NASA and available for general
@@ -43,7 +42,7 @@ public viewership.
   - RecyclerView with ViewHolder
   - CardView
   - Card Stack View ( News Section )
-
+ 
 - Google Firebase
   - Firebase Auth
   - Firebase analytics

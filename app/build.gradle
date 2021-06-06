@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 // Creating a variable called keystorePropertiesFile, and initializing it to
 // keystore.properties file, in the rootProject folder.
@@ -97,4 +98,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
 
     implementation platform('com.google.firebase:firebase-bom:28.1.0')
+    implementation 'com.google.firebase:firebase-perf'
+
 }

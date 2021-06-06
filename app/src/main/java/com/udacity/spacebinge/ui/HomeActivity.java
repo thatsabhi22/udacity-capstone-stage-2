@@ -179,7 +179,6 @@ public class HomeActivity extends BaseActivity {
         go_to_downloads_tv = findViewById(R.id.go_to_downloads_tv);
         loading_indicator_iv = findViewById(R.id.loading_indicator_home_iv);
         nav_drawer_btn_iv = findViewById(R.id.nav_drawer_btn_iv);
-
     }
 
     private void initHomepageViewModel() {
